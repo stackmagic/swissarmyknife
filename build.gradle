@@ -84,7 +84,7 @@ bintray {
 		repo            = 'maven'
 		name            = "${project.group}_${project.name}"
 		desc            = project.description
-		licenses        = ["Apache-2.0"]
+		licenses        = [ 'Apache-2.0' ]
 		websiteUrl      = 'https://github.com/stackmagic/swissarmyknife'
 		vcsUrl          = 'https://github.com/stackmagic/swissarmyknife.git'
 		issueTrackerUrl = 'https://github.com/stackmagic/swissarmyknife/issues'
