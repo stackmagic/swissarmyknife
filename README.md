@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-    compile 'net.swisstech:swissarmyknife:1.0.0'
+    compile 'net.swisstech:swissarmyknife:+'
 }
 ```
 
@@ -39,7 +39,7 @@ maven
 <dependency>
     <groupId>net.swisstech</groupId>
     <artifactId>swissarmyknife</artifactId>
-    <version>1.0.0</version>
+    <version>...</version>
 </dependency>
 ```
 
