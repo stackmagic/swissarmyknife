@@ -4,7 +4,7 @@ swissarmyknife
 
 just a bunch of small java utils to make my life easier
 
-<img src="https://travis-ci.org/stackmagic/swissarmyknife.svg?branch=master" />
+[ ![TravicCI](https://travis-ci.org/stackmagic/swissarmyknife.svg?branch=master) ](https://travis-ci.org/stackmagic/swissarmyknife)
 [ ![Download](https://api.bintray.com/packages/stackmagic/maven/swissarmyknife/images/download.svg) ](https://bintray.com/stackmagic/maven/swissarmyknife/_latestVersion)
 
 downloading
