@@ -8,7 +8,7 @@ public final class NetworkUtil {
 	/** max value for a single ip's octet minus 1 for use by Random.nextInt() */
 	private static final int MAX_OCTET = 253;
 
-	/** max value allowed for an ip */
+	/** max value allowed for a port */
 	private static final int MAXPORT = 65535;
 
 	/** we only use the upper half of the port range */
@@ -19,7 +19,7 @@ public final class NetworkUtil {
 	/** private constructor for utility class */
 	private NetworkUtil() {}
 
-	/** get a random port from the upper half of the rang (32k to 64k) */
+	/** get a random port from the upper half of the range (32k to 64k) */
 	public static int getRandomUnprivilegedPort() {
 		return RANDOM.nextInt(HALFMAXPORT) + HALFMAXPORT;
 	}

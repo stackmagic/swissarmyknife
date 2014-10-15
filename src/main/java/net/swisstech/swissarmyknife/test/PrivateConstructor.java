@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 
-/**
- * This utility invokes the private default constructor of a class so these won't show up as non-covered in unit test coverage reports and distract us.
- */
+/** This utility invokes the private default constructor of a class so these won't show up as non-covered in unit test coverage reports and distract us. */
 public final class PrivateConstructor {
 
 	/** private constructor for utility class */
