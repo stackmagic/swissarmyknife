@@ -20,4 +20,9 @@ public class PrivateConstructorTest {
 	public void shouldFailBecauseNoDefaultConstructor() throws IOException {
 		PrivateConstructor.invoke(PrivateConstructorTestHasPrivateNonDefaultConstructor.class);
 	}
+
+	@Test(expectedExceptions = AssertionError.class)
+	public void shouldFailWithPublicConstructor() throws IOException {
+		PrivateConstructor.invoke(PrivateConstructorTestHasPublicConstructor.class);
+	}
 }
