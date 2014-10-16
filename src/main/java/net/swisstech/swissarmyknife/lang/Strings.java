@@ -6,12 +6,12 @@ public class Strings {
 	/** private constructor for utility class */
 	private Strings() {}
 
-	public static boolean isEmpty(String s) {
+	public static boolean isBlank(String s) {
 		return s == null || s.trim().isEmpty();
 	}
 
-	public static boolean isNotEmpty(String s) {
-		return !isEmpty(s);
+	public static boolean isNotBlank(String s) {
+		return !isBlank(s);
 	}
 
 	public static String truncate(String string, int length) {

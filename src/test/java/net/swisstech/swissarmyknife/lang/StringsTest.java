@@ -20,30 +20,30 @@ public class StringsTest {
 
 	@Test
 	public void notBlank() {
-		assertFalse(Strings.isNotEmpty(null));
-		assertFalse(Strings.isNotEmpty(""));
-		assertFalse(Strings.isNotEmpty(" "));
-		assertFalse(Strings.isNotEmpty("    "));
-		assertTrue(Strings.isNotEmpty(" a"));
-		assertTrue(Strings.isNotEmpty("  a"));
-		assertTrue(Strings.isNotEmpty("b "));
-		assertTrue(Strings.isNotEmpty("b  "));
-		assertTrue(Strings.isNotEmpty(" c "));
-		assertTrue(Strings.isNotEmpty("  c  "));
+		assertFalse(Strings.isNotBlank(null));
+		assertFalse(Strings.isNotBlank(""));
+		assertFalse(Strings.isNotBlank(" "));
+		assertFalse(Strings.isNotBlank("    "));
+		assertTrue(Strings.isNotBlank(" a"));
+		assertTrue(Strings.isNotBlank("  a"));
+		assertTrue(Strings.isNotBlank("b "));
+		assertTrue(Strings.isNotBlank("b  "));
+		assertTrue(Strings.isNotBlank(" c "));
+		assertTrue(Strings.isNotBlank("  c  "));
 	}
 
 	@Test
 	public void blank() {
-		assertTrue(Strings.isEmpty(null));
-		assertTrue(Strings.isEmpty(""));
-		assertTrue(Strings.isEmpty(" "));
-		assertTrue(Strings.isEmpty("    "));
-		assertFalse(Strings.isEmpty(" a"));
-		assertFalse(Strings.isEmpty("  a"));
-		assertFalse(Strings.isEmpty("b "));
-		assertFalse(Strings.isEmpty("b  "));
-		assertFalse(Strings.isEmpty(" c "));
-		assertFalse(Strings.isEmpty("  c  "));
+		assertTrue(Strings.isBlank(null));
+		assertTrue(Strings.isBlank(""));
+		assertTrue(Strings.isBlank(" "));
+		assertTrue(Strings.isBlank("    "));
+		assertFalse(Strings.isBlank(" a"));
+		assertFalse(Strings.isBlank("  a"));
+		assertFalse(Strings.isBlank("b "));
+		assertFalse(Strings.isBlank("b  "));
+		assertFalse(Strings.isBlank(" c "));
+		assertFalse(Strings.isBlank("  c  "));
 	}
 
 	@Test
