@@ -4,6 +4,7 @@ import static java.util.Arrays.asList;
 import static net.swisstech.swissarmyknife.test.Assert.assertCollectionContains;
 import static net.swisstech.swissarmyknife.test.Assert.assertCollectionContainsAll;
 import static net.swisstech.swissarmyknife.test.Assert.assertEmpty;
+import static net.swisstech.swissarmyknife.test.Assert.assertGreaterThan;
 import static net.swisstech.swissarmyknife.test.Assert.assertHammingDistanceLowerEqual;
 import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
 import static net.swisstech.swissarmyknife.test.Assert.assertSize;
@@ -219,5 +220,14 @@ public class AssertTest {
 	public void assertCollectionContainsAllFail() {
 		List<String> all = asList("a", "b", "c", "d");
 		assertCollectionContainsAll(all, asList("XXX"));
+	}
+
+	@Test(expectedExceptions = AssertionError.class)
+	public void assertGreaterThanFail() {
+		assertGreaterThan(5, 5);
+	}
+
+	public void assertGreaterThanOk() {
+		assertGreaterThan(5, 4);
 	}
 }

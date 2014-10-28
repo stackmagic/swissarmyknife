@@ -3,7 +3,7 @@ package net.swisstech.swissarmyknife.test;
 import java.util.Collection;
 import java.util.Map;
 
-/** Assert methods that don't exist anywhere else */
+/** Assert methods that don't exist anywhere else. This class is intended for unit tests, for 'live' code see {@link Preconditions} */
 public final class Assert {
 
 	/** private constructor for utility class */
@@ -83,8 +83,9 @@ public final class Assert {
 	}
 
 	public static void assertHammingDistanceLowerEqual(int x, int y, int maxHmmingDistance) {
-		if (calcHammingDistance(x, y) > maxHmmingDistance) {
-			String msg = String.format("Expected hamming distance of %d and %d to be smaller or equal %d, but is %d", x, y, maxHmmingDistance, calcHammingDistance(x, y));
+		int dist = Integer.bitCount(x ^ y);
+		if (dist > maxHmmingDistance) {
+			String msg = String.format("Expected hamming distance of %d and %d to be smaller or equal %d, but is %d", x, y, maxHmmingDistance, dist);
 			throw new AssertionError(msg);
 		}
 	}
@@ -103,7 +104,10 @@ public final class Assert {
 		}
 	}
 
-	private static int calcHammingDistance(int x, int y) {
-		return Integer.bitCount(x ^ y);
+	public static void assertGreaterThan(long a, long b) {
+		if (a <= b) {
+			String msg = String.format("Expected %d to be greater than %d", b, a);
+			throw new AssertionError(msg);
+		}
 	}
 }
