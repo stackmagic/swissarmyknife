@@ -30,6 +30,10 @@ public final class Preconditions {
 		return o;
 	}
 
+	public static <O> O notNull(O o) {
+		return ensureNotNull(o, "Object must not be null");
+	}
+
 	public static <O> O ensureNotNull(O o, String msg) {
 		if (o == null) {
 			throw new IllegalArgumentException(msg);

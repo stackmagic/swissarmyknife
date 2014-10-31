@@ -4,7 +4,7 @@ apply plugin: 'eclipse'
 
 description = 'Miscellaneous java utilities'
 group       = 'net.swisstech'
-version     = '1.1.1'
+version     = '1.1.2'
 
 sourceCompatibility = 1.6
 targetCompatibility = 1.6

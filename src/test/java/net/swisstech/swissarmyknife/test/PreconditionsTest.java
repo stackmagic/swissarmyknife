@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 import org.testng.annotations.Test;
+
 /** test the Preconditions */
 public class PreconditionsTest {
 
@@ -43,6 +44,16 @@ public class PreconditionsTest {
 	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "must be null")
 	public void ensureNullException() {
 		Preconditions.ensureNull(new Object(), "must be null");
+	}
+
+	@Test
+	public void notNullOk() {
+		Preconditions.notNull(new Object());
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object must not be null")
+	public void notNullException() {
+		Preconditions.notNull(null);
 	}
 
 	@Test
