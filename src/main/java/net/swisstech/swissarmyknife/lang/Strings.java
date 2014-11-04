@@ -23,7 +23,7 @@ public class Strings {
 
 	public static String notBlank(String s) {
 		if (isBlank(s)) {
-			throw new IllegalArgumentException("String shouldn't be empty but gut " + s);
+			throw new IllegalArgumentException("String shouldn't be empty but got " + s);
 		}
 		return s;
 	}

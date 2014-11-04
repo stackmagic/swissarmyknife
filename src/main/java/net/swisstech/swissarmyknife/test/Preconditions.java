@@ -4,11 +4,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 
+import net.swisstech.swissarmyknife.lang.Strings;
+
 /**
  * Utility class to ensure certain preconditions. Each method will check and throw and {@link IllegalArgumentException} if the conditions are not met. This
  * class is intended for 'live' code, for unit tests, see {@link Assert}
  */
-// will be replace with methods without the ensure prefix plus everything should allow for an optional message to be appended (2 variations of each method at
+// will be replaced with methods without the ensure prefix plus everything should allow for an optional message to be appended (2 variations of each method at
 // least). Maybe also merge this with the Assert class and have a single fat class full of superduper validators
 @Deprecated
 public final class Preconditions {
@@ -20,10 +22,7 @@ public final class Preconditions {
 	private Preconditions() {}
 
 	public static String ensureNotEmpty(String s) {
-		if (s == null || s.isEmpty() || s.trim().isEmpty()) {
-			throw new IllegalArgumentException("String must not be null/empty");
-		}
-		return s;
+		return Strings.notBlank(s);
 	}
 
 	public static <O> O ensureNull(O o, String msg) {

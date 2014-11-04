@@ -31,7 +31,7 @@ public class PreconditionsTest {
 				fail("Should't reach this point");
 			}
 			catch (IllegalArgumentException e) {
-				assertEquals("String must not be null/empty", e.getMessage());
+				assertEquals("String shouldn't be empty but got " + string, e.getMessage());
 			}
 		}
 	}
@@ -353,7 +353,7 @@ public class PreconditionsTest {
 		Preconditions.ensureUrl("i am not an url");
 	}
 
-	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "String must not be null/empty")
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "String shouldn't be empty but got null")
 	public void ensureUrlNull() {
 		Preconditions.ensureUrl(null);
 	}
