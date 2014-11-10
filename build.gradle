@@ -91,9 +91,9 @@ bintray {
 		name            = project.name
 		desc            = project.description
 		licenses        = [ 'Apache-2.0' ]
-		websiteUrl      = 'https://github.com/stackmagic/swissarmyknife'
-		vcsUrl          = 'https://github.com/stackmagic/swissarmyknife.git'
-		issueTrackerUrl = 'https://github.com/stackmagic/swissarmyknife/issues'
+		websiteUrl      = "https://github.com/stackmagic/${project.name}"
+		vcsUrl          = "https://github.com/stackmagic/${project.name}.git"
+		issueTrackerUrl = "https://github.com/stackmagic/${project.name}/issues"
 		version {
 			name = project.version
 		}
