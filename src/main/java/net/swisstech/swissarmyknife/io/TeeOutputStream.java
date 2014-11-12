@@ -3,7 +3,10 @@ package net.swisstech.swissarmyknife.io;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/** yes, commons-io has something like this too but I don't want to pull in an entire jar for a single class */
+/**
+ * yes, commons-io has something like this too but I don't want to pull in an entire jar for a single class
+ * @since 1.1.5
+ */
 class TeeOutputStream extends OutputStream {
 
 	private final OutputStream streamA;
