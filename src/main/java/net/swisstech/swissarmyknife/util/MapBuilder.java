@@ -3,7 +3,10 @@ package net.swisstech.swissarmyknife.util;
 import java.util.HashMap;
 import java.util.Map;
 
-/** fluent builder for maps */
+/**
+ * fluent builder for maps
+ * @since 1.1.4
+ */
 public class MapBuilder<K, V> {
 
 	private final Map<K, V> map = new HashMap<K, V>();

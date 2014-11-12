@@ -1,7 +1,10 @@
 // Copyright (C) Layzapp AG. All Rights Reserved.
 package net.swisstech.swissarmyknife.lang;
 
-/** some number utils */
+/**
+ * some number utils
+ * @since 1.1.4
+ */
 public final class Longs {
 
 	/** private constructor for utility class */

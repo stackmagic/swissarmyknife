@@ -2,7 +2,10 @@ package net.swisstech.swissarmyknife.lang;
 
 import ch.bind.philib.lang.CompareUtil;
 
-/** base class for custom ints (too bad java has no typedef construct) */
+/**
+ * base class for custom ints (too bad java has no typedef construct)
+ * @since 1.1.4
+ */
 public abstract class AbstractLong extends Number implements Comparable<AbstractLong> {
 
 	private static final long serialVersionUID = 6213649382515699446L;

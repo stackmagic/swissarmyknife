@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-/** set utils we've been missing from guava and jdk standart apis */
+/**
+ * set utils we've been missing from guava and jdk standart apis
+ * @since 1.1.4
+ */
 public final class Sets {
 
 	/** private constructor for utility class */

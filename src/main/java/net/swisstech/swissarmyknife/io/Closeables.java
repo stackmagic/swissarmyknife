@@ -14,7 +14,10 @@ import javax.xml.stream.XMLEventReader;
 import net.swisstech.log.Logger;
 import net.swisstech.log.LoggerFactory;
 
-/** Utility Class to close several kinds of classes. */
+/**
+ * Utility Class to close several kinds of classes.
+ * @since 1.1.4
+ */
 public final class Closeables {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Closeables.class);

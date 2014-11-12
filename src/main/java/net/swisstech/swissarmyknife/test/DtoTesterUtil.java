@@ -8,7 +8,10 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/** util to test dtos (getters and setters) to get the code coverage and have them off the radar. */
+/**
+ * util to test dtos (getters and setters) to get the code coverage and have them off the radar.
+ * @since 1.1.4
+ */
 public final class DtoTesterUtil {
 
 	private static final Object[] EMPTY_ARGS = new Object[0];

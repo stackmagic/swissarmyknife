@@ -1,6 +1,9 @@
 package net.swisstech.swissarmyknife.lang;
 
-/** utils related to the powers of two! */
+/**
+ * utils related to the powers of two!
+ * @since 1.1.4
+ */
 public final class Binary {
 
 	/** private constructor for utility class */

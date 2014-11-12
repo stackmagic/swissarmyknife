@@ -1,6 +1,9 @@
 package net.swisstech.swissarmyknife.lang;
 
-/** some String utils */
+/**
+ * some String utils
+ * @since 1.1.4
+ */
 public class Strings {
 
 	/** private constructor for utility class */

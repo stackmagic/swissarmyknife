@@ -6,7 +6,10 @@ import java.net.InetSocketAddress;
 
 import com.sun.net.httpserver.HttpServer;
 
-/** just a simple http server that can be embedded in tests, does simple file serving, could be extended to call a custom controller if needed */
+/**
+ * just a simple http server that can be embedded in tests, does simple file serving, could be extended to call a custom controller if needed
+ * @since 1.1.4
+ */
 public class SimpleHttpServer implements Closeable {
 
 	private final HttpServer server;

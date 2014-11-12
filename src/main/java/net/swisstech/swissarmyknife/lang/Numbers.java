@@ -1,6 +1,9 @@
 package net.swisstech.swissarmyknife.lang;
 
-/** some number utilities */
+/**
+ * some number utilities
+ * @since 1.1.4
+ */
 public final class Numbers {
 
 	/** private constructor for utility class */

@@ -9,6 +9,7 @@ import net.swisstech.swissarmyknife.lang.Strings;
 /**
  * Utility class to ensure certain preconditions. Each method will check and throw and {@link IllegalArgumentException} if the conditions are not met. This
  * class is intended for 'live' code, for unit tests, see {@link Assert}
+ * @since 1.1.4
  */
 // will be replaced with methods without the ensure prefix plus everything should allow for an optional message to be appended (2 variations of each method at
 // least). Maybe also merge this with the Assert class and have a single fat class full of superduper validators

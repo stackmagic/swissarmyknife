@@ -1,6 +1,9 @@
 package net.swisstech.swissarmyknife.lang;
 
-/** can be used for your own string implementations, just extend this class */
+/**
+ * can be used for your own string implementations, just extend this class
+ * @since 1.1.4
+ */
 public abstract class AbstractCharSequence implements CharSequence {
 
 	private final CharSequence value;

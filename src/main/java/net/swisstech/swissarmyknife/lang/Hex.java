@@ -1,6 +1,9 @@
 package net.swisstech.swissarmyknife.lang;
 
-/** Hex Utils, namely dumping byte[] into a human-friendly hexdump */
+/**
+ * Hex Utils, namely dumping byte[] into a human-friendly hexdump
+ * @since 1.1.4
+ */
 public final class Hex {
 
 	private static final int BYTES_PER_LINE_MID_LINE_BREAK_IDX = 7;

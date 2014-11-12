@@ -18,7 +18,10 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-/** translate 3-letter language codes to 2-letter language codes */
+/**
+ * translate 3-letter language codes to 2-letter language codes
+ * @since 1.1.4
+ */
 public final class Iso639 {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Iso639.class);

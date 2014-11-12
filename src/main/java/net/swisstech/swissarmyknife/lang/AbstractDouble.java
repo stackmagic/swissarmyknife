@@ -2,7 +2,10 @@ package net.swisstech.swissarmyknife.lang;
 
 import ch.bind.philib.lang.CompareUtil;
 
-/** base class for custom doubles (too bad java has no typedef construct) */
+/**
+ * base class for custom doubles (too bad java has no typedef construct)
+ * @since 1.1.4
+ */
 public class AbstractDouble extends Number implements Comparable<AbstractDouble> {
 
 	private static final long serialVersionUID = 1724128146756984274L;

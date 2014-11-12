@@ -3,7 +3,10 @@ package net.swisstech.swissarmyknife.test;
 import java.util.Collection;
 import java.util.Map;
 
-/** Assert methods that don't exist anywhere else. This class is intended for unit tests, for 'live' code see {@link Preconditions} */
+/**
+ * Assert methods that don't exist anywhere else. This class is intended for unit tests, for 'live' code see {@link Preconditions}
+ * @since 1.1.4
+ */
 public final class Assert {
 
 	/** private constructor for utility class */

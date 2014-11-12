@@ -2,7 +2,10 @@ package net.swisstech.swissarmyknife.test;
 
 import java.util.Random;
 
-/** just a few basic network utilities for testing */
+/**
+ * just a few basic network utilities for testing
+ * @since 1.1.4
+ */
 public final class NetworkUtil {
 
 	/** max value for a single ip's octet minus 1 for use by Random.nextInt() */

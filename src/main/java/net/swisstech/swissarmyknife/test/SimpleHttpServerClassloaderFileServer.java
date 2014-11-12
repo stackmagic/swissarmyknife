@@ -10,7 +10,10 @@ import org.slf4j.LoggerFactory;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-/** serve files from the classpath */
+/**
+ * serve files from the classpath
+ * @since 1.1.4
+ */
 public class SimpleHttpServerClassloaderFileServer implements HttpHandler {
 
 	private static final Logger LOG = LoggerFactory.getLogger(SimpleHttpServerClassloaderFileServer.class);

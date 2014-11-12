@@ -1,6 +1,9 @@
 package net.swisstech.swissarmyknife.math;
 
-/** encode/decode numbers into a set of symbols to shorten urls. think youtube and imgur url ids for example */
+/**
+ * encode/decode numbers into a set of symbols to shorten urls. think youtube and imgur url ids for example
+ * @since 1.1.4
+ */
 public class BaseAny {
 
 	private final char[] chars;

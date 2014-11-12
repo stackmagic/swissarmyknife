@@ -8,6 +8,7 @@ import java.util.Set;
 /**
  * set that allows to enable/disable reading or writing. calling disabled methods will cause an UnsupportedOperationException. all methods are enabled by
  * default. hashCode/equals cannot be disabled
+ * @since 1.1.4
  */
 // TODO there really should be a code generator for something like this!!! and the tests for it too?!?!
 public final class FeatureToggleSet<E> implements Set<E> {
