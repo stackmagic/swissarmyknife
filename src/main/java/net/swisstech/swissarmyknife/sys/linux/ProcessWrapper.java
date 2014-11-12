@@ -90,16 +90,18 @@ public final class ProcessWrapper extends Process {
 		}
 	}
 
-	/** this returns a new process, which is the kill command executed to kill this process */
+	/** @returns a new process, which is the kill command executed to kill <i>this</i> process */
 	public ProcessWrapper kill(Signal signal) {
 		String cmd = String.format("/bin/kill -%s %d", signal.name(), pid);
 		String[] cmds = cmd.split(" ");
 		return launch(cmds, null);
 	}
 
+	/** @returns the exit-code of the process represented by <i>this</i> process wrapper */
 	public int killWait(Signal signal) {
 		try {
-			return kill(signal).waitFor();
+			kill(signal);
+			return waitFor();
 		}
 		catch (InterruptedException e) {
 			throw new ProcessWrapperException(e);
