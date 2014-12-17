@@ -57,6 +57,13 @@ public final class Assert {
 		}
 	}
 
+	/** @since 1.1.7 */
+	public static <T> void assertNotEmpty(T[] c) {
+		if (c.length < 1) {
+			throw new AssertionError("Expected array to be non-empty");
+		}
+	}
+
 	public static <T> void assertEmpty(Collection<T> c) {
 		if (c.size() != 0) {
 			String msg = String.format("Expected collection to be empty but contained %d elements", c.size());
@@ -64,10 +71,24 @@ public final class Assert {
 		}
 	}
 
+	/** @since 1.1.7 */
+	public static <T> void assertNotEmpty(Collection<T> c) {
+		if (c.size() < 1) {
+			throw new AssertionError("Expected collection to be non-empty");
+		}
+	}
+
 	public static <K, V> void assertEmpty(Map<K, V> m) {
 		if (m.size() != 0) {
 			String msg = String.format("Expected map to be empty but contained %d elements", m.size());
 			throw new AssertionError(msg);
+		}
+	}
+
+	/** @since 1.1.7 */
+	public static <K, V> void assertNotEmpty(Map<K, V> m) {
+		if (m.size() < 1) {
+			throw new AssertionError("Expected map to be non-empty");
 		}
 	}
 

@@ -1,20 +1,25 @@
 package net.swisstech.swissarmyknife.test;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.emptyMap;
+import static java.util.Collections.emptySet;
 import static net.swisstech.swissarmyknife.test.Assert.assertCollectionContains;
 import static net.swisstech.swissarmyknife.test.Assert.assertCollectionContainsAll;
 import static net.swisstech.swissarmyknife.test.Assert.assertEmpty;
 import static net.swisstech.swissarmyknife.test.Assert.assertGreaterThan;
 import static net.swisstech.swissarmyknife.test.Assert.assertHammingDistanceLowerEqual;
 import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
+import static net.swisstech.swissarmyknife.test.Assert.assertNotEmpty;
 import static net.swisstech.swissarmyknife.test.Assert.assertSize;
 import static net.swisstech.swissarmyknife.test.Assert.assertSizeMin;
 import static net.swisstech.swissarmyknife.test.Assert.assertSmallerThan;
+import static net.swisstech.swissarmyknife.util.Lists.newArrayList;
+import static net.swisstech.swissarmyknife.util.Sets.newHashSet;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -47,7 +52,7 @@ public class AssertTest {
 	public void testAssertSizeArrayOk() {
 		String[] array = new String[]{ "a", "b", "c" };
 		assertSize(array, 3);
-		assertSize(Collections.emptyList(), 0);
+		assertSize(emptyList(), 0);
 	}
 
 	@Test(expectedExceptions = AssertionError.class)
@@ -71,12 +76,12 @@ public class AssertTest {
 	public void testAssertSizeCollectionOk() {
 		List<String> list = Arrays.asList("a", "b", "c");
 		assertSize(list, 3);
-		assertSize(Collections.emptyList(), 0);
+		assertSize(emptyList(), 0);
 	}
 
 	@Test(expectedExceptions = AssertionError.class)
 	public void testAssertSizeCollectionFail() {
-		assertSize(Collections.emptyList(), 1);
+		assertSize(emptyList(), 1);
 	}
 
 	@Test
@@ -94,6 +99,16 @@ public class AssertTest {
 		assertSize(map, 1);
 	}
 
+	@Test(expectedExceptions = AssertionError.class)
+	public void testAssertNotEmptyArrayWithEmptyArray() {
+		assertNotEmpty(new String[0]);
+	}
+
+	@Test
+	public void testAssertNotEmptyArrayWithNonEmptyArray() {
+		assertNotEmpty(new String[]{ "hello" });
+	}
+
 	@Test
 	public void assertEmptyArrayWithEmptyArray() {
 		assertEmpty(new String[0]);
@@ -104,10 +119,26 @@ public class AssertTest {
 		assertEmpty(new String[]{ "not", "empty" });
 	}
 
+	@Test(expectedExceptions = AssertionError.class)
+	public void testAssertNotEmptyCollectionWithEmptyList() {
+		assertNotEmpty(emptyList());
+	}
+
+	@Test(expectedExceptions = AssertionError.class)
+	public void testAssertNotEmptyCollectionWithEmptySet() {
+		assertNotEmpty(emptySet());
+	}
+
+	@Test
+	public void testAssertNotEmptyCollectionWithNonEmptyCollection() {
+		assertNotEmpty(newHashSet("hello"));
+		assertNotEmpty(newArrayList("hello"));
+	}
+
 	@Test
 	public void assertEmptyCollectionWithEmptyCollection() {
-		assertEmpty(Collections.emptyList());
-		assertEmpty(Collections.emptySet());
+		assertEmpty(emptyList());
+		assertEmpty(emptySet());
 	}
 
 	@Test(expectedExceptions = AssertionError.class)
@@ -124,9 +155,21 @@ public class AssertTest {
 		assertEmpty(collection);
 	}
 
+	@Test(expectedExceptions = AssertionError.class)
+	public void testAssertNotEmptyMapWithEmptyMap() {
+		assertNotEmpty(emptyMap());
+	}
+
+	@Test
+	public void testAssertNotEmptyMapWithNonEmptyMap() {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("a", "b");
+		assertNotEmpty(map);
+	}
+
 	@Test
 	public void assertEmptyMapWithEmptyMap() {
-		assertEmpty(Collections.emptyMap());
+		assertEmpty(emptyMap());
 	}
 
 	@Test(expectedExceptions = AssertionError.class)
