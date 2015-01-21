@@ -31,8 +31,8 @@ public class FeatureToggleSetTest {
 		catch (UnsupportedOperationException e) {
 			// all good
 		}
-		assertSize(set,1);
-		assertSize(fts,1);
+		assertSize(set, 1);
+		assertSize(fts, 1);
 
 		fts.enable();
 		fts.add("C");

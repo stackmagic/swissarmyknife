@@ -64,6 +64,9 @@ public final class FeatureToggleSet<E> implements Set<E> {
 		return this;
 	}
 
+	// this is more readable if formatted manually
+	// @formatter:off
+
 	public FeatureToggleSet<E>  enableAdd() { this.add = true;  return this; }
 	public FeatureToggleSet<E> disableAdd() { this.add = false; return this; }
 	@Override
@@ -166,6 +169,8 @@ public final class FeatureToggleSet<E> implements Set<E> {
 		if (toArray) { return delegate.toArray(a); }
 		else { throw new UnsupportedOperationException("Can't touch this - Hammer Time!"); }
 	}
+
+	// @formatter:on
 
 	@Override
 	public boolean equals(Object o) {
