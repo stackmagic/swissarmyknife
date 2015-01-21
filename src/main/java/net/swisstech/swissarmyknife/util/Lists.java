@@ -15,12 +15,12 @@ public class Lists {
 	private Lists() {}
 
 	public static <T> List<T> newArrayList(T... items) {
-		List<T> list = new ArrayList<T>();
+		List<T> list = new ArrayList<>();
 		return addAll(list, items);
 	}
 
 	public static <T> List<T> newLinkedList(T... items) {
-		List<T> list = new LinkedList<T>();
+		List<T> list = new LinkedList<>();
 		return addAll(list, items);
 	}
 

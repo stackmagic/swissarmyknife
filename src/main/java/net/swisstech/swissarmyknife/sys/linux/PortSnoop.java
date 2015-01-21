@@ -42,7 +42,7 @@ public final class PortSnoop {
 
 			// check for multiple processes owning our ports
 			// TODO some programs may start subprocesses with new pids and we may allow for that
-			Set<Integer> pids = new HashSet<Integer>();
+			Set<Integer> pids = new HashSet<>();
 			for (Set<Integer> pid : portToPid.values()) {
 				pids.addAll(pid);
 			}
@@ -90,7 +90,7 @@ public final class PortSnoop {
 	 * process owning it (yet)
 	 */
 	public static Map<Integer, Set<Integer>> getPortToPid(Collection<Integer> ports) {
-		Map<Integer, Set<Integer>> map = new HashMap<Integer, Set<Integer>>();
+		Map<Integer, Set<Integer>> map = new HashMap<>();
 		for (Integer port : ports) {
 			String cmd = "lsof -ti :" + port;
 			String[] cmds = cmd.split(" ");
@@ -98,7 +98,7 @@ public final class PortSnoop {
 			if (isNotBlank(lsofStdOut)) {
 				Set<Integer> pids = map.get(port);
 				if (pids == null) {
-					pids = new HashSet<Integer>();
+					pids = new HashSet<>();
 					map.put(port, pids);
 				}
 
@@ -110,7 +110,7 @@ public final class PortSnoop {
 
 	/** parse the output of <code>lsof -ti :port</code>, essentially extracts all distinct numbers from a string, these are the pids in case of the lsof output. */
 	public static Set<Integer> parsePids(String lsofStdOut) {
-		Set<Integer> pids = new HashSet<Integer>();
+		Set<Integer> pids = new HashSet<>();
 		String[] lines = lsofStdOut.split(NON_NUMBERS_REGEX);
 		for (String line : lines) {
 			if (line.length() < 1) {

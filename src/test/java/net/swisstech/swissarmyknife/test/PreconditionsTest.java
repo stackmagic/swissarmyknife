@@ -281,7 +281,7 @@ public class PreconditionsTest {
 
 	@Test
 	public void ensureNotEmptyOk() {
-		ArrayList<String> collection = new ArrayList<String>();
+		ArrayList<String> collection = new ArrayList<>();
 		collection.add("Hello World");
 		Preconditions.ensureNotEmpty(collection, "won't be used");
 	}
@@ -303,7 +303,7 @@ public class PreconditionsTest {
 
 	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "none shall be full!")
 	public void ensureEmptyException() {
-		ArrayList<Integer> collection = new ArrayList<Integer>();
+		ArrayList<Integer> collection = new ArrayList<>();
 		collection.add(7);
 		Preconditions.ensureEmpty(collection, "none shall be full!");
 	}
@@ -315,7 +315,7 @@ public class PreconditionsTest {
 
 	@Test
 	public void ensureSizeOk() {
-		LinkedList<String> collection = new LinkedList<String>();
+		LinkedList<String> collection = new LinkedList<>();
 		collection.add("alli");
 		collection.add("mini");
 		collection.add("äntli");
@@ -328,7 +328,7 @@ public class PreconditionsTest {
 
 	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "expected size was 2 but actual size was 3: doh!")
 	public void ensureSizeExceptionTooLarge() {
-		LinkedList<String> collection = new LinkedList<String>();
+		LinkedList<String> collection = new LinkedList<>();
 		collection.add("alli");
 		collection.add("mini");
 		collection.add("äntli");
@@ -337,7 +337,7 @@ public class PreconditionsTest {
 
 	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "expected size was 3 but actual size was 2: i can haz cheezburger\\?")
 	public void ensureSizeExceptionTooSmall() {
-		LinkedList<Long> collection = new LinkedList<Long>();
+		LinkedList<Long> collection = new LinkedList<>();
 		collection.add(Long.MIN_VALUE);
 		collection.add(Long.MAX_VALUE);
 		Preconditions.ensureSize(collection, 3, "i can haz cheezburger?");

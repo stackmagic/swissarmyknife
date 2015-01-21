@@ -87,7 +87,7 @@ public class AssertTest {
 
 	@Test
 	public void testAssertSizeMapOk() {
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		Map<String, Integer> map = new HashMap<>();
 		map.put("a", 1);
 		map.put("b", 2);
 		map.put("c", 3);
@@ -96,7 +96,7 @@ public class AssertTest {
 
 	@Test(expectedExceptions = AssertionError.class)
 	public void testAssertSizeMapFail() {
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		Map<String, Integer> map = new HashMap<>();
 		assertSize(map, 1);
 	}
 
@@ -159,7 +159,7 @@ public class AssertTest {
 
 	@Test(expectedExceptions = NullPointerException.class)
 	public void assertSameSizeCollectionWithFirstArgNull() {
-		assertSameSize((List<String>) null, new ArrayList<Long>());
+		assertSameSize((List<String>) null, new ArrayList<>());
 	}
 
 	@Test(expectedExceptions = NullPointerException.class)
@@ -186,14 +186,14 @@ public class AssertTest {
 
 	@Test(expectedExceptions = AssertionError.class)
 	public void assertEmptyCollectionWithFilledList() {
-		List<String> collection = new ArrayList<String>();
+		List<String> collection = new ArrayList<>();
 		collection.add("Test");
 		assertEmpty(collection);
 	}
 
 	@Test(expectedExceptions = AssertionError.class)
 	public void assertEmptyCollectionWithFilledSet() {
-		Set<String> collection = new HashSet<String>();
+		Set<String> collection = new HashSet<>();
 		collection.add("Test");
 		assertEmpty(collection);
 	}
@@ -205,7 +205,7 @@ public class AssertTest {
 
 	@Test
 	public void testAssertNotEmptyMapWithNonEmptyMap() {
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 		map.put("a", "b");
 		assertNotEmpty(map);
 	}
@@ -217,7 +217,7 @@ public class AssertTest {
 
 	@Test(expectedExceptions = AssertionError.class)
 	public void assertEmptyMapWithFilledMap() {
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 		map.put("a", "b");
 		assertEmpty(map);
 	}
@@ -254,28 +254,28 @@ public class AssertTest {
 
 	@Test
 	public void assertCollectionContains_setContains() {
-		Set<String> set = new HashSet<String>();
+		Set<String> set = new HashSet<>();
 		set.add("asdf");
 		assertCollectionContains(set, "asdf");
 	}
 
 	@Test(expectedExceptions = AssertionError.class, expectedExceptionsMessageRegExp = "Expected collection to contain element asdf but found 1 other elements")
 	public void assertCollectionContains_setContainsNot() {
-		Set<String> set = new HashSet<String>();
+		Set<String> set = new HashSet<>();
 		set.add("qwer");
 		assertCollectionContains(set, "asdf");
 	}
 
 	@Test
 	public void assertCollectionContains_listContains() {
-		List<String> set = new ArrayList<String>();
+		List<String> set = new ArrayList<>();
 		set.add("asdf");
 		assertCollectionContains(set, "asdf");
 	}
 
 	@Test(expectedExceptions = AssertionError.class, expectedExceptionsMessageRegExp = "Expected collection to contain element asdf but found 1 other elements")
 	public void assertCollectionContains_listContainsNot() {
-		List<String> set = new ArrayList<String>();
+		List<String> set = new ArrayList<>();
 		set.add("qwer");
 		assertCollectionContains(set, "asdf");
 	}

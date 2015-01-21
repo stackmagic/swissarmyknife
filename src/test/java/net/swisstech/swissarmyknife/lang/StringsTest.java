@@ -120,7 +120,7 @@ public class StringsTest {
 	public void asStringCollection() {
 		assertNull(Strings.asString((List<CharSequence>) null));
 		assertEmpty(Strings.asString(new ArrayList<CharSequence>()));
-		List<CharSequence> cs = new ArrayList<CharSequence>();
+		List<CharSequence> cs = new ArrayList<>();
 		cs.add(new Str("hello"));
 		cs.add("world");
 		List<String> ss = Strings.asString(cs);

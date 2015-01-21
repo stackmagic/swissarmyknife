@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class MapBuilder<K, V> {
 
-	private final Map<K, V> map = new HashMap<K, V>();
+	private final Map<K, V> map = new HashMap<>();
 
 	public MapBuilder() {}
 

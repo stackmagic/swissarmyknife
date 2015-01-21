@@ -26,7 +26,7 @@ public final class Iso639 {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Iso639.class);
 
-	private static final Map<String, String> THREE_TO_TWO_LETTER_MAPPING = new HashMap<String, String>();
+	private static final Map<String, String> THREE_TO_TWO_LETTER_MAPPING = new HashMap<>();
 
 	private static final boolean ENABLED;
 

@@ -15,8 +15,8 @@ public class FeatureToggleSetTest {
 
 	@Test
 	public void testAdd() {
-		Set<String> set = new HashSet<String>();
-		FeatureToggleSet<String> fts = new FeatureToggleSet<String>(set);
+		Set<String> set = new HashSet<>();
+		FeatureToggleSet<String> fts = new FeatureToggleSet<>(set);
 
 		fts.add("A");
 		assertSize(set, 1);

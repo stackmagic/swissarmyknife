@@ -79,7 +79,7 @@ public class Strings {
 			return null;
 		}
 
-		List<String> rv = new ArrayList<String>();
+		List<String> rv = new ArrayList<>();
 		for (CharSequence c : cs) {
 			rv.add(asString(c));
 		}

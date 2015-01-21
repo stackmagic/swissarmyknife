@@ -39,7 +39,7 @@ public class SetsTest {
 
 	@Test
 	public void testAddAll() {
-		Set<String> set = new HashSet<String>();
+		Set<String> set = new HashSet<>();
 		addAll(set, "a", "b", "c", "a", "b", "c");
 		assertSize(set, 3);
 	}

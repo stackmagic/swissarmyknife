@@ -39,7 +39,7 @@ public class ListsTest {
 
 	@Test
 	public void testAddAll() {
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		addAll(list, "a", "b", "c", "d", "e", "f");
 		assertSize(list, 6);
 	}

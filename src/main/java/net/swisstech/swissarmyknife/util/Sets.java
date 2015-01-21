@@ -16,12 +16,12 @@ public final class Sets {
 	private Sets() {}
 
 	public static <T> Set<T> newHashSet(T... items) {
-		Set<T> set = new HashSet<T>();
+		Set<T> set = new HashSet<>();
 		return addAll(set, items);
 	}
 
 	public static <T> Set<T> newTreeSet(T... items) {
-		Set<T> set = new TreeSet<T>();
+		Set<T> set = new TreeSet<>();
 		return addAll(set, items);
 	}
 
