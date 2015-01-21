@@ -1,4 +1,3 @@
-// Copyright (C) Layzapp AG. All Rights Reserved.
 package net.swisstech.swissarmyknife.sys.linux;
 
 import static net.swisstech.swissarmyknife.test.Assert.assertCollectionContainsAll;

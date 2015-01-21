@@ -1,4 +1,3 @@
-// Copyright (C) Layzapp AG. All Rights Reserved.
 package net.swisstech.swissarmyknife.util;
 
 import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
