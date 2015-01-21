@@ -1,6 +1,7 @@
 package net.swisstech.swissarmyknife.sys.linux;
 
 import static net.swisstech.swissarmyknife.io.Closeables.close;
+import static net.swisstech.swissarmyknife.lang.Strings.asString;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,8 +32,8 @@ public final class ProcessWrapper extends Process {
 		this.process = process;
 	}
 
-	public static String launchWaitText(String[] command, File workingDir) {
-		ProcessWrapper pw = doLaunch(new ProcessBuilder(command), workingDir);
+	public static String launchWaitText(CharSequence[] command, File workingDir) {
+		ProcessWrapper pw = doLaunch(new ProcessBuilder(asString(command)), workingDir);
 		try {
 			pw.waitFor();
 		}
@@ -43,8 +44,8 @@ public final class ProcessWrapper extends Process {
 		return pw.getStdOut();
 	}
 
-	public static ProcessWrapper launch(String[] command, File workingDir) {
-		return launch(new ProcessBuilder(command), workingDir);
+	public static ProcessWrapper launch(CharSequence[] command, File workingDir) {
+		return launch(new ProcessBuilder(asString(command)), workingDir);
 	}
 
 	public static int launchWait(String[] command, File workingDir) {
@@ -56,8 +57,8 @@ public final class ProcessWrapper extends Process {
 		}
 	}
 
-	public static ProcessWrapper launch(List<String> command, File workingDir) {
-		return launch(new ProcessBuilder(command), workingDir);
+	public static ProcessWrapper launch(List<CharSequence> command, File workingDir) {
+		return launch(new ProcessBuilder(asString(command)), workingDir);
 	}
 
 	public static int launchWait(List<String> command, File workingDir) {

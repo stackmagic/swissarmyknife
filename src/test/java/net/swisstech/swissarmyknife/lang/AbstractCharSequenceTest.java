@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 /** test the AbstractCharSequence */
 public class AbstractCharSequenceTest {
 
-	private static final class Str extends AbstractCharSequence {
+	public static final class Str extends AbstractCharSequence {
 
 		public Str(CharSequence value) {
 			super(value);

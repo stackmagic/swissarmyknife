@@ -18,7 +18,7 @@ public final class BackgroundProcess {
 		this.process = process;
 	}
 
-	public static BackgroundProcess launch(List<String> cmd, File workingDir) {
+	public static BackgroundProcess launch(List<CharSequence> cmd, File workingDir) {
 		ProcessWrapper process = ProcessWrapper.launch(cmd, workingDir);
 		return new BackgroundProcess(process);
 	}

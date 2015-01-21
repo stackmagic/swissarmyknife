@@ -1,5 +1,7 @@
 package net.swisstech.swissarmyknife.lang;
 
+import static net.swisstech.swissarmyknife.lang.Strings.asString;
+
 /**
  * can be used for your own string implementations, just extend this class
  * @since 1.1.4
@@ -34,7 +36,7 @@ public abstract class AbstractCharSequence implements CharSequence {
 
 	@Override
 	public String toString() {
-		return new StringBuilder(value).toString();
+		return asString(value);
 	}
 
 	@Override

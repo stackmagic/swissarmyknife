@@ -50,6 +50,24 @@ public final class Assert {
 		}
 	}
 
+	public static <X, Y> void assertSameSize(X[] x, Y[] y) {
+		int xl = x.length;
+		int yl = y.length;
+		if (xl != yl) {
+			String msg = String.format("Expected arrays to be of same size but got %d and %d", xl, yl);
+			throw new AssertionError(msg);
+		}
+	}
+
+	public static <X, Y> void assertSameSize(Collection<X> x, Collection<Y> y) {
+		int xl = x.size();
+		int yl = y.size();
+		if (xl != yl) {
+			String msg = String.format("Expected collections to be of same size but got %d and %d", xl, yl);
+			throw new AssertionError(msg);
+		}
+	}
+
 	public static <T> void assertEmpty(T[] c) {
 		if (c.length != 0) {
 			String msg = String.format("Expected array to be empty but contained %d elements", c.length);

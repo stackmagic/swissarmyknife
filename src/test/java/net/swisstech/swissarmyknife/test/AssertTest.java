@@ -11,6 +11,7 @@ import static net.swisstech.swissarmyknife.test.Assert.assertGreaterThan;
 import static net.swisstech.swissarmyknife.test.Assert.assertHammingDistanceLowerEqual;
 import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
 import static net.swisstech.swissarmyknife.test.Assert.assertNotEmpty;
+import static net.swisstech.swissarmyknife.test.Assert.assertSameSize;
 import static net.swisstech.swissarmyknife.test.Assert.assertSize;
 import static net.swisstech.swissarmyknife.test.Assert.assertSizeMin;
 import static net.swisstech.swissarmyknife.test.Assert.assertSmallerThan;
@@ -133,6 +134,48 @@ public class AssertTest {
 	public void testAssertNotEmptyCollectionWithNonEmptyCollection() {
 		assertNotEmpty(newHashSet("hello"));
 		assertNotEmpty(newArrayList("hello"));
+	}
+
+	@Test(expectedExceptions = NullPointerException.class)
+	public void assertSameSizeArrayWithFirstArgNull() {
+		assertSameSize((String[]) null, new Integer[0]);
+	}
+
+	@Test(expectedExceptions = NullPointerException.class)
+	public void assertSameSizeArrayWithSecondArgNull() {
+		assertSameSize(new String[0], (Integer[]) null);
+	}
+
+	@Test(expectedExceptions = AssertionError.class)
+	public void assertSameSizeArrayWithDifferingSizes() {
+		assertSameSize(new String[]{ "a" }, new Integer[]{ 1, 2 });
+	}
+
+	@Test
+	public void assertSameSizeArrayOk() {
+		assertSameSize(new String[]{ "a", "b" }, new String[]{ "c", "d" });
+		assertSameSize(new String[]{ "a", "b" }, new Integer[]{ 1, 2 });
+	}
+
+	@Test(expectedExceptions = NullPointerException.class)
+	public void assertSameSizeCollectionWithFirstArgNull() {
+		assertSameSize((List<String>) null, new ArrayList<Long>());
+	}
+
+	@Test(expectedExceptions = NullPointerException.class)
+	public void assertSameSizeCollectionWithSecondArgNull() {
+		assertSameSize(new ArrayList<String>(), (List<Integer>) null);
+	}
+
+	@Test(expectedExceptions = AssertionError.class)
+	public void assertSameSizeCollectionWithDifferingSizes() {
+		assertSameSize(asList("a"), asList(1, 2));
+	}
+
+	@Test
+	public void assertSameSizeCollectionOk() {
+		assertSameSize(asList("a", "b"), asList("c", "d"));
+		assertSameSize(asList("a", "b"), asList(1, 2));
 	}
 
 	@Test

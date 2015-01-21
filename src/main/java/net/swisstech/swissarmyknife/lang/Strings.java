@@ -1,5 +1,8 @@
 package net.swisstech.swissarmyknife.lang;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * some String utils
  * @since 1.1.4
@@ -44,5 +47,42 @@ public class Strings {
 		sb.append(diff);
 		sb.append(" Bytes skipped)");
 		return sb.toString();
+	}
+
+	public static String asString(CharSequence cs) {
+		if (cs == null) {
+			return null;
+		}
+
+		if (cs instanceof String) {
+			return (String) cs;
+		}
+
+		return new StringBuilder(cs).toString();
+	}
+
+	public static String[] asString(CharSequence[] cs) {
+		if (cs == null) {
+			return null;
+		}
+
+		String[] s = new String[cs.length];
+		for (int i = 0; i < s.length; i++) {
+			s[i] = asString(cs[i]);
+		}
+
+		return s;
+	}
+
+	public static List<String> asString(List<CharSequence> cs) {
+		if (cs == null) {
+			return null;
+		}
+
+		List<String> rv = new ArrayList<String>();
+		for (CharSequence c : cs) {
+			rv.add(asString(c));
+		}
+		return rv;
 	}
 }
