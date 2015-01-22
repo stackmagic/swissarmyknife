@@ -1,5 +1,6 @@
 package net.swisstech.swissarmyknife.test;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 
@@ -151,5 +152,16 @@ public final class Assert {
 			String msg = String.format("Expected %d to be greater than %d", b, a);
 			throw new AssertionError(msg);
 		}
+	}
+
+	public static void assertOneOf(long actual, long... expected) {
+		for (long exp : expected) {
+			if (exp == actual) {
+				return;
+			}
+		}
+
+		String msg = String.format("Expected %d to be found in %s", actual, Arrays.toString(expected));
+		throw new AssertionError(msg);
 	}
 }

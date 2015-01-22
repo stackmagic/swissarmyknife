@@ -11,6 +11,7 @@ import static net.swisstech.swissarmyknife.test.Assert.assertGreaterThan;
 import static net.swisstech.swissarmyknife.test.Assert.assertHammingDistanceLowerEqual;
 import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
 import static net.swisstech.swissarmyknife.test.Assert.assertNotEmpty;
+import static net.swisstech.swissarmyknife.test.Assert.assertOneOf;
 import static net.swisstech.swissarmyknife.test.Assert.assertSameSize;
 import static net.swisstech.swissarmyknife.test.Assert.assertSize;
 import static net.swisstech.swissarmyknife.test.Assert.assertSizeMin;
@@ -313,7 +314,18 @@ public class AssertTest {
 		assertGreaterThan(5, 5);
 	}
 
+	@Test
 	public void assertGreaterThanOk() {
 		assertGreaterThan(5, 4);
+	}
+
+	@Test(expectedExceptions = AssertionError.class)
+	public void assertOneOfLongFail() {
+		assertOneOf(1, 2, 3);
+	}
+
+	@Test
+	public void assertOneOfOk() {
+		assertOneOf(1, 2, 3, 1);
 	}
 }
