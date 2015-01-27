@@ -1,6 +1,9 @@
 
 apply plugin: 'java'
+apply plugin: 'jacoco'
 apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 
 description = 'Miscellaneous java utilities'
 group       = 'net.swisstech'
@@ -26,7 +29,9 @@ dependencies {
 }
 
 // testing
-test.useTestNG()
+test {
+	useTestNG()
+}
 
 // TODO use eclipse-enhancer once it is published
 eclipseProject.doLast {
@@ -37,7 +42,7 @@ eclipseProject.doLast {
 
 // task to generate wrapper
 task wrapper(type: Wrapper) {
-	gradleVersion = '2.1'
+	gradleVersion = '2.2.1'
 }
 
 // source-code jar
@@ -46,7 +51,6 @@ task sourceJar(type: Jar) {
 }
 
 // bintray uses the publication, also includes source jar
-apply plugin: 'maven-publish'
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
@@ -78,7 +82,6 @@ def getProperty = { String name ->
 	}
 }
 
-apply plugin: 'com.jfrog.bintray'
 bintray {
 	// key and user must be in your ~/.gradle/gradle.properties
 	key          = getProperty('swisstech_bintray_apikey')
