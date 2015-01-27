@@ -1,17 +1,14 @@
 
-swissarmyknife
-==============
+# swissarmyknife
 
 just a bunch of small java utils to make my life easier
 
 [ ![TravicCI](https://travis-ci.org/stackmagic/swissarmyknife.svg?branch=master) ](https://travis-ci.org/stackmagic/swissarmyknife)
 [ ![Download](https://api.bintray.com/packages/stackmagic/maven/swissarmyknife/images/download.svg) ](https://bintray.com/stackmagic/maven/swissarmyknife/_latestVersion)
 
-downloading
-===========
+# downloading
 
-gradle
-------
+## gradle
 
 the [jcenter() shortcut requires at least gradle 1.7](http://www.gradle.org/docs/1.7/release-notes#jcenter-repository-support)
 
@@ -25,8 +22,7 @@ dependencies {
 }
 ```
 
-maven
------
+## maven
 
 ```xml
 <repository>
