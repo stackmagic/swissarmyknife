@@ -9,6 +9,7 @@ import net.swisstech.swissarmyknife.test.PrivateConstructor;
 
 import org.testng.annotations.Test;
 
+@Deprecated
 public class NumbersTest {
 
 	@Test

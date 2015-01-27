@@ -4,140 +4,140 @@ package net.swisstech.swissarmyknife.lang;
 //have 1 master and generate the rest!! Characters are the only signed type
 
 /**
- * some long number utils
- * @since 1.1.4
+ * some int number utils
+ * @since 1.2.0
  */
-public final class Longs {
+public final class Integers {
 
 	/** private constructor for utility class */
-	private Longs() {}
+	private Integers() {}
 
-	public static boolean isZero(long v) {
+	public static boolean isZero(int v) {
 		return v == 0;
 	}
 
-	public static long zero(long v) {
+	public static int zero(int v) {
 		if (isZero(v)) {
 			return v;
 		}
-		throw new IllegalArgumentException("Expected long to equal 0 but got " + v);
+		throw new IllegalArgumentException("Expected int to equal 0 but got " + v);
 	}
 
-	public static boolean isPositive(long v) {
+	public static boolean isPositive(int v) {
 		return v > 0;
 	}
 
-	public static long positive(long v) {
+	public static int positive(int v) {
 		if (isPositive(v)) {
 			return v;
 		}
-		throw new IllegalArgumentException("Expected long to be positive but got " + v);
+		throw new IllegalArgumentException("Expected int to be positive but got " + v);
 	}
 
-	public static boolean isNegative(long v) {
+	public static boolean isNegative(int v) {
 		return v < 0;
 	}
 
-	public static long negative(long v) {
+	public static int negative(int v) {
 		if (isNegative(v)) {
 			return v;
 		}
-		throw new IllegalArgumentException("Expected long to be negative but got " + v);
+		throw new IllegalArgumentException("Expected int to be negative but got " + v);
 	}
 
-	public static boolean isZeroOrPositive(long v) {
+	public static boolean isZeroOrPositive(int v) {
 		return v >= 0;
 	}
 
-	public static long zeroOrPositive(long v) {
+	public static int zeroOrPositive(int v) {
 		if (isZeroOrPositive(v)) {
 			return v;
 		}
-		throw new IllegalArgumentException("Expected long to be zero or positive but got " + v);
+		throw new IllegalArgumentException("Expected int to be zero or positive but got " + v);
 	}
 
-	public static boolean isZeroOrNegative(long v) {
+	public static boolean isZeroOrNegative(int v) {
 		return v <= 0;
 	}
 
-	public static long zeroOrNegative(long v) {
+	public static int zeroOrNegative(int v) {
 		if (isZeroOrNegative(v)) {
 			return v;
 		}
-		throw new IllegalArgumentException("Expected long to be zero or negative but got " + v);
+		throw new IllegalArgumentException("Expected int to be zero or negative but got " + v);
 	}
 
-	public static boolean isInRangeInclusive(long v, long lo, long hi) {
+	public static boolean isInRangeInclusive(int v, int lo, int hi) {
 		return v >= lo && v <= hi;
 	}
 
-	public static long inRangeInclusive(long v, long lo, long hi) {
+	public static int inRangeInclusive(int v, int lo, int hi) {
 		if (isInRangeInclusive(v, lo, hi)) {
 			return v;
 		}
 		throw new IllegalArgumentException("Expected " + v + " to be in range " + lo + " .. " + hi + " inclusive");
 	}
 
-	public static boolean isInRangeExclusive(long v, long lo, long hi) {
+	public static boolean isInRangeExclusive(int v, int lo, int hi) {
 		return v > lo && v < hi;
 	}
 
-	public static long inRangeExclusive(long v, long lo, long hi) {
+	public static int inRangeExclusive(int v, int lo, int hi) {
 		if (isInRangeExclusive(v, lo, hi)) {
 			return v;
 		}
 		throw new IllegalArgumentException("Expected " + v + " to be in range " + lo + " .. " + hi + " exclusive");
 	}
 
-	public static boolean isEqual(long exp, long act) {
+	public static boolean isEqual(int exp, int act) {
 		return exp == act;
 	}
 
-	public static long equal(long exp, long act) {
+	public static int equal(int exp, int act) {
 		if (isEqual(exp, act)) {
 			return act;
 		}
 		throw new IllegalArgumentException("Expected " + act + " to equal to " + exp);
 	}
 
-	public static boolean isGreater(long v, long lo) {
+	public static boolean isGreater(int v, int lo) {
 		return v > lo;
 	}
 
-	public static long greater(long v, long lo) {
+	public static int greater(int v, int lo) {
 		if (isGreater(v, lo)) {
 			return v;
 		}
 		throw new IllegalArgumentException("Expected " + v + " to be greater than " + lo);
 	}
 
-	public static boolean isGreaterOrEqual(long v, long lo) {
+	public static boolean isGreaterOrEqual(int v, int lo) {
 		return v >= lo;
 	}
 
-	public static long greaterOrEqual(long v, long lo) {
+	public static int greaterOrEqual(int v, int lo) {
 		if (isGreaterOrEqual(v, lo)) {
 			return v;
 		}
 		throw new IllegalArgumentException("Expected " + v + " to be greater or equal to " + lo);
 	}
 
-	public static boolean isSmaller(long v, long hi) {
+	public static boolean isSmaller(int v, int hi) {
 		return v < hi;
 	}
 
-	public static long smaller(long v, long hi) {
+	public static int smaller(int v, int hi) {
 		if (isSmaller(v, hi)) {
 			return v;
 		}
 		throw new IllegalArgumentException("Expected " + v + " to be smaller than " + hi);
 	}
 
-	public static boolean isSmallerOrEqual(long v, long hi) {
+	public static boolean isSmallerOrEqual(int v, int hi) {
 		return v <= hi;
 	}
 
-	public static long smallerOrEqual(long v, long hi) {
+	public static int smallerOrEqual(int v, int hi) {
 		if (isSmallerOrEqual(v, hi)) {
 			return v;
 		}

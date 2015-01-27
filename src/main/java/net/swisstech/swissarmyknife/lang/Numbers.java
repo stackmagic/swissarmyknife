@@ -4,6 +4,7 @@ package net.swisstech.swissarmyknife.lang;
  * some number utilities
  * @since 1.1.4
  */
+@Deprecated
 public final class Numbers {
 
 	/** private constructor for utility class */
