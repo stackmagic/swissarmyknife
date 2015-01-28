@@ -16,6 +16,8 @@ public class BoundedLongTest {
 
 		BoundedLong bl = new BoundedLong(10, 20);
 		assertEquals(bl.get(), 10);
+		assertEquals(bl.setMax(), 20);
+		assertEquals(bl.setMin(), 10);
 
 		for (int i = 1; i <= 10; i++) {
 			assertEquals(bl.increment(), 10 + i);
