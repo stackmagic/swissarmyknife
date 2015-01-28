@@ -26,7 +26,7 @@ public final class TCP {
 		return Randoms.nextIntInclusive(MIN_PORT_UNPRIV, MAX_PORT);
 	}
 
-	public static int validPortNUmber(int port) {
+	public static int validPortNumber(int port) {
 		return inRangeInclusive(port, MIN_PORT, MAX_PORT);
 	}
 
