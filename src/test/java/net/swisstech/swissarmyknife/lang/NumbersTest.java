@@ -9,7 +9,6 @@ import net.swisstech.swissarmyknife.test.PrivateConstructor;
 
 import org.testng.annotations.Test;
 
-@Deprecated
 public class NumbersTest {
 
 	@Test
@@ -18,52 +17,29 @@ public class NumbersTest {
 	}
 
 	@Test
-	public void tryParseInt_correctlyFormedInteger_returnsParsedInt() {
-		assertEquals(Numbers.tryParseInt("1"), new Integer(1));
+	public void tryParseLong() {
+		assertNull(Numbers.tryParseLong("null"));
+		assertEquals(Numbers.tryParseLong("1"), new Long(1));
+		assertEquals(Numbers.tryParseLong("1", new Long(23)), new Long(1));
+		assertEquals(Numbers.tryParseLong("1 3 4", new Long(23)), new Long(23));
+		assertEquals(Numbers.tryParseLong(null, new Long(23)), new Long(23));
 	}
 
 	@Test
-	public void tryParseInt_malformedInt_returnsNull() {
+	public void tryParseInt() {
 		assertNull(Numbers.tryParseInt("null"));
-	}
-
-	@Test
-	public void tryParseIntWithDefault_correctlyFormedInteger_returnsParsedInt() {
+		assertEquals(Numbers.tryParseInt("1"), new Integer(1));
 		assertEquals(Numbers.tryParseInt("1", new Integer(23)), new Integer(1));
-	}
-
-	@Test
-	public void tryParseIntWithDefault_malformedInt_returnsDefault() {
 		assertEquals(Numbers.tryParseInt("1 3 4", new Integer(23)), new Integer(23));
-	}
-
-	@Test
-	public void tryParseIntWithDefault_stringIsNull_returnsDefault() {
 		assertEquals(Numbers.tryParseInt(null, new Integer(23)), new Integer(23));
 	}
 
 	@Test
-	public void tryParseDouble_correctlyFormedDouble_returnsParsedDouble() {
-		assertEquals(Numbers.tryParseDouble("1.2"), new Double(1.2));
-	}
-
-	@Test
-	public void tryParseDouble_malformedDouble_returnsNull() {
+	public void tryParseDouble() {
 		assertNull(Numbers.tryParseDouble("null"));
-	}
-
-	@Test
-	public void tryParseDoubleWithDefault_correctlyFormedDouble_returnsParsedDouble() {
+		assertEquals(Numbers.tryParseDouble("1.2"), new Double(1.2));
 		assertEquals(Numbers.tryParseDouble("1.2", new Double(23.4)), new Double(1.2));
-	}
-
-	@Test
-	public void tryParseDoubleWithDefault_malformedDouble_returnsDefault() {
 		assertEquals(Numbers.tryParseDouble("1 3 4", new Double(23.4)), new Double(23.4));
-	}
-
-	@Test
-	public void tryParseDoubleWithDefault_stringIsNull_returnsDefault() {
 		assertEquals(Numbers.tryParseDouble(null, new Double(23.4)), new Double(23.4));
 	}
 }

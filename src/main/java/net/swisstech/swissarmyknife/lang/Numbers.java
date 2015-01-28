@@ -4,11 +4,26 @@ package net.swisstech.swissarmyknife.lang;
  * some number utilities
  * @since 1.1.4
  */
-@Deprecated
 public final class Numbers {
 
 	/** private constructor for utility class */
 	private Numbers() {}
+
+	public static Long tryParseLong(String text, Long def) {
+		if (text == null) {
+			return def;
+		}
+		try {
+			return Long.parseLong(text);
+		}
+		catch (NumberFormatException e) {
+			return def;
+		}
+	}
+
+	public static Long tryParseLong(String text) {
+		return tryParseLong(text, null);
+	}
 
 	public static Integer tryParseInt(String text, Integer def) {
 		if (text == null) {
