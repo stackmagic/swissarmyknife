@@ -143,4 +143,14 @@ public final class Longs {
 		}
 		throw new IllegalArgumentException("Expected " + v + " to be smaller or equal to " + hi);
 	}
+
+	public static long limit(long v, long lo, long hi) {
+		if (v < lo) {
+			return lo;
+		}
+		if (v > hi) {
+			return hi;
+		}
+		return v;
+	}
 }

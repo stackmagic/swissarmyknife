@@ -251,4 +251,16 @@ public class ShortsTest {
 		assertEquals(Shorts.smallerOrEqual((short) 0, (short) 0), (short) 0);
 		assertEquals(Shorts.smallerOrEqual((short) -1, (short) 0), (short) -1);
 	}
+
+	@Test
+	public void limit() {
+		assertEquals(Shorts.limit((short) 0, (short) 0, (short) 0), (short) 0);
+		assertEquals(Shorts.limit((short) 5, (short) 0, (short) 0), (short) 0);
+
+		assertEquals(Shorts.limit((short) 5, (short) 5, (short) 10), (short) 5);
+		assertEquals(Shorts.limit((short) 0, (short) 5, (short) 10), (short) 5);
+
+		assertEquals(Shorts.limit((short) 5, (short) 0, (short) 5), (short) 5);
+		assertEquals(Shorts.limit((short) 10, (short) 0, (short) 5), (short) 5);
+	}
 }

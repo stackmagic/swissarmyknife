@@ -192,4 +192,16 @@ public class CharactersTest {
 		assertEquals(Characters.smallerOrEqual((char) 0, (char) 0), (char) 0);
 		assertEquals(Characters.smallerOrEqual((char) 0, (char) 1), (char) 0);
 	}
+
+	@Test
+	public void limit() {
+		assertEquals(Characters.limit((char) 0, (char) 0, (char) 0), (char) 0);
+		assertEquals(Characters.limit((char) 5, (char) 0, (char) 0), (char) 0);
+
+		assertEquals(Characters.limit((char) 5, (char) 5, (char) 10), (char) 5);
+		assertEquals(Characters.limit((char) 0, (char) 5, (char) 10), (char) 5);
+
+		assertEquals(Characters.limit((char) 5, (char) 0, (char) 5), (char) 5);
+		assertEquals(Characters.limit((char) 10, (char) 0, (char) 5), (char) 5);
+	}
 }

@@ -110,4 +110,14 @@ public final class Characters {
 		}
 		throw new IllegalArgumentException("Expected " + v + " to be smaller or equal to " + hi);
 	}
+
+	public static char limit(char v, char lo, char hi) {
+		if (v < lo) {
+			return lo;
+		}
+		if (v > hi) {
+			return hi;
+		}
+		return v;
+	}
 }

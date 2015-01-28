@@ -143,4 +143,14 @@ public final class Integers {
 		}
 		throw new IllegalArgumentException("Expected " + v + " to be smaller or equal to " + hi);
 	}
+
+	public static int limit(int v, int lo, int hi) {
+		if (v < lo) {
+			return lo;
+		}
+		if (v > hi) {
+			return hi;
+		}
+		return v;
+	}
 }

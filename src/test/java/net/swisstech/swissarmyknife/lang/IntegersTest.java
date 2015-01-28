@@ -113,14 +113,14 @@ public class IntegersTest {
 
 	@Test
 	public void isInRangeInclusive() {
-		assertTrue(Integers.isInRangeInclusive((int) 0, (int) 0, (int) 0));
+		assertTrue(Integers.isInRangeInclusive(0, 0, 0));
 
-		assertTrue(Integers.isInRangeInclusive((int) -1, (int) -1, (int) 1));
-		assertTrue(Integers.isInRangeInclusive((int) 0, (int) -1, (int) 1));
-		assertTrue(Integers.isInRangeInclusive((int) 1, (int) -1, (int) 1));
+		assertTrue(Integers.isInRangeInclusive(-1, -1, 1));
+		assertTrue(Integers.isInRangeInclusive(0, -1, 1));
+		assertTrue(Integers.isInRangeInclusive(1, -1, 1));
 
-		assertFalse(Integers.isInRangeInclusive((int) -1, (int) 0, (int) 1));
-		assertFalse(Integers.isInRangeInclusive((int) 1, (int) -1, (int) 0));
+		assertFalse(Integers.isInRangeInclusive(-1, 0, 1));
+		assertFalse(Integers.isInRangeInclusive(1, -1, 0));
 	}
 
 	@Test(expectedExceptions = IllegalArgumentException.class)
@@ -186,70 +186,81 @@ public class IntegersTest {
 
 	@Test
 	public void isGreater() {
-		assertTrue(Integers.isGreater((int) 1, (int) 0));
-		assertFalse(Integers.isGreater((int) 1, (int) 1));
+		assertTrue(Integers.isGreater(1, 0));
+		assertFalse(Integers.isGreater(1, 1));
 	}
 
 	@Test(expectedExceptions = IllegalArgumentException.class)
 	public void greaterLo() {
-		Integers.greater((int) 1, (int) 1);
+		Integers.greater(1, 1);
 	}
 
 	@Test
 	public void greater() {
-		assertEquals(Integers.greater((int) 1, (int) 0), (int) 1);
+		assertEquals(Integers.greater(1, 0), 1);
 	}
 
 	@Test
 	public void isGreaterOrEqual() {
-		assertFalse(Integers.isGreaterOrEqual((int) 0, (int) 1));
-		assertTrue(Integers.isGreaterOrEqual((int) 1, (int) 1));
-		assertTrue(Integers.isGreaterOrEqual((int) 2, (int) 1));
+		assertFalse(Integers.isGreaterOrEqual(0, 1));
+		assertTrue(Integers.isGreaterOrEqual(1, 1));
+		assertTrue(Integers.isGreaterOrEqual(2, 1));
 	}
 
 	@Test(expectedExceptions = IllegalArgumentException.class)
 	public void greaterOrEqualLo() {
-		Integers.greaterOrEqual((int) 0, (int) 1);
+		Integers.greaterOrEqual(0, 1);
 	}
 
 	@Test
 	public void greaterOrEqual() {
-		assertEquals(Integers.greaterOrEqual((int) 1, (int) 1), (int) 1);
-		assertEquals(Integers.greaterOrEqual((int) 2, (int) 1), (int) 2);
+		assertEquals(Integers.greaterOrEqual(1, 1), 1);
+		assertEquals(Integers.greaterOrEqual(2, 1), 2);
 	}
 
 	@Test
 	public void isSmaller() {
-		assertFalse(Integers.isSmaller((int) 1, (int) 1));
-		assertTrue(Integers.isSmaller((int) 0, (int) 1));
+		assertFalse(Integers.isSmaller(1, 1));
+		assertTrue(Integers.isSmaller(0, 1));
 	}
 
 	@Test(expectedExceptions = IllegalArgumentException.class)
 	public void smallerHi() {
-		Integers.smaller((int) 1, (int) 1);
+		Integers.smaller(1, 1);
 	}
 
 	@Test
 	public void smaller() {
-		assertEquals(Integers.smaller((int) 0, (int) 1), (int) 0);
+		assertEquals(Integers.smaller(0, 1), 0);
 	}
 
 	@Test
 	public void isSmallerOrEqual() {
-		assertFalse(Integers.isSmallerOrEqual((int) 1, (int) 0));
-		assertTrue(Integers.isSmallerOrEqual((int) 0, (int) 0));
-		assertTrue(Integers.isSmallerOrEqual((int) -1, (int) 0));
+		assertFalse(Integers.isSmallerOrEqual(1, 0));
+		assertTrue(Integers.isSmallerOrEqual(0, 0));
+		assertTrue(Integers.isSmallerOrEqual(-1, 0));
 	}
 
 	@Test(expectedExceptions = IllegalArgumentException.class)
 	public void smallerOrEqualHi() {
-		Integers.smallerOrEqual((int) 1, (int) 0);
+		Integers.smallerOrEqual(1, 0);
 	}
 
 	@Test
 	public void smallerOrEqual() {
-		assertEquals(Integers.smallerOrEqual((int) 0, (int) 0), (int) 0);
-		assertEquals(Integers.smallerOrEqual((int) -1, (int) 0), (int) -1);
+		assertEquals(Integers.smallerOrEqual(0, 0), 0);
+		assertEquals(Integers.smallerOrEqual(-1, 0), -1);
 	}
 
+	@Test
+	public void limit() {
+		assertEquals(Integers.limit(0, 0, 0), 0);
+		assertEquals(Integers.limit(5, 0, 0), 0);
+
+		assertEquals(Integers.limit(5, 5, 10), 5);
+		assertEquals(Integers.limit(0, 5, 10), 5);
+
+		assertEquals(Integers.limit(5, 0, 5), 5);
+		assertEquals(Integers.limit(10, 0, 5), 5);
+	}
 }

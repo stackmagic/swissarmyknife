@@ -251,4 +251,16 @@ public class BytesTest {
 		assertEquals(Bytes.smallerOrEqual((byte) 0, (byte) 0), (byte) 0);
 		assertEquals(Bytes.smallerOrEqual((byte) -1, (byte) 0), (byte) -1);
 	}
+
+	@Test
+	public void limit() {
+		assertEquals(Bytes.limit((byte) 0, (byte) 0, (byte) 0), (byte) 0);
+		assertEquals(Bytes.limit((byte) 5, (byte) 0, (byte) 0), (byte) 0);
+
+		assertEquals(Bytes.limit((byte) 5, (byte) 5, (byte) 10), (byte) 5);
+		assertEquals(Bytes.limit((byte) 0, (byte) 5, (byte) 10), (byte) 5);
+
+		assertEquals(Bytes.limit((byte) 5, (byte) 0, (byte) 5), (byte) 5);
+		assertEquals(Bytes.limit((byte) 10, (byte) 0, (byte) 5), (byte) 5);
+	}
 }

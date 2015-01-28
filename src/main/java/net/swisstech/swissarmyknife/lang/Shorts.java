@@ -143,4 +143,14 @@ public final class Shorts {
 		}
 		throw new IllegalArgumentException("Expected " + v + " to be smaller or equal to " + hi);
 	}
+
+	public static short limit(short v, short lo, short hi) {
+		if (v < lo) {
+			return lo;
+		}
+		if (v > hi) {
+			return hi;
+		}
+		return v;
+	}
 }

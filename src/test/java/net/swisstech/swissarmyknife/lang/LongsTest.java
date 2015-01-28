@@ -251,4 +251,16 @@ public class LongsTest {
 		assertEquals(Longs.smallerOrEqual(0, 0), 0);
 		assertEquals(Longs.smallerOrEqual(-1, 0), -1);
 	}
+
+	@Test
+	public void limit() {
+		assertEquals(Longs.limit(0, 0, 0), 0);
+		assertEquals(Longs.limit(5, 0, 0), 0);
+
+		assertEquals(Longs.limit(5, 5, 10), 5);
+		assertEquals(Longs.limit(0, 5, 10), 5);
+
+		assertEquals(Longs.limit(5, 0, 5), 5);
+		assertEquals(Longs.limit(10, 0, 5), 5);
+	}
 }

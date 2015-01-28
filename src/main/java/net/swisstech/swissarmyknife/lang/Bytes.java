@@ -143,4 +143,14 @@ public final class Bytes {
 		}
 		throw new IllegalArgumentException("Expected " + v + " to be smaller or equal to " + hi);
 	}
+
+	public static byte limit(byte v, byte lo, byte hi) {
+		if (v < lo) {
+			return lo;
+		}
+		if (v > hi) {
+			return hi;
+		}
+		return v;
+	}
 }
