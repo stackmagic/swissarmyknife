@@ -22,6 +22,8 @@ public class BoundedLongTest {
 		}
 
 		assertEquals(bl.get(), 20);
+		assertEquals(bl.plus(100), 20);
+		assertEquals(bl.multiply(100), 20);
 		assertEquals(bl.increment(), 20);
 
 		for (int i = 1; i <= 10; i++) {
@@ -29,6 +31,8 @@ public class BoundedLongTest {
 		}
 
 		assertEquals(bl.get(), 10);
+		assertEquals(bl.minus(100), 10);
+		assertEquals(bl.divide(100), 10);
 		assertEquals(bl.decrement(), 10);
 		assertEquals(bl.set(0), 10);
 	}

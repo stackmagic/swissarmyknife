@@ -27,11 +27,27 @@ public class BoundedLong {
 	}
 
 	public long increment() {
-		return set(value + 1);
+		return plus(1);
 	}
 
 	public long decrement() {
-		return set(value - 1);
+		return minus(1);
+	}
+
+	public long plus(long diff) {
+		return set(value + diff);
+	}
+
+	public long minus(long diff) {
+		return set(value - diff);
+	}
+
+	public long multiply(long factor) {
+		return set(value * factor);
+	}
+
+	public long divide(long divisor) {
+		return set(value / divisor);
 	}
 
 	public long get() {
