@@ -85,6 +85,45 @@ public final class PortSnoop {
 		}
 	}
 
+	/** wait for all the ports to be open or timeout */
+	public static void waitForOpenPorts(Collection<Integer> ports, long timeout) {
+
+		LOG.info("waiting until all of these ports are open: %s", ports);
+		long start = System.currentTimeMillis();
+		long end = start + timeout;
+
+		// loop and sleep until all expected ports are open
+		while (true) {
+
+			// get what processes have opened the ports we're interested in
+			Map<Integer, Set<Integer>> portToPid = getPortToPid(ports);
+			LOG.debug("Ports open right now with their pids: %s", portToPid);
+
+			// check for multiple processes owning our ports
+			// TODO some programs may start subprocesses with new pids and we may allow for that
+			Set<Integer> pids = new HashSet<>();
+			for (Set<Integer> pid : portToPid.values()) {
+				pids.addAll(pid);
+			}
+
+			// see if we've got all ports we want
+			Set<Integer> found = portToPid.keySet();
+			if (found.containsAll(ports) && ports.containsAll(found)) {
+				long duration = System.currentTimeMillis() - start;
+				LOG.debug("All ports we want are open! Process is ready after %d millis", duration);
+				break;
+			}
+
+			// timeout!
+			if (System.currentTimeMillis() > end) {
+				throw new IllegalStateException("Timeout while waiting for process to start (was waiting for ports: " + ports + ", had " + portToPid + ", waited for " + timeout + " millis)");
+			}
+
+			// wait a bit before checking again
+			sleepFor(100);
+		}
+	}
+
 	/**
 	 * returns a map of the supplied ports mapping to the process pid owning the open port. if there's no entry for a supplied port in the map, there's no
 	 * process owning it (yet)
