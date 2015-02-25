@@ -30,4 +30,11 @@ public final class Sets {
 		set.addAll(list);
 		return set;
 	}
+
+	public static <T> Set<T> notEmpty(Set<T> set) {
+		if (set == null || set.size() < 1) {
+			throw new IllegalArgumentException("Set shouldn't be null/empty");
+		}
+		return set;
+	}
 }

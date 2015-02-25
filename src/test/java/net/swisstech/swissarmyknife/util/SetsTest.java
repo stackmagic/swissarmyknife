@@ -43,4 +43,19 @@ public class SetsTest {
 		addAll(set, "a", "b", "c", "a", "b", "c");
 		assertSize(set, 3);
 	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void notEmptyWithNull() {
+		Sets.notEmpty(null);
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void notEmptyWithEmpty() {
+		Sets.notEmpty(new HashSet<>());
+	}
+
+	@Test
+	public void notEmptyWithFilled() {
+		Sets.notEmpty(newHashSet("a"));
+	}
 }

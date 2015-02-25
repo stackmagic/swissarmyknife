@@ -7,7 +7,7 @@ apply plugin: 'com.jfrog.bintray'
 
 description = 'Miscellaneous java utilities'
 group       = 'net.swisstech'
-version     = '1.2.3'
+version     = '1.2.4'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
