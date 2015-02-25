@@ -50,8 +50,16 @@ public class BoundedLong {
 		return set(value / divisor);
 	}
 
+	public long getMin() {
+		return min;
+	}
+
 	public long setMin() {
 		return set(min);
+	}
+
+	public long getMax() {
+		return max;
 	}
 
 	public long setMax() {
