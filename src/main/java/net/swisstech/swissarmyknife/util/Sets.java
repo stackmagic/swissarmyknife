@@ -26,6 +26,9 @@ public final class Sets {
 	}
 
 	public static <T> Set<T> addAll(Set<T> set, T... items) {
+		if (items == null) {
+			return set;
+		}
 		List<T> list = Arrays.asList(items);
 		set.addAll(list);
 		return set;

@@ -1,10 +1,12 @@
 package net.swisstech.swissarmyknife.util;
 
+import static net.swisstech.swissarmyknife.test.Assert.assertEmpty;
 import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
 import static net.swisstech.swissarmyknife.test.Assert.assertSize;
 import static net.swisstech.swissarmyknife.util.Sets.addAll;
 import static net.swisstech.swissarmyknife.util.Sets.newHashSet;
 import static net.swisstech.swissarmyknife.util.Sets.newTreeSet;
+import static org.testng.Assert.assertNotNull;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -31,6 +33,20 @@ public class SetsTest {
 	}
 
 	@Test
+	public void testNewHashSetWithNull() {
+		Set<String> set = newHashSet((String[]) null);
+		assertNotNull(set);
+		assertEmpty(set);
+	}
+
+	@Test
+	public void testNewHashSetWithEmpty() {
+		Set<String> set = newHashSet();
+		assertNotNull(set);
+		assertEmpty(set);
+	}
+
+	@Test
 	public void testNewTreeSet() {
 		Set<String> set = newTreeSet("a", "b", "c", "a", "b", "c");
 		assertSize(set, 3);
@@ -38,10 +54,36 @@ public class SetsTest {
 	}
 
 	@Test
+	public void testNewTreeSetWithNull() {
+		Set<String> set = newTreeSet((String[]) null);
+		assertNotNull(set);
+		assertEmpty(set);
+	}
+
+	@Test
+	public void testNewTreeSetWithEmpty() {
+		Set<String> set = newTreeSet();
+		assertNotNull(set);
+		assertEmpty(set);
+	}
+
+	@Test
 	public void testAddAll() {
 		Set<String> set = new HashSet<>();
 		addAll(set, "a", "b", "c", "a", "b", "c");
 		assertSize(set, 3);
+	}
+
+	@Test(expectedExceptions = NullPointerException.class)
+	public void testAddAllWithNullSet() {
+		addAll(null, "a", "b");
+	}
+
+	@Test
+	public void testAddAllWithNullValues() {
+		Set<String> set = new HashSet<>();
+		addAll(set);
+		assertEmpty(set);
 	}
 
 	@Test(expectedExceptions = IllegalArgumentException.class)
