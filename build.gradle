@@ -1,9 +1,13 @@
 
-apply plugin: 'java'
-apply plugin: 'jacoco'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
+plugins {
+	id 'java'
+	id 'jacoco'
+	id 'groovy'
+	id 'eclipse'
+	id 'maven-publish'
+	id 'com.jfrog.bintray'             version '1.2'
+	id 'net.swisstech.eclipseenhancer' version '1.0.0'
+}
 
 description = 'Miscellaneous java utilities'
 group       = 'net.swisstech'
@@ -33,16 +37,9 @@ test {
 	useTestNG()
 }
 
-// TODO use eclipse-enhancer once it is published
-eclipseProject.doLast {
-	sourceSets*.java.srcDirs*.each      { it.mkdirs() }
-	sourceSets*.resources.srcDirs*.each { it.mkdirs() }
-}
-// END TODO
-
 // task to generate wrapper
 task wrapper(type: Wrapper) {
-	gradleVersion = '2.2.1'
+	gradleVersion = '2.4'
 }
 
 // source-code jar
@@ -59,16 +56,6 @@ publishing {
 				classifier 'sources'
 			}
 		}
-	}
-}
-
-// uploading to jcenter
-buildscript {
-	repositories {
-		jcenter()
-	}
-	dependencies {
-		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.6'
 	}
 }
 
