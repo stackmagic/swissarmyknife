@@ -15,12 +15,12 @@ public final class PrivateConstructor {
 
 	public static void invoke(Class<?> clazz) throws IOException {
 		try {
-			Constructor<?> ctor = clazz.getDeclaredConstructor(new Class[0]);
+			Constructor<?> ctor = clazz.getDeclaredConstructor();
 			if (!Modifier.isPrivate(ctor.getModifiers())) {
 				throw new AssertionError("Expected Constructor to be private");
 			}
 			ctor.setAccessible(true);
-			ctor.newInstance(new Object[0]);
+			ctor.newInstance();
 		}
 		catch (Exception e) {
 			throw new IOException("Unexpected Exception", e);
