@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -71,9 +72,9 @@ public final class ProcessWrapper extends Process {
 	}
 
 	public static ProcessWrapper launch(ProcessBuilder pb, File workingDir) {
-		pb.redirectInput(ProcessBuilder.Redirect.INHERIT);
-		pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
-		pb.redirectError(ProcessBuilder.Redirect.INHERIT);
+		pb.redirectInput();
+		pb.redirectOutput();
+		pb.redirectError();
 		return doLaunch(pb, workingDir);
 	}
 
@@ -91,14 +92,14 @@ public final class ProcessWrapper extends Process {
 		}
 	}
 
-	/** @returns a new process, which is the kill command executed to kill <i>this</i> process */
+	/** @return a new process, which is the kill command executed to kill <i>this</i> process */
 	public ProcessWrapper kill(Signal signal) {
-		String cmd = String.format("/bin/kill -%s %d", signal.name(), pid);
+		String cmd = String.format("/bin/kill -%s %d", signal.name(), getPid());
 		String[] cmds = cmd.split(" ");
 		return launch(cmds, null);
 	}
 
-	/** @returns the exit-code of the process represented by <i>this</i> process wrapper */
+	/** @return the exit-code of the process represented by <i>this</i> process wrapper */
 	public int killWait(Signal signal) {
 		try {
 			kill(signal);
@@ -113,7 +114,7 @@ public final class ProcessWrapper extends Process {
 		if (pid == null) {
 			extractPid();
 		}
-		return pid.intValue();
+		return pid;
 	}
 
 	private void extractPid() {
@@ -123,18 +124,14 @@ public final class ProcessWrapper extends Process {
 			pidField.setAccessible(true);
 			pid = pidField.getInt(process);
 		}
-		catch (SecurityException e) {
+		catch (SecurityException | NoSuchFieldException | IllegalAccessException | IllegalArgumentException e) {
 			throw new ProcessWrapperException(e);
 		}
-		catch (NoSuchFieldException e) {
-			throw new ProcessWrapperException(e);
-		}
-		catch (IllegalAccessException e) {
-			throw new ProcessWrapperException(e);
-		}
-		catch (IllegalArgumentException e) {
-			throw new ProcessWrapperException(e);
-		}
+	}
+
+	public String getStdOutAfterWaitFor() throws InterruptedException {
+		waitFor();
+		return getStdOut();
 	}
 
 	public String getStdOut() {
