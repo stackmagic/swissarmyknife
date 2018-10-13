@@ -1,13 +1,15 @@
 package net.swisstech.swissarmyknife.sys.linux;
 
-import static net.swisstech.swissarmyknife.sys.linux.Signal.TERM;
+import net.swisstech.swissarmyknife.lang.InputStreams;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
 /**
  * simple util to launch a process, wait for a number of open ports and kill the process.
+ *
  * @since 1.1.5
  */
 public final class BackgroundProcess {
@@ -28,7 +30,17 @@ public final class BackgroundProcess {
 		return this;
 	}
 
-	int shutdown() {
-		return process.killWait(TERM);
+	public BackgroundProcess waitForStringInStdout(String needle, long timeout) throws IOException {
+		InputStreams.waitForOutput(needle, process.getInputStream(), timeout);
+		return this;
+	}
+
+	public BackgroundProcess waitForStringInStderr(String needle, long timeout) throws IOException {
+		InputStreams.waitForOutput(needle, process.getErrorStream(), timeout);
+		return this;
+	}
+
+	public int shutdown() {
+		return process.killWait(Signal.TERM);
 	}
 }
