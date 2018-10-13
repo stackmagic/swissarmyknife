@@ -2,15 +2,20 @@ package net.swisstech.swissarmyknife.lang;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  * some String utils
+ *
  * @since 1.1.4
  */
 public class Strings {
 
-	/** private constructor for utility class */
-	private Strings() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Strings() {
+	}
 
 	public static boolean isBlank(String s) {
 		return s == null || s.trim().isEmpty();
@@ -58,7 +63,7 @@ public class Strings {
 			return (String) cs;
 		}
 
-		return new StringBuilder(cs).toString();
+		return String.valueOf(cs);
 	}
 
 	public static String[] asString(CharSequence[] cs) {
@@ -84,5 +89,52 @@ public class Strings {
 			rv.add(asString(c));
 		}
 		return rv;
+	}
+
+	/**
+	 * Break a String by a given delimiter and group it into chunks no larger than indicated by
+	 * maxLineLength. The StringSizeMeasurer can return an arbitrary measure such as character
+	 * count or pixel width when rendered.
+	 *
+	 * @param text The Text to be split
+	 * @param delimiter The Delimiter to split the text by
+	 * @param maxLineLength The maximum length a line is allowed to take up
+	 * @param stringSizeMeasurer Callback to calculate the size of a string to determine when to begin a new line
+	 * @return List of Strings with a length no greater than maxLineLength, including all delimiters.
+	 */
+	public static List<String> breakString(String text, String delimiter, int maxLineLength, StringSizeMeasurer stringSizeMeasurer) {
+		StringTokenizer st = new StringTokenizer(text, delimiter, true);
+		List<String> out = new ArrayList<>();
+
+		String currentPart = "";
+		while (st.hasMoreTokens()) {
+			String token = st.nextToken();
+			String nextPart = currentPart + token;
+
+			if (maxLineLength < stringSizeMeasurer.measureLength(nextPart)) {
+				if (currentPart.length() > 0) {
+					out.add(currentPart);
+				}
+				currentPart = token;
+			} else {
+				currentPart = nextPart;
+			}
+		}
+
+		if (currentPart.length() > 0) {
+			out.add(currentPart);
+		}
+
+		return out;
+	}
+
+	/**
+	 * Functional interface to measure the "size" of a string.
+	 * This could be the number of characters or the size in pixels
+	 * it takes up on a screen (like the calculation done by
+	 * android.graphics.Paint::measureText)
+	 */
+	public interface StringSizeMeasurer {
+		int measureLength(String string);
 	}
 }

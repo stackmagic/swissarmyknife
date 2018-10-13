@@ -1,28 +1,20 @@
 package net.swisstech.swissarmyknife.lang;
 
-import static net.swisstech.swissarmyknife.lang.Strings.blank;
-import static net.swisstech.swissarmyknife.lang.Strings.isBlank;
-import static net.swisstech.swissarmyknife.lang.Strings.isNotBlank;
-import static net.swisstech.swissarmyknife.lang.Strings.notBlank;
-import static net.swisstech.swissarmyknife.lang.Strings.truncate;
-import static net.swisstech.swissarmyknife.test.Assert.assertEmpty;
-import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
-import static net.swisstech.swissarmyknife.test.Assert.assertSameSize;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertNull;
-import static org.testng.Assert.assertTrue;
+import net.swisstech.swissarmyknife.lang.AbstractCharSequenceTest.Str;
+import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.swisstech.swissarmyknife.lang.AbstractCharSequenceTest.Str;
-import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import static net.swisstech.swissarmyknife.lang.Strings.*;
+import static net.swisstech.swissarmyknife.test.Assert.*;
+import static org.testng.Assert.*;
 
-import org.testng.annotations.Test;
-
-/** test the Strings */
+/**
+ * test the Strings
+ */
 public class StringsTest {
 
 	@Test
@@ -108,7 +100,7 @@ public class StringsTest {
 	public void asStringArray() {
 		assertNull(Strings.asString((CharSequence[]) null));
 		assertEmpty(Strings.asString(new CharSequence[0]));
-		CharSequence[] cs = new CharSequence[]{ new Str("hello"), "world" };
+		CharSequence[] cs = new CharSequence[]{new Str("hello"), "world"};
 		String[] ss = Strings.asString(cs);
 		assertSameSize(cs, ss);
 		for (int i = 0; i < cs.length; i++) {
@@ -128,5 +120,25 @@ public class StringsTest {
 		for (int i = 0; i < cs.size(); i++) {
 			assertEquals(ss.get(i).toString(), cs.get(i).toString());
 		}
+	}
+
+	@Test
+	public void breakString() {
+		String test = "hello.world.this.is.a.very.long.string.and.will.be.split.where.the.dots.are";
+		List<String> parts = Strings.breakString(test, ".", 16, String::length);
+		assertSize(parts, 5);
+		assertEquals(parts.get(0), "hello.world.this");
+		assertEquals(parts.get(1), ".is.a.very.long.");
+		assertEquals(parts.get(2), "string.and.will.");
+		assertEquals(parts.get(3), "be.split.where.");
+		assertEquals(parts.get(4), "the.dots.are");
+	}
+
+	@Test
+	public void breakString2() {
+		String test = "hello_world_this_is_a_very_long_string_and_will_be_split_where_the_dots_are";
+		List<String> parts = Strings.breakString(test, ".", 16, String::length);
+		assertSize(parts, 1);
+		assertEquals(parts.get(0), test);
 	}
 }
