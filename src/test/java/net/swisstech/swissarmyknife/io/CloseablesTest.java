@@ -1,8 +1,7 @@
 package net.swisstech.swissarmyknife.io;
 
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import org.testng.annotations.Test;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -13,12 +12,7 @@ import java.nio.channels.Selector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLStreamException;
-
-import net.swisstech.swissarmyknife.test.PrivateConstructor;
-
-import org.testng.annotations.Test;
+import static org.mockito.Mockito.*;
 
 public class CloseablesTest {
 
@@ -105,26 +99,6 @@ public class CloseablesTest {
 		doThrow(new IOException("testing Socket")).when(s).close();
 		Closeables.close(s);
 		verify(s).close();
-	}
-
-	@Test
-	public void shouldCloseXMLEventReader() throws XMLStreamException {
-		XMLEventReader xer = mock(XMLEventReader.class);
-		Closeables.close(xer);
-		verify(xer).close();
-	}
-
-	@Test
-	public void shouldIgnoreNullXMLEventReader() {
-		Closeables.close((XMLEventReader) null);
-	}
-
-	@Test
-	public void shouldLogXMLEventReaderException() throws XMLStreamException {
-		XMLEventReader xer = mock(XMLEventReader.class);
-		doThrow(new RuntimeException("testing XMLEventReader")).when(xer).close();
-		Closeables.close(xer);
-		verify(xer).close();
 	}
 
 	@Test

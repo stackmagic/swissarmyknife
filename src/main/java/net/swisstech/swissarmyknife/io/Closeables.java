@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.xml.stream.XMLEventReader;
-
 import net.swisstech.log.Logger;
 import net.swisstech.log.LoggerFactory;
 
@@ -65,17 +63,6 @@ public final class Closeables {
 			}
 			catch (Exception e) {
 				LOG.error("Close failed for Socket of type %s", obj.getClass().getName(), e);
-			}
-		}
-	}
-
-	public static void close(XMLEventReader obj) {
-		if (obj != null) {
-			try {
-				obj.close();
-			}
-			catch (Exception e) {
-				LOG.error("Close failed for XMLEventReader of type %s", obj.getClass().getName(), e);
 			}
 		}
 	}
