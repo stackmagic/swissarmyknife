@@ -39,9 +39,9 @@ dependencies {
 </dependency>
 ```
 
-## changelog
+# changelog
 
-### 2.0.0
+## 2.0.0
 
 * added `Strings.breakString` (will misbehave, doesn't handle edge cases)
 * added `InputStreams.waitForOutput`
