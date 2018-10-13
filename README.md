@@ -39,3 +39,18 @@ dependencies {
 </dependency>
 ```
 
+## changelog
+
+### 2.0.0
+
+* added `Strings.breakString` (will misbehave, doesn't handle edge cases)
+* added `InputStreams.waitForOutput`
+* added `BackgroundProcess.waitForStringInStd{our|err}`
+* cleanup `ProcessWrapper`
+** fix in/out/err redirecting
+** fix `kill` method - didn't properly get the PID
+* cleanup `DtoTesterUtil`
+* cleanup `PrivateConstructor`
+* cleanup `SimpleHttpServerClassloaderFileServer`
+* removed `Iso639` code
+* removed `javax.xml` from `Closeables` for android compatibility
