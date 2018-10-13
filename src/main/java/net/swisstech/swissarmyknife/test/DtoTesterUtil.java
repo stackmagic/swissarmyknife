@@ -41,23 +41,14 @@ public final class DtoTesterUtil {
 					continue;
 				}
 
-				setter.invoke(object, new Object[]{ value });
+				setter.invoke(object, value);
 			}
 
 			// and some other stuff
 			object.hashCode();
 			object.toString();
 		}
-		catch (IllegalArgumentException e) {
-			throw new IOException(e);
-		}
-		catch (IllegalAccessException e) {
-			throw new IOException(e);
-		}
-		catch (IntrospectionException e) {
-			throw new IOException(e);
-		}
-		catch (InvocationTargetException e) {
+		catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | IntrospectionException e) {
 			throw new IOException(e);
 		}
 	}
