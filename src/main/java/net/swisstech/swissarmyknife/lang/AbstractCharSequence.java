@@ -4,9 +4,10 @@ import static net.swisstech.swissarmyknife.lang.Strings.asString;
 
 /**
  * can be used for your own string implementations, just extend this class
+ *
  * @since 1.1.4
  */
-public abstract class AbstractCharSequence implements CharSequence {
+public abstract class AbstractCharSequence implements CharSequence, Comparable<AbstractCharSequence> {
 
 	private final CharSequence value;
 
@@ -55,10 +56,28 @@ public abstract class AbstractCharSequence implements CharSequence {
 			if (other.value != null) {
 				return false;
 			}
-		}
-		else if (!value.equals(other.value)) {
+		} else if (!value.equals(other.value)) {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public int compareTo(AbstractCharSequence other) {
+		int tl = this.length();
+		int ol = other.length();
+		if (tl != ol) {
+			return tl - ol;
+		}
+
+		for (int i = 0; i < tl; i++) {
+			char t = this.charAt(i);
+			char o = other.charAt(i);
+			if (t != o) {
+				return t - o;
+			}
+		}
+
+		return 0;
 	}
 }

@@ -1,11 +1,12 @@
 package net.swisstech.swissarmyknife.lang;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 import org.testng.annotations.Test;
 
-/** test the AbstractCharSequence */
+import static org.testng.Assert.assertEquals;
+
+/**
+ * test the AbstractCharSequence
+ */
 public class AbstractCharSequenceTest {
 
 	public static final class Str extends AbstractCharSequence {
@@ -45,7 +46,33 @@ public class AbstractCharSequenceTest {
 	@Test
 	public void testEquals() {
 		Str src = new Str("abc");
-		assertTrue(src.equals(src));
-		assertTrue(new Str("abc").equals(new Str("abc")));
+		assertEquals(src, src);
+		assertEquals(new Str("abc"), new Str("abc"));
+	}
+
+	@Test
+	public void compareTo() {
+		Str a1 = new Str("a");
+		Str a2 = new Str("a");
+		Str b1 = new Str("b");
+		Str c1 = new Str("c");
+
+		//noinspection EqualsWithItself
+		assertEquals(a1.compareTo(a1), 0);
+		assertEquals(a1.compareTo(a2), 0);
+
+		assertEquals(a1.compareTo(b1), -1);
+		assertEquals(a1.compareTo(c1), -2);
+
+		assertEquals(b1.compareTo(c1), -1);
+		assertEquals(b1.compareTo(a1), 1);
+
+		assertEquals(c1.compareTo(b1), 1);
+		assertEquals(c1.compareTo(a1), 2);
+
+		Str s = new Str("short");
+		Str l = new Str("loooooooooooong");
+		assertEquals(s.compareTo(l), -10);
+		assertEquals(l.compareTo(s), 10);
 	}
 }

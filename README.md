@@ -41,6 +41,10 @@ dependencies {
 
 # changelog
 
+## 2.1.0
+
+* added  `AbstractCharSequence.compareTo`
+
 ## 2.0.0
 
 * added `Strings.breakString` (will misbehave, doesn't handle edge cases)
