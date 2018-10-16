@@ -8,7 +8,7 @@ import java.util.Collection;
 
 /**
  * Utility class to ensure certain preconditions. Each method will check and throw and {@link IllegalArgumentException} if the conditions are not met. This
- * class is intended for 'live' code. for unit tests use {@link Assert}
+ * class is intended for 'live' code. For unit tests use {@link Assert}
  *
  * @since 1.1.4
  */

@@ -5,13 +5,15 @@ import java.util.Map;
 
 /**
  * fluent builder for maps
+ *
  * @since 1.1.4
  */
 public class MapBuilder<K, V> {
 
 	private final Map<K, V> map = new HashMap<>();
 
-	public MapBuilder() {}
+	public MapBuilder() {
+	}
 
 	public MapBuilder(K key, V value) {
 		super();

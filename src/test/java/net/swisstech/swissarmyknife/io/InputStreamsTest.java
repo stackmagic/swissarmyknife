@@ -1,6 +1,5 @@
 package net.swisstech.swissarmyknife.io;
 
-import net.swisstech.swissarmyknife.io.InputStreams;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayInputStream;

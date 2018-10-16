@@ -5,13 +5,18 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Assert methods that don't exist anywhere else. This class is intended for unit tests, for 'live' code see {@link Preconditions}
+ * Assert methods that don't exist anywhere else. This class is intended
+ * for unit tests. For 'live' code use {@link Preconditions}.
+ *
  * @since 1.1.4
  */
 public final class Assert {
 
-	/** private constructor for utility class */
-	private Assert() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Assert() {
+	}
 
 	public static void assertInstanceOf(Class<?> expected, Object actualObject) {
 		if (!expected.isAssignableFrom(actualObject.getClass())) {
@@ -76,7 +81,6 @@ public final class Assert {
 		}
 	}
 
-	/** @since 1.1.7 */
 	public static <T> void assertNotEmpty(T[] c) {
 		if (c.length < 1) {
 			throw new AssertionError("Expected array to be non-empty");
@@ -90,7 +94,6 @@ public final class Assert {
 		}
 	}
 
-	/** @since 1.1.7 */
 	public static <T> void assertNotEmpty(Collection<T> c) {
 		if (c.size() < 1) {
 			throw new AssertionError("Expected collection to be non-empty");
@@ -104,7 +107,6 @@ public final class Assert {
 		}
 	}
 
-	/** @since 1.1.7 */
 	public static <K, V> void assertNotEmpty(Map<K, V> m) {
 		if (m.size() < 1) {
 			throw new AssertionError("Expected map to be non-empty");

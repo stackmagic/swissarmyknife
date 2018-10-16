@@ -1,17 +1,16 @@
 package net.swisstech.swissarmyknife.io;
 
-import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
-import static org.mockito.Mockito.mock;
-import static org.testng.Assert.assertNotSame;
-import static org.testng.Assert.assertSame;
+import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 
-import net.swisstech.swissarmyknife.test.PrivateConstructor;
-
-import org.testng.annotations.Test;
+import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
+import static org.mockito.Mockito.mock;
+import static org.testng.Assert.assertNotSame;
+import static org.testng.Assert.assertSame;
 
 public class ReadersTest {
 

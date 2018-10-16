@@ -5,12 +5,16 @@ package net.swisstech.swissarmyknife.lang;
 
 /**
  * some char number utils
+ *
  * @since 1.2.0
  */
 public final class Characters {
 
-	/** private constructor for utility class */
-	private Characters() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Characters() {
+	}
 
 	public static boolean isZero(char v) {
 		return v == 0;

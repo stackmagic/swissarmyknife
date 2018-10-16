@@ -1,13 +1,13 @@
 package net.swisstech.swissarmyknife.lang;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-/** test the AbstractLong */
+import static org.testng.Assert.*;
+
+/**
+ * test the AbstractLong
+ */
 public class AbstractLongTest {
 
 	private static final class Yolo extends AbstractLong {

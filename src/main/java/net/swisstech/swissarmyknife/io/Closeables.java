@@ -1,5 +1,8 @@
 package net.swisstech.swissarmyknife.io;
 
+import net.swisstech.log.Logger;
+import net.swisstech.log.LoggerFactory;
+
 import java.io.Closeable;
 import java.net.HttpURLConnection;
 import java.net.ServerSocket;
@@ -9,26 +12,26 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import net.swisstech.log.Logger;
-import net.swisstech.log.LoggerFactory;
-
 /**
  * Utility Class to close several kinds of classes.
+ *
  * @since 1.1.4
  */
 public final class Closeables {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Closeables.class);
 
-	/** private constructor for utility class */
-	private Closeables() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Closeables() {
+	}
 
 	public static void close(Closeable obj) {
 		if (obj != null) {
 			try {
 				obj.close();
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				LOG.error("Close failed for Closeable of type %s", obj.getClass().getName(), e);
 			}
 		}
@@ -38,8 +41,7 @@ public final class Closeables {
 		if (obj != null) {
 			try {
 				obj.close();
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				LOG.error("Close failed for Selector of type %s", obj.getClass().getName(), e);
 			}
 		}
@@ -49,8 +51,7 @@ public final class Closeables {
 		if (obj != null) {
 			try {
 				obj.close();
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				LOG.error("Close failed for ServerSocket of type %s", obj.getClass().getName(), e);
 			}
 		}
@@ -60,8 +61,7 @@ public final class Closeables {
 		if (obj != null) {
 			try {
 				obj.close();
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				LOG.error("Close failed for Socket of type %s", obj.getClass().getName(), e);
 			}
 		}
@@ -71,8 +71,7 @@ public final class Closeables {
 		if (huc != null) {
 			try {
 				huc.disconnect();
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				LOG.error("Disconnect failed for HttpURLConnection of type %s", huc.getClass().getName(), e);
 			}
 		}
@@ -88,8 +87,7 @@ public final class Closeables {
 					List<Runnable> runnables = obj.shutdownNow();
 					LOG.warn("executorService failed to shut down, remaining runnables: %s", runnables);
 				}
-			}
-			catch (InterruptedException e) {
+			} catch (InterruptedException e) {
 				LOG.error("awaitTermination failed for ExecutorService of type %s", obj.getClass().getName(), e);
 			}
 		}

@@ -1,14 +1,13 @@
 package net.swisstech.swissarmyknife.net;
 
-import static net.swisstech.swissarmyknife.lang.Integers.inRangeInclusive;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import net.swisstech.swissarmyknife.test.PrivateConstructor;
-
-import org.testng.annotations.Test;
+import static net.swisstech.swissarmyknife.lang.Integers.inRangeInclusive;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 public class TCPTest {
 

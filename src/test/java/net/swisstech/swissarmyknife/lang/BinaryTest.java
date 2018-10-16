@@ -1,15 +1,16 @@
 package net.swisstech.swissarmyknife.lang;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
-import org.testng.annotations.Test;
-
-/** test the Binary */
+/**
+ * test the Binary
+ */
 public class BinaryTest {
 
 	@Test

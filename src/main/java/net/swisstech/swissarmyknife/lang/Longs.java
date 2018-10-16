@@ -5,12 +5,16 @@ package net.swisstech.swissarmyknife.lang;
 
 /**
  * some long number utils
+ *
  * @since 1.1.4
  */
 public final class Longs {
 
-	/** private constructor for utility class */
-	private Longs() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Longs() {
+	}
 
 	public static boolean isZero(long v) {
 		return v == 0;

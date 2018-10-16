@@ -2,6 +2,7 @@ package net.swisstech.swissarmyknife.math;
 
 /**
  * encode/decode numbers into a set of symbols to shorten urls. think youtube and imgur url ids for example
+ *
  * @since 1.1.4
  */
 public class BaseAny {
@@ -29,8 +30,7 @@ public class BaseAny {
 		if (div > 0) {
 			if (div > base) {
 				encode(base, div, sb);
-			}
-			else {
+			} else {
 				int idx = (int) div;
 				sb.append(chars[idx]);
 			}
@@ -66,8 +66,7 @@ public class BaseAny {
 		if (enc.length() > 1) {
 			enc = enc.substring(1);
 			return decode(base, enc, d);
-		}
-		else {
+		} else {
 			return d;
 		}
 	}

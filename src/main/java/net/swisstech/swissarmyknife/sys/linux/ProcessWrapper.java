@@ -1,22 +1,18 @@
 package net.swisstech.swissarmyknife.sys.linux;
 
+import java.io.*;
+import java.lang.reflect.Field;
+import java.util.List;
+
 import static net.swisstech.swissarmyknife.io.Closeables.close;
 import static net.swisstech.swissarmyknife.lang.Strings.asString;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * <ul>
  * <li>A bunch of factory methods for simple cases of launching processes, see the launch* methods</li>
  * <li>Some extras like getPid() and kill(signal)</li>
  * </ul>
+ *
  * @since 1.1.5
  */
 public final class ProcessWrapper extends Process {
@@ -37,8 +33,7 @@ public final class ProcessWrapper extends Process {
 		ProcessWrapper pw = doLaunch(new ProcessBuilder(asString(command)), workingDir);
 		try {
 			pw.waitFor();
-		}
-		catch (InterruptedException e) {
+		} catch (InterruptedException e) {
 			throw new ProcessWrapperException(e);
 		}
 
@@ -52,8 +47,7 @@ public final class ProcessWrapper extends Process {
 	public static int launchWait(String[] command, File workingDir) {
 		try {
 			return launch(new ProcessBuilder(command), workingDir).waitFor();
-		}
-		catch (InterruptedException e) {
+		} catch (InterruptedException e) {
 			throw new ProcessWrapperException(e);
 		}
 	}
@@ -65,8 +59,7 @@ public final class ProcessWrapper extends Process {
 	public static int launchWait(List<String> command, File workingDir) {
 		try {
 			return launch(new ProcessBuilder(command), workingDir).waitFor();
-		}
-		catch (InterruptedException e) {
+		} catch (InterruptedException e) {
 			throw new ProcessWrapperException(e);
 		}
 	}
@@ -86,26 +79,28 @@ public final class ProcessWrapper extends Process {
 		try {
 			Process process = pb.start();
 			return new ProcessWrapper(process);
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			throw new ProcessWrapperException(e);
 		}
 	}
 
-	/** @return a new process, which is the kill command executed to kill <i>this</i> process */
+	/**
+	 * @return a new process, which is the kill command executed to kill <i>this</i> process
+	 */
 	public ProcessWrapper kill(Signal signal) {
 		String cmd = String.format("/bin/kill -%s %d", signal.name(), getPid());
 		String[] cmds = cmd.split(" ");
 		return launch(cmds, null);
 	}
 
-	/** @return the exit-code of the process represented by <i>this</i> process wrapper */
+	/**
+	 * @return the exit-code of the process represented by <i>this</i> process wrapper
+	 */
 	public int killWait(Signal signal) {
 		try {
 			kill(signal);
 			return waitFor();
-		}
-		catch (InterruptedException e) {
+		} catch (InterruptedException e) {
 			throw new ProcessWrapperException(e);
 		}
 	}
@@ -123,8 +118,7 @@ public final class ProcessWrapper extends Process {
 			Field pidField = clazz.getDeclaredField("pid");
 			pidField.setAccessible(true);
 			pid = pidField.getInt(process);
-		}
-		catch (SecurityException | NoSuchFieldException | IllegalAccessException | IllegalArgumentException e) {
+		} catch (SecurityException | NoSuchFieldException | IllegalAccessException | IllegalArgumentException e) {
 			throw new ProcessWrapperException(e);
 		}
 	}
@@ -149,54 +143,66 @@ public final class ProcessWrapper extends Process {
 
 				sb.append(buf, 0, n);
 			}
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			throw new ProcessWrapperException(e);
-		}
-		finally {
+		} finally {
 			close(isr);
 		}
 
 		return sb.toString();
 	}
 
-	/** delegates to wrapped process object */
+	/**
+	 * delegates to wrapped process object
+	 */
 	@Override
 	public OutputStream getOutputStream() {
 		return process.getOutputStream();
 	}
 
-	/** delegates to wrapped process object */
+	/**
+	 * delegates to wrapped process object
+	 */
 	@Override
 	public InputStream getInputStream() {
 		return process.getInputStream();
 	}
 
-	/** delegates to wrapped process object */
+	/**
+	 * delegates to wrapped process object
+	 */
 	@Override
 	public InputStream getErrorStream() {
 		return process.getErrorStream();
 	}
 
-	/** delegates to wrapped process object */
+	/**
+	 * delegates to wrapped process object
+	 */
 	@Override
 	public int waitFor() throws InterruptedException {
 		return process.waitFor();
 	}
 
-	/** delegates to wrapped process object */
+	/**
+	 * delegates to wrapped process object
+	 */
 	@Override
 	public int exitValue() {
 		return process.exitValue();
 	}
 
-	/** delegates to wrapped process object */
+	/**
+	 * delegates to wrapped process object
+	 */
 	@Override
 	public void destroy() {
 		process.destroy();
 	}
 
-	/** delegates to wrapped process object */
+	/**
+	 * delegates to wrapped process object
+	 */
 	@Override
 	public String toString() {
 		return process.toString();

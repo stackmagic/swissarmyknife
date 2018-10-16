@@ -1,19 +1,19 @@
 package net.swisstech.swissarmyknife.util;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * set utils we've been missing from guava and jdk standart apis
+ *
  * @since 1.1.4
  */
 public final class Sets {
 
-	/** private constructor for utility class */
-	private Sets() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Sets() {
+	}
 
 	public static <T> Set<T> newHashSet(T... items) {
 		Set<T> set = new HashSet<>();

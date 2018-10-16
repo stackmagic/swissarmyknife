@@ -1,34 +1,15 @@
 package net.swisstech.swissarmyknife.test;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
-import static java.util.Collections.emptyMap;
-import static java.util.Collections.emptySet;
-import static net.swisstech.swissarmyknife.test.Assert.assertCollectionContains;
-import static net.swisstech.swissarmyknife.test.Assert.assertCollectionContainsAll;
-import static net.swisstech.swissarmyknife.test.Assert.assertEmpty;
-import static net.swisstech.swissarmyknife.test.Assert.assertGreaterThan;
-import static net.swisstech.swissarmyknife.test.Assert.assertHammingDistanceLowerEqual;
-import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
-import static net.swisstech.swissarmyknife.test.Assert.assertNotEmpty;
-import static net.swisstech.swissarmyknife.test.Assert.assertOneOf;
-import static net.swisstech.swissarmyknife.test.Assert.assertSameSize;
-import static net.swisstech.swissarmyknife.test.Assert.assertSize;
-import static net.swisstech.swissarmyknife.test.Assert.assertSizeMin;
-import static net.swisstech.swissarmyknife.test.Assert.assertSmallerThan;
-import static net.swisstech.swissarmyknife.util.Lists.newArrayList;
-import static net.swisstech.swissarmyknife.util.Sets.newHashSet;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-import org.testng.annotations.Test;
+import static java.util.Arrays.asList;
+import static java.util.Collections.*;
+import static net.swisstech.swissarmyknife.test.Assert.*;
+import static net.swisstech.swissarmyknife.util.Lists.newArrayList;
+import static net.swisstech.swissarmyknife.util.Sets.newHashSet;
 
 public class AssertTest {
 
@@ -52,7 +33,7 @@ public class AssertTest {
 
 	@Test
 	public void testAssertSizeArrayOk() {
-		String[] array = new String[]{ "a", "b", "c" };
+		String[] array = new String[]{"a", "b", "c"};
 		assertSize(array, 3);
 		assertSize(emptyList(), 0);
 	}
@@ -108,7 +89,7 @@ public class AssertTest {
 
 	@Test
 	public void testAssertNotEmptyArrayWithNonEmptyArray() {
-		assertNotEmpty(new String[]{ "hello" });
+		assertNotEmpty(new String[]{"hello"});
 	}
 
 	@Test
@@ -118,7 +99,7 @@ public class AssertTest {
 
 	@Test(expectedExceptions = AssertionError.class)
 	public void assertEmptyArrayWithFilledArray() {
-		assertEmpty(new String[]{ "not", "empty" });
+		assertEmpty(new String[]{"not", "empty"});
 	}
 
 	@Test(expectedExceptions = AssertionError.class)
@@ -149,13 +130,13 @@ public class AssertTest {
 
 	@Test(expectedExceptions = AssertionError.class)
 	public void assertSameSizeArrayWithDifferingSizes() {
-		assertSameSize(new String[]{ "a" }, new Integer[]{ 1, 2 });
+		assertSameSize(new String[]{"a"}, new Integer[]{1, 2});
 	}
 
 	@Test
 	public void assertSameSizeArrayOk() {
-		assertSameSize(new String[]{ "a", "b" }, new String[]{ "c", "d" });
-		assertSameSize(new String[]{ "a", "b" }, new Integer[]{ 1, 2 });
+		assertSameSize(new String[]{"a", "b"}, new String[]{"c", "d"});
+		assertSameSize(new String[]{"a", "b"}, new Integer[]{1, 2});
 	}
 
 	@Test(expectedExceptions = NullPointerException.class)

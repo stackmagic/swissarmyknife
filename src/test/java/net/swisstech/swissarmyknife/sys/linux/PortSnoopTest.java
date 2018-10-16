@@ -1,16 +1,17 @@
 package net.swisstech.swissarmyknife.sys.linux;
 
+import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
+
 import static net.swisstech.swissarmyknife.test.Assert.assertCollectionContainsAll;
 import static net.swisstech.swissarmyknife.test.Assert.assertEmpty;
 import static net.swisstech.swissarmyknife.util.Sets.newHashSet;
 
-import java.io.IOException;
-
-import net.swisstech.swissarmyknife.test.PrivateConstructor;
-
-import org.testng.annotations.Test;
-
-/** test the PortSnoop */
+/**
+ * test the PortSnoop
+ */
 public class PortSnoopTest {
 
 	@Test

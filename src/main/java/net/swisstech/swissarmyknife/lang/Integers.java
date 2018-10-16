@@ -5,12 +5,16 @@ package net.swisstech.swissarmyknife.lang;
 
 /**
  * some int number utils
+ *
  * @since 1.2.0
  */
 public final class Integers {
 
-	/** private constructor for utility class */
-	private Integers() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Integers() {
+	}
 
 	public static boolean isZero(int v) {
 		return v == 0;

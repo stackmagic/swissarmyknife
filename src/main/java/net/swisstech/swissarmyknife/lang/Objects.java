@@ -2,8 +2,11 @@ package net.swisstech.swissarmyknife.lang;
 
 public final class Objects {
 
-	/** private constructor for utility class */
-	private Objects() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Objects() {
+	}
 
 	public static <T> T notNull(T o) {
 		if (o == null) {

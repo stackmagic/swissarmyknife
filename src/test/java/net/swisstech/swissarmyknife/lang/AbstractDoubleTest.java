@@ -1,12 +1,11 @@
 package net.swisstech.swissarmyknife.lang;
 
-import static org.testng.Assert.assertEquals;
+import net.swisstech.swissarmyknife.test.DtoTesterUtil;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import net.swisstech.swissarmyknife.test.DtoTesterUtil;
-
-import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
 
 public class AbstractDoubleTest {
 

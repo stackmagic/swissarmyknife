@@ -1,23 +1,20 @@
 package net.swisstech.swissarmyknife.util;
 
-import static net.swisstech.swissarmyknife.test.Assert.assertEmpty;
-import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
-import static net.swisstech.swissarmyknife.test.Assert.assertSize;
-import static net.swisstech.swissarmyknife.util.Sets.addAll;
-import static net.swisstech.swissarmyknife.util.Sets.newHashSet;
-import static net.swisstech.swissarmyknife.util.Sets.newTreeSet;
-import static org.testng.Assert.assertNotNull;
+import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import static net.swisstech.swissarmyknife.test.Assert.*;
+import static net.swisstech.swissarmyknife.util.Sets.*;
+import static org.testng.Assert.assertNotNull;
 
-import org.testng.annotations.Test;
-
-/** Test the Sets */
+/**
+ * Test the Sets
+ */
 public class SetsTest {
 
 	@Test

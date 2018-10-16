@@ -5,12 +5,16 @@ package net.swisstech.swissarmyknife.lang;
 
 /**
  * some byte number utils
+ *
  * @since 1.2.0
  */
 public final class Bytes {
 
-	/** private constructor for utility class */
-	private Bytes() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Bytes() {
+	}
 
 	public static boolean isZero(byte v) {
 		return v == 0;

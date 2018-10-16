@@ -2,12 +2,16 @@ package net.swisstech.swissarmyknife.lang;
 
 /**
  * thread-related utils
+ *
  * @since 1.1.5
  */
 public final class Threads {
 
-	/** private constructor for utility class */
-	private Threads() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Threads() {
+	}
 
 	public static boolean sleepUntil(long end) {
 		return sleepFor(end - System.currentTimeMillis());
@@ -15,6 +19,7 @@ public final class Threads {
 
 	/**
 	 * Sleep for a certain amount of time and tell the caller whether or not to continue;
+	 *
 	 * @param time The amount of time to sleep (in millis)
 	 * @return Returns <code>true</code> if the caller may continue, <code>false</code> if we were interrupted and the caller must stop running.
 	 */
@@ -24,8 +29,7 @@ public final class Threads {
 			long remainder = end - System.currentTimeMillis();
 			try {
 				Thread.sleep(remainder);
-			}
-			catch (InterruptedException e) {
+			} catch (InterruptedException e) {
 				Thread.currentThread().interrupt();
 				return false;
 			}

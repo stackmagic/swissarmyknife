@@ -6,12 +6,16 @@ import java.lang.reflect.Modifier;
 
 /**
  * This utility invokes the private default constructor of a class so these won't show up as non-covered in unit test coverage reports and distract us.
+ *
  * @since 1.1.4
  */
 public final class PrivateConstructor {
 
-	/** private constructor for utility class */
-	private PrivateConstructor() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private PrivateConstructor() {
+	}
 
 	public static void invoke(Class<?> clazz) throws IOException {
 		try {
@@ -21,8 +25,7 @@ public final class PrivateConstructor {
 			}
 			ctor.setAccessible(true);
 			ctor.newInstance();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			throw new IOException("Unexpected Exception", e);
 		}
 	}

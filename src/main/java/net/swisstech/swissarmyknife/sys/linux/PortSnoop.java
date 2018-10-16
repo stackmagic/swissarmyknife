@@ -1,20 +1,17 @@
 package net.swisstech.swissarmyknife.sys.linux;
 
+import net.swisstech.log.Logger;
+import net.swisstech.log.LoggerFactory;
+
+import java.util.*;
+
 import static net.swisstech.swissarmyknife.lang.Strings.isNotBlank;
 import static net.swisstech.swissarmyknife.lang.Threads.sleepFor;
 import static net.swisstech.swissarmyknife.sys.linux.Signal.TERM;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-import net.swisstech.log.Logger;
-import net.swisstech.log.LoggerFactory;
-
 /**
  * util to check for open ports with a timeout, to wait until a process is ready so you can run tests against it
+ *
  * @since 1.1.5
  */
 public final class PortSnoop {
@@ -23,10 +20,15 @@ public final class PortSnoop {
 
 	private static final String NON_NUMBERS_REGEX = "[^0-9]+";
 
-	/** private constructor for utility class */
-	private PortSnoop() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private PortSnoop() {
+	}
 
-	/** wait for the process to be the owner of all the ports or time is running out */
+	/**
+	 * wait for the process to be the owner of all the ports or time is running out
+	 */
 	public static void waitForOpenPorts(ProcessWrapper process, Collection<Integer> ports, long timeout) {
 
 		LOG.info("[%s] waiting until all of these ports are open: %s", process, ports);
@@ -69,8 +71,7 @@ public final class PortSnoop {
 			try {
 				int rv = process.exitValue();
 				throw new IllegalStateException("Process has exited with exit code " + rv);
-			}
-			catch (IllegalThreadStateException e) {
+			} catch (IllegalThreadStateException e) {
 				// ignore, process is still running, all is good
 			}
 
@@ -85,7 +86,9 @@ public final class PortSnoop {
 		}
 	}
 
-	/** wait for all the ports to be open or timeout */
+	/**
+	 * wait for all the ports to be open or timeout
+	 */
 	public static void waitForOpenPorts(Collection<Integer> ports, long timeout) {
 
 		LOG.info("waiting until all of these ports are open: %s", ports);
@@ -147,7 +150,9 @@ public final class PortSnoop {
 		return map;
 	}
 
-	/** parse the output of <code>lsof -ti :port</code>, essentially extracts all distinct numbers from a string, these are the pids in case of the lsof output. */
+	/**
+	 * parse the output of <code>lsof -ti :port</code>, essentially extracts all distinct numbers from a string, these are the pids in case of the lsof output.
+	 */
 	public static Set<Integer> parsePids(String lsofStdOut) {
 		Set<Integer> pids = new HashSet<>();
 		String[] lines = lsofStdOut.split(NON_NUMBERS_REGEX);

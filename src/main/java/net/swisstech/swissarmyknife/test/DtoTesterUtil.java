@@ -10,14 +10,18 @@ import java.lang.reflect.Method;
 
 /**
  * util to test dtos (getters and setters) to get the code coverage and have them off the radar.
+ *
  * @since 1.1.4
  */
 public final class DtoTesterUtil {
 
 	private static final Object[] EMPTY_ARGS = new Object[0];
 
-	/** private constructor for utility class */
-	private DtoTesterUtil() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private DtoTesterUtil() {
+	}
 
 	public static void testAllProperties(Object object) throws IOException {
 		if (object == null) {
@@ -45,10 +49,11 @@ public final class DtoTesterUtil {
 			}
 
 			// and some other stuff
+			//noinspection ResultOfMethodCallIgnored
 			object.hashCode();
+			//noinspection ResultOfMethodCallIgnored
 			object.toString();
-		}
-		catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | IntrospectionException e) {
+		} catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | IntrospectionException e) {
 			throw new IOException(e);
 		}
 	}

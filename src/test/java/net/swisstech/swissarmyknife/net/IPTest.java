@@ -1,10 +1,9 @@
 package net.swisstech.swissarmyknife.net;
 
-import java.io.IOException;
-
 import net.swisstech.swissarmyknife.test.PrivateConstructor;
-
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class IPTest {
 

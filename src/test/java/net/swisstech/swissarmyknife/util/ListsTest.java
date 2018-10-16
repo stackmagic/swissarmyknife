@@ -1,21 +1,20 @@
 package net.swisstech.swissarmyknife.util;
 
-import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
-import static net.swisstech.swissarmyknife.test.Assert.assertSize;
-import static net.swisstech.swissarmyknife.util.Lists.addAll;
-import static net.swisstech.swissarmyknife.util.Lists.newArrayList;
-import static net.swisstech.swissarmyknife.util.Lists.newLinkedList;
+import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
+import static net.swisstech.swissarmyknife.test.Assert.assertSize;
+import static net.swisstech.swissarmyknife.util.Lists.*;
 
-import org.testng.annotations.Test;
-
-/** test the Lists */
+/**
+ * test the Lists
+ */
 public class ListsTest {
 
 	@Test

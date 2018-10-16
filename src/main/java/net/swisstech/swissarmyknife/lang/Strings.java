@@ -96,9 +96,9 @@ public class Strings {
 	 * maxLineLength. The StringSizeMeasurer can return an arbitrary measure such as character
 	 * count or pixel width when rendered.
 	 *
-	 * @param text The Text to be split
-	 * @param delimiter The Delimiter to split the text by
-	 * @param maxLineLength The maximum length a line is allowed to take up
+	 * @param text               The Text to be split
+	 * @param delimiter          The Delimiter to split the text by
+	 * @param maxLineLength      The maximum length a line is allowed to take up
 	 * @param stringSizeMeasurer Callback to calculate the size of a string to determine when to begin a new line
 	 * @return List of Strings with a length no greater than maxLineLength, including all delimiters.
 	 */

@@ -1,8 +1,8 @@
 package net.swisstech.swissarmyknife.lang;
 
-import static org.testng.Assert.assertEquals;
-
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 public class BoundedLongTest {
 
@@ -32,7 +32,7 @@ public class BoundedLongTest {
 		assertEquals(bl.increment(), 20);
 
 		for (int i = 1; i <= 10; i++) {
-			assertEquals(bl.decrement(), 20-i);
+			assertEquals(bl.decrement(), 20 - i);
 		}
 
 		assertEquals(bl.get(), 10);

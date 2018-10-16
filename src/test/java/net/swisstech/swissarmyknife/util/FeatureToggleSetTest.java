@@ -1,14 +1,16 @@
 package net.swisstech.swissarmyknife.util;
 
-import static net.swisstech.swissarmyknife.test.Assert.assertSize;
-import static org.testng.Assert.fail;
+import org.testng.annotations.Test;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import org.testng.annotations.Test;
+import static net.swisstech.swissarmyknife.test.Assert.assertSize;
+import static org.testng.Assert.fail;
 
-/** test the FeatureToggleSet */
+/**
+ * test the FeatureToggleSet
+ */
 public class FeatureToggleSetTest {
 
 	// TODO test it all, or generate the code or test with reflection
@@ -26,8 +28,7 @@ public class FeatureToggleSetTest {
 		try {
 			fts.add("B");
 			fail("Must not succeed!");
-		}
-		catch (UnsupportedOperationException e) {
+		} catch (UnsupportedOperationException e) {
 			// all good
 		}
 		assertSize(set, 1);
@@ -42,16 +43,14 @@ public class FeatureToggleSetTest {
 		try {
 			fts.add("D");
 			fail("Must not succeed!");
-		}
-		catch (UnsupportedOperationException e) {
+		} catch (UnsupportedOperationException e) {
 			// all good
 		}
 
 		assertSize(set, 2);
 		try {
 			assertSize(fts, 2);
-		}
-		catch (UnsupportedOperationException e) {
+		} catch (UnsupportedOperationException e) {
 			// all good
 		}
 

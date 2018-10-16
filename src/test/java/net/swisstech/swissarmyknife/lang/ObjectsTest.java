@@ -1,12 +1,11 @@
 package net.swisstech.swissarmyknife.lang;
 
-import static org.testng.Assert.assertSame;
+import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import net.swisstech.swissarmyknife.test.PrivateConstructor;
-
-import org.testng.annotations.Test;
+import static org.testng.Assert.assertSame;
 
 public class ObjectsTest {
 

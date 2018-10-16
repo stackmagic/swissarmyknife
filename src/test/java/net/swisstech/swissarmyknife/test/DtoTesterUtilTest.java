@@ -1,10 +1,12 @@
 package net.swisstech.swissarmyknife.test;
 
-import java.io.IOException;
-
 import org.testng.annotations.Test;
 
-/** test the DtoTesterUtil */
+import java.io.IOException;
+
+/**
+ * test the DtoTesterUtil
+ */
 public class DtoTesterUtilTest {
 
 	// I think testng messes with us when we use mockito to throw all the exceptions
@@ -42,6 +44,7 @@ public class DtoTesterUtilTest {
 			return b;
 		}
 
-		public void setC(int c) {}
+		public void setC(int c) {
+		}
 	}
 }

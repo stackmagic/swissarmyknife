@@ -7,12 +7,16 @@ import java.util.List;
 
 /**
  * list utils we've been missing from guava and jdk standart apis
+ *
  * @since 1.1.7
  */
 public class Lists {
 
-	/** private constructor for utility class */
-	private Lists() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Lists() {
+	}
 
 	public static <T> List<T> newArrayList(T... items) {
 		List<T> list = new ArrayList<>();

@@ -1,19 +1,17 @@
 package net.swisstech.swissarmyknife.lang;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import net.swisstech.swissarmyknife.test.PrivateConstructor;
-
-import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 //TODO structurally exactly the same as Longs, Characters, Integers, Shorts etc... have 1 master and generate the rest!!
 
 /**
  * some char number utils
+ *
  * @since 1.2.0
  */
 public class CharactersTest {

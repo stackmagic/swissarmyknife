@@ -1,14 +1,14 @@
 package net.swisstech.swissarmyknife.util;
 
-import java.io.IOException;
-
 import net.swisstech.swissarmyknife.lang.Integers;
 import net.swisstech.swissarmyknife.test.PrivateConstructor;
-
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 /**
  * some utils for random numbers
+ *
  * @since 1.2.0
  */
 public class RandomsTest {

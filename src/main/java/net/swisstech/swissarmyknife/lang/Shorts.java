@@ -5,12 +5,16 @@ package net.swisstech.swissarmyknife.lang;
 
 /**
  * some short number utils
+ *
  * @since 1.2.0
  */
 public final class Shorts {
 
-	/** private constructor for utility class */
-	private Shorts() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Shorts() {
+	}
 
 	public static boolean isZero(short v) {
 		return v == 0;

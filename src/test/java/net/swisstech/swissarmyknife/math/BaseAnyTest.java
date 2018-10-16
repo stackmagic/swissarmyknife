@@ -1,13 +1,15 @@
 package net.swisstech.swissarmyknife.math;
 
-import static java.util.Arrays.asList;
-import static org.testng.Assert.assertEquals;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
-import org.testng.annotations.Test;
+import static java.util.Arrays.asList;
+import static org.testng.Assert.assertEquals;
 
-/** test the BaseAny */
+/**
+ * test the BaseAny
+ */
 public class BaseAnyTest {
 
 	private final static String CHARS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-_~äöü!$;:^'?=)(/&%ç*\"+";
@@ -25,28 +27,28 @@ public class BaseAnyTest {
 		System.out.println("");
 
 		List<Double> values = asList( //
-			0d, //
-			1d, //
-			2d, //
-			dbase - 2d, //
-			dbase - 1d, //
-			dbase, //
-			dbase + 1d, //
-			dbase + 2d, //
-			128d, //
-			512d, //
-			1024d, //
-			Math.pow(2, 2) - 1d, //
-			Math.pow(2, 3) - 1d, //
-			Math.pow(2, 5) - 1d, //
-			Math.pow(2, 7) - 1d, //
-			Math.pow(2, 13) - 1d, //
-			Math.pow(2, 17) - 1d, //
-			Math.pow(2, 19) - 1d, //
-			Math.pow(2, 31) - 1d, // next mersenne prime (2^61-1 is out of range)
-			new Long(Long.MAX_VALUE).doubleValue()
-		// Double.MAX_VALUE ends up being 'Infinity'
-			);
+				0d, //
+				1d, //
+				2d, //
+				dbase - 2d, //
+				dbase - 1d, //
+				dbase, //
+				dbase + 1d, //
+				dbase + 2d, //
+				128d, //
+				512d, //
+				1024d, //
+				Math.pow(2, 2) - 1d, //
+				Math.pow(2, 3) - 1d, //
+				Math.pow(2, 5) - 1d, //
+				Math.pow(2, 7) - 1d, //
+				Math.pow(2, 13) - 1d, //
+				Math.pow(2, 17) - 1d, //
+				Math.pow(2, 19) - 1d, //
+				Math.pow(2, 31) - 1d, // next mersenne prime (2^61-1 is out of range)
+				new Long(Long.MAX_VALUE).doubleValue()
+				// Double.MAX_VALUE ends up being 'Infinity'
+		);
 
 		for (Double value : values) {
 			String enc = be.encode(dbase, value);

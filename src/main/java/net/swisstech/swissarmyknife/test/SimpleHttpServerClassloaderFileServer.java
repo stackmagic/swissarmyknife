@@ -1,17 +1,17 @@
 package net.swisstech.swissarmyknife.test;
 
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+import net.swisstech.log.Logger;
+import net.swisstech.log.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import net.swisstech.log.Logger;
-import net.swisstech.log.LoggerFactory;
-
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-
 /**
  * serve files from the classpath
+ *
  * @since 1.1.4
  */
 public class SimpleHttpServerClassloaderFileServer implements HttpHandler {
@@ -36,8 +36,7 @@ public class SimpleHttpServerClassloaderFileServer implements HttpHandler {
 		if (in == null) {
 			LOG.error(">>> 404 Not Found: " + uri);
 			ex.sendResponseHeaders(HTTP_CODE_FOUR_OH_FOUR, -1);
-		}
-		else {
+		} else {
 			LOG.error(">>> 200 OK:        " + uri);
 			ex.sendResponseHeaders(HTTP_CODE_TWO_HUNDRED, 0);
 
@@ -57,7 +56,9 @@ public class SimpleHttpServerClassloaderFileServer implements HttpHandler {
 
 	}
 
-	/** should be done according to the description of {@link HttpExchange}'s title "Terminating exchanges" */
+	/**
+	 * should be done according to the description of {@link HttpExchange}'s title "Terminating exchanges"
+	 */
 	private void drain(InputStream in) throws IOException {
 		int i = 0;
 		do {

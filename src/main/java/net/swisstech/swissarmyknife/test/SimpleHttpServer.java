@@ -1,13 +1,14 @@
 package net.swisstech.swissarmyknife.test;
 
+import com.sun.net.httpserver.HttpServer;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
-import com.sun.net.httpserver.HttpServer;
-
 /**
  * just a simple http server that can be embedded in tests, does simple file serving, could be extended to call a custom controller if needed
+ *
  * @since 1.1.4
  */
 public class SimpleHttpServer implements Closeable {

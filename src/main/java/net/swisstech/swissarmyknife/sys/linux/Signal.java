@@ -2,6 +2,7 @@ package net.swisstech.swissarmyknife.sys.linux;
 
 /**
  * these are the signals supported by <code>/bin/kill</code> (see /bin/kill --table). The bash built-in with the same name supports a lot more signals.
+ *
  * @since 1.1.5
  */
 enum Signal {

@@ -2,12 +2,16 @@ package net.swisstech.swissarmyknife.lang;
 
 /**
  * some number utilities
+ *
  * @since 1.1.4
  */
 public final class Numbers {
 
-	/** private constructor for utility class */
-	private Numbers() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Numbers() {
+	}
 
 	public static Long tryParseLong(String text, Long def) {
 		if (text == null) {
@@ -15,8 +19,7 @@ public final class Numbers {
 		}
 		try {
 			return Long.parseLong(text);
-		}
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			return def;
 		}
 	}
@@ -31,8 +34,7 @@ public final class Numbers {
 		}
 		try {
 			return Integer.parseInt(text);
-		}
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			return def;
 		}
 	}
@@ -51,8 +53,7 @@ public final class Numbers {
 		}
 		try {
 			return Double.parseDouble(text);
-		}
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			return def;
 		}
 	}

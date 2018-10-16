@@ -2,6 +2,7 @@ package net.swisstech.swissarmyknife.sys.linux;
 
 /**
  * wrapper exception for the many exceptions that can arise when working with processes, threads and reflection
+ *
  * @since 1.1.5
  */
 public class ProcessWrapperException extends RuntimeException {

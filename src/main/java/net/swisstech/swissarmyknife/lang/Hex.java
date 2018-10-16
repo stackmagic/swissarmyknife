@@ -2,6 +2,7 @@ package net.swisstech.swissarmyknife.lang;
 
 /**
  * Hex Utils, namely dumping byte[] into a human-friendly hexdump
+ *
  * @since 1.1.4
  */
 public final class Hex {
@@ -14,8 +15,11 @@ public final class Hex {
 	private static final int ASCII_START = 32;
 	private static final int ASCII_END = 126;
 
-	/** private constructor for utility class */
-	private Hex() {}
+	/**
+	 * private constructor for utility class
+	 */
+	private Hex() {
+	}
 
 	public static String toHexDumpString(int[] data) {
 
@@ -35,8 +39,7 @@ public final class Hex {
 			lines.append(String.format("%02X ", data[i]));
 			if (data[i] < ASCII_START || data[i] > ASCII_END) {
 				dec.append(".");
-			}
-			else {
+			} else {
 				dec.append((char) data[i]);
 			}
 
