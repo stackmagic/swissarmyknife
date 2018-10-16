@@ -48,6 +48,9 @@ dependencies {
 * added `Writers` since we already have `Readers`
 * added `Floats` & `Doubles` since we already have `Integers`, `Longs`, `Bytes` and `Characters`
 * moved `InputStreams` to `io` package
+* refactor `Randoms`
+** changed from a static util into extending `SecureRandom` so it's possible for the user to seed it
+** added `next{Int|Double|Long|Float}Incluse` methods
 * cleanup `Preconditions`
 ** remove String check, use `Strings` instead
 ** return the `URL` from `ensureUrl`

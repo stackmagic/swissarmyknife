@@ -12,6 +12,8 @@ import static net.swisstech.swissarmyknife.lang.Integers.isInRangeInclusive;
  */
 public final class TCP {
 
+	private static final Randoms RANDOMS = new Randoms();
+
 	/**
 	 * lowest possible port number
 	 */
@@ -34,7 +36,7 @@ public final class TCP {
 	}
 
 	public static int getRandomUnprivilegedPort() {
-		return Randoms.nextIntInclusive(MIN_PORT_UNPRIV, MAX_PORT);
+		return RANDOMS.nextIntInclusive(MIN_PORT_UNPRIV, MAX_PORT);
 	}
 
 	public static int validPortNumber(int port) {
