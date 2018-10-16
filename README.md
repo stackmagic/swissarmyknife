@@ -44,6 +44,8 @@ dependencies {
 ## 2.1.0
 
 * added  `AbstractCharSequence.compareTo`
+* changed `Abstract{Int|Long|Double}.compareTo` to use `{Integer|Long|Double}.compare`, was the only dependency to `ch.bind.philib`
+* removed dependency to `ch.bind.philib`
 
 ## 2.0.0
 

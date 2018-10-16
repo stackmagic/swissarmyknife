@@ -1,9 +1,8 @@
 package net.swisstech.swissarmyknife.lang;
 
-import ch.bind.philib.lang.CompareUtil;
-
 /**
  * base class for custom ints (too bad java has no typedef construct)
+ *
  * @since 1.1.4
  */
 public abstract class AbstractLong extends Number implements Comparable<AbstractLong> {
@@ -21,13 +20,14 @@ public abstract class AbstractLong extends Number implements Comparable<Abstract
 
 	@Override
 	public int compareTo(AbstractLong o) {
+		//noinspection NumberEquality
 		if (o == this) {
 			return 0;
 		}
 		if (o == null) {
 			return 1;
 		}
-		return CompareUtil.diff(value, o.value);
+		return Long.compare(value, o.value);
 	}
 
 	@Override

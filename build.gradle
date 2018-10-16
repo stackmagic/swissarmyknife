@@ -22,7 +22,6 @@ repositories {
 }
 
 dependencies {
-	compile 'ch.bind:philib:0.13.0'
 	compile 'net.swisstech:logger:1.1.0'
 
 	testCompile 'org.testng:testng:6.8.8'

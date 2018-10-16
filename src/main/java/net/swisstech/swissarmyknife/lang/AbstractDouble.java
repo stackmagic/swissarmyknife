@@ -1,9 +1,8 @@
 package net.swisstech.swissarmyknife.lang;
 
-import ch.bind.philib.lang.CompareUtil;
-
 /**
  * base class for custom doubles (too bad java has no typedef construct)
+ *
  * @since 1.1.4
  */
 public class AbstractDouble extends Number implements Comparable<AbstractDouble> {
@@ -22,13 +21,14 @@ public class AbstractDouble extends Number implements Comparable<AbstractDouble>
 
 	@Override
 	public int compareTo(AbstractDouble o) {
+		//noinspection NumberEquality
 		if (o == this) {
 			return 0;
 		}
 		if (o == null) {
 			return 1;
 		}
-		return CompareUtil.diff(value, o.value);
+		return Double.compare(value, o.value);
 	}
 
 	@Override
