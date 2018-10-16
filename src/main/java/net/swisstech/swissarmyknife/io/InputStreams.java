@@ -1,4 +1,4 @@
-package net.swisstech.swissarmyknife.lang;
+package net.swisstech.swissarmyknife.io;
 
 import net.swisstech.log.Logger;
 import net.swisstech.log.LoggerFactory;

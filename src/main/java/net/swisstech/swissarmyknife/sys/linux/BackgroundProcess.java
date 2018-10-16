@@ -1,6 +1,6 @@
 package net.swisstech.swissarmyknife.sys.linux;
 
-import net.swisstech.swissarmyknife.lang.InputStreams;
+import net.swisstech.swissarmyknife.io.InputStreams;
 
 import java.io.File;
 import java.io.IOException;
