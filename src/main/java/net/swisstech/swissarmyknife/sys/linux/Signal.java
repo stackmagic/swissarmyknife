@@ -40,7 +40,7 @@ enum Signal {
 
 	private final int num;
 
-	private Signal(int num) {
+	Signal(int num) {
 		this.num = num;
 	}
 
