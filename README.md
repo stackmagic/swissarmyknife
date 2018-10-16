@@ -52,6 +52,8 @@ dependencies {
 ** remove all `@Deprecated`, that was a stupid idea (for example renaming `ensureNull()` to `null()`)
 * changed `Abstract{Int|Long|Double}.compareTo` to use `{Integer|Long|Double}.compare`, was the only dependency to `ch.bind.philib`
 * removed dependency to `ch.bind.philib`
+* testing
+** added `TeeOutputStreamTest`
 
 ## 2.0.0
 
