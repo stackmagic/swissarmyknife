@@ -1,15 +1,17 @@
 package net.swisstech.swissarmyknife.test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.fail;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import org.testng.annotations.Test;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
 
-/** test the Preconditions */
+/**
+ * test the Preconditions
+ */
 public class PreconditionsTest {
 
 	@Test
@@ -18,27 +20,8 @@ public class PreconditionsTest {
 	}
 
 	@Test
-	public void ensureNotEmptyString() {
-		assertEquals(Preconditions.ensureNotEmpty("x"), "x");
-		assertEquals(Preconditions.ensureNotEmpty(" x"), " x");
-		assertEquals(Preconditions.ensureNotEmpty("x "), "x ");
-		assertEquals(Preconditions.ensureNotEmpty(" x "), " x ");
-
-		String[] errors = new String[]{ null, "", " " };
-		for (String string : errors) {
-			try {
-				Preconditions.ensureNotEmpty(string);
-				fail("Should't reach this point");
-			}
-			catch (IllegalArgumentException e) {
-				assertEquals("String shouldn't be empty but got " + string, e.getMessage());
-			}
-		}
-	}
-
-	@Test
 	public void ensureNullOk() {
-		Preconditions.ensureNull(null, "won't be used");
+		assertNull(Preconditions.ensureNull(null, "won't be used"));
 	}
 
 	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "must be null")
@@ -48,6 +31,7 @@ public class PreconditionsTest {
 
 	@Test
 	public void notNullOk() {
+		//noinspection ObviousNullCheck
 		Preconditions.notNull(new Object());
 	}
 
@@ -58,6 +42,7 @@ public class PreconditionsTest {
 
 	@Test
 	public void ensureNotNullOk() {
+		//noinspection ObviousNullCheck
 		Preconditions.ensureNotNull(new Object(), "won't be used");
 	}
 
@@ -360,7 +345,7 @@ public class PreconditionsTest {
 
 	@Test
 	public void ensureUrlOk() {
-		Preconditions.ensureUrl("http://www.swisstech.net");
-		Preconditions.ensureUrl("ftp://www.swisstech.net");
+		assertNotNull(Preconditions.ensureUrl("http://www.swisstech.net"));
+		assertNotNull(Preconditions.ensureUrl("ftp://www.swisstech.net"));
 	}
 }
