@@ -23,4 +23,10 @@ public class Stack<T> {
 	public int size() {
 		return elements.size();
 	}
+
+	public int clear() {
+		int size = size();
+		elements.clear();
+		return size;
+	}
 }

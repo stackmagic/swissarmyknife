@@ -44,7 +44,7 @@ dependencies {
 ## 2.1.0
 
 * added `AbstractCharSequence.compareTo`
-* added `Stack.size`
+* added `Stack.size` & `Stack.clear`
 * changed `Abstract{Int|Long|Double}.compareTo` to use `{Integer|Long|Double}.compare`, was the only dependency to `ch.bind.philib`
 * removed dependency to `ch.bind.philib`
 

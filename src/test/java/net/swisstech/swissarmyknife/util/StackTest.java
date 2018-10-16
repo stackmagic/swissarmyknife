@@ -9,14 +9,16 @@ import static org.testng.Assert.*;
 public class StackTest {
 
 	@Test
-	public void test() {
+	public void testVariousMethods() {
 		Stack<String> s = new Stack<>();
 		assertNull(s.peek());
 		assertEquals(s.size(), 0);
+
 		try {
 			s.pop();
 			fail();
 		} catch (NoSuchElementException e) {
+			// good!
 		}
 
 		s.push(null);
@@ -43,6 +45,25 @@ public class StackTest {
 			s.pop();
 			fail();
 		} catch (NoSuchElementException e) {
+			// good!
 		}
+
+		assertEquals(s.size(), 0);
+	}
+
+	@Test
+	public void testSizeAndClear() {
+		int count = 10;
+		Stack<Integer> s = new Stack<>();
+		for (int i = 0; i < count; i++) {
+			s.push(i);
+			assertEquals(s.size(), i + 1);
+			assertEquals(s.peek().intValue(), i);
+		}
+
+		assertEquals(s.peek().intValue(), count - 1);
+		assertEquals(s.size(), count);
+		assertEquals(s.clear(), count);
+		assertEquals(s.size(), 0);
 	}
 }
