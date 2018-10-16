@@ -46,6 +46,7 @@ dependencies {
 * added `AbstractCharSequence.compareTo`
 * added `Stack.size` & `Stack.clear`
 * added `Writers` since we already have `Readers`
+* added `Floats` & `Doubles` since we already have `Integers`, `Longs`, `Bytes` and `Characters`
 * moved `InputStreams` to `io` package
 * cleanup `Preconditions`
 ** remove String check, use `Strings` instead
