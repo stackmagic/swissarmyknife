@@ -8,7 +8,6 @@ import net.swisstech.swissarmyknife.test.PrivateConstructor;
 
 import org.testng.annotations.Test;
 
-/** test the HexDump */
 public class HexTest {
 
 	@Test
