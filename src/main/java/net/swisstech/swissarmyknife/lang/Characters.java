@@ -2,6 +2,7 @@ package net.swisstech.swissarmyknife.lang;
 
 // TODO structurally exactly the same as Longs, Bytes, Integers, Shorts etc...
 // have 1 master and generate the rest!! Characters are the only signed type
+// only Characters doesn't have a "parseCharacter" method
 
 /**
  * some char number utils

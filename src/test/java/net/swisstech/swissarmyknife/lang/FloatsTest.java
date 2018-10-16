@@ -22,6 +22,15 @@ public class FloatsTest {
 	}
 
 	@Test
+	public void tryParse() {
+		assertNull(Floats.tryParse("null"));
+		assertEquals(Floats.tryParse("1"), 1f);
+		assertEquals(Floats.tryParse("1", 23.0f), 1f);
+		assertEquals(Floats.tryParse("1 3 4", 23.0f), 23f);
+		assertEquals(Floats.tryParse(null, 23.0f), 23f);
+	}
+
+	@Test
 	public void isZero() {
 		assertFalse(Floats.isZero(1.0f));
 		assertFalse(Floats.isZero(-1.0f));

@@ -2,6 +2,7 @@ package net.swisstech.swissarmyknife.lang;
 
 //TODO structurally exactly the same as Longs, Bytes, Integers, Shorts etc...
 //have 1 master and generate the rest!! Characters are the only signed type
+// only Characters doesn't have a "parseCharacter" method
 
 /**
  * some short number utils
@@ -14,6 +15,21 @@ public final class Shorts {
 	 * private constructor for utility class
 	 */
 	private Shorts() {
+	}
+
+	public static Short tryParse(String text, Short def) {
+		if (text == null) {
+			return def;
+		}
+		try {
+			return Short.parseShort(text);
+		} catch (NumberFormatException e) {
+			return def;
+		}
+	}
+
+	public static Short tryParse(String text) {
+		return tryParse(text, null);
 	}
 
 	public static boolean isZero(short v) {

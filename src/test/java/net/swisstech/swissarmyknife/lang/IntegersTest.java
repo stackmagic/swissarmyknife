@@ -22,6 +22,15 @@ public class IntegersTest {
 	}
 
 	@Test
+	public void tryParse() {
+		assertNull(Integers.tryParse("null"));
+		assertEquals(Integers.tryParse("1"), new Integer(1));
+		assertEquals(Integers.tryParse("1", 23), new Integer(1));
+		assertEquals(Integers.tryParse("1 3 4", 23), new Integer(23));
+		assertEquals(Integers.tryParse(null, 23), new Integer(23));
+	}
+
+	@Test
 	public void isZero() {
 		assertFalse(Integers.isZero(1));
 		assertFalse(Integers.isZero(-1));

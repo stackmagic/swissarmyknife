@@ -48,6 +48,10 @@ dependencies {
 * added `Writers` since we already have `Readers`
 * added `Floats` & `Doubles` since we already have `Integers`, `Longs`, `Bytes` and `Characters`
 * moved `InputStreams` to `io` package
+* removed `Numbers`
+** moved `tryParse*` into the individual type-specific classes
+** added `tryParse` for the other classes
+** there is no `Character.parseCharacter` and thus no `Characters.tryParse`
 * refactor `Randoms`
 ** changed from a static util into extending `SecureRandom` so it's possible for the user to seed it
 ** added `next{Int|Double|Long|Float}Incluse` methods

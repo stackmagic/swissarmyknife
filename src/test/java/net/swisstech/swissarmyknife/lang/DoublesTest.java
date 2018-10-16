@@ -22,6 +22,15 @@ public class DoublesTest {
 	}
 
 	@Test
+	public void tryParseDouble() {
+		assertNull(Doubles.tryParse("null"));
+		assertEquals(Doubles.tryParse("1.2"), 1.2);
+		assertEquals(Doubles.tryParse("1.2", 23.4), 1.2);
+		assertEquals(Doubles.tryParse("1 3 4", 23.4), 23.4);
+		assertEquals(Doubles.tryParse(null, 23.4), 23.4);
+	}
+
+	@Test
 	public void isZero() {
 		assertFalse(Doubles.isZero(1.0));
 		assertFalse(Doubles.isZero(-1.0));

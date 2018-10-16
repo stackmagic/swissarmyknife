@@ -2,6 +2,7 @@ package net.swisstech.swissarmyknife.lang;
 
 //TODO structurally exactly the same as Longs, Bytes, Integers, Shorts etc...
 //have 1 master and generate the rest!! Characters are the only signed type
+// only Characters doesn't have a "parseCharacter" method
 
 /**
  * some byte number utils
@@ -14,6 +15,21 @@ public final class Bytes {
 	 * private constructor for utility class
 	 */
 	private Bytes() {
+	}
+
+	public static Byte tryParse(String text, Byte def) {
+		if (text == null) {
+			return def;
+		}
+		try {
+			return Byte.parseByte(text);
+		} catch (NumberFormatException e) {
+			return def;
+		}
+	}
+
+	public static Byte tryParse(String text) {
+		return tryParse(text, null);
 	}
 
 	public static boolean isZero(byte v) {

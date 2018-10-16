@@ -16,6 +16,21 @@ public final class Doubles {
 	private Doubles() {
 	}
 
+	public static Double tryParse(String text, Double def) {
+		if (text == null) {
+			return def;
+		}
+		try {
+			return Double.parseDouble(text);
+		} catch (NumberFormatException e) {
+			return def;
+		}
+	}
+
+	public static Double tryParse(String text) {
+		return tryParse(text, null);
+	}
+
 	public static boolean isZero(double v) {
 		return v == 0;
 	}

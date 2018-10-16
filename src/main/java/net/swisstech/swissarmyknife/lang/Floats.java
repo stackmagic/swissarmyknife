@@ -2,6 +2,7 @@ package net.swisstech.swissarmyknife.lang;
 
 //TODO structurally exactly the same as Longs, Bytes, Integers, Shorts etc...
 //have 1 master and generate the rest!! Characters are the only signed type
+// only Characters doesn't have a "parseCharacter" method
 
 /**
  * some float number utils
@@ -15,6 +16,22 @@ public final class Floats {
 	 */
 	private Floats() {
 	}
+
+	public static Float tryParse(String text, Float def) {
+		if (text == null) {
+			return def;
+		}
+		try {
+			return Float.parseFloat(text);
+		} catch (NumberFormatException e) {
+			return def;
+		}
+	}
+
+	public static Float tryParse(String text) {
+		return tryParse(text, null);
+	}
+
 
 	public static boolean isZero(float v) {
 		return v == 0;

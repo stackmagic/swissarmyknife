@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import static org.testng.Assert.*;
 
-//TODO structurally exactly the same as Longs, Integers, Integers, Shorts etc... have 1 master and generate the rest!!
+//TODO structurally exactly the same as Shorts, Integers, Integers, Shorts etc... have 1 master and generate the rest!!
 
 /**
  * some short number utils
@@ -19,6 +19,15 @@ public class ShortsTest {
 	@Test
 	public void privateConstructor() throws IOException {
 		PrivateConstructor.invoke(Shorts.class);
+	}
+
+	@Test
+	public void tryParse() {
+		assertNull(Shorts.tryParse("null"));
+		assertEquals(Shorts.tryParse("1"), new Short((short) 1));
+		assertEquals(Shorts.tryParse("1", (short) 23), new Short((short) 1));
+		assertEquals(Shorts.tryParse("1 3 4", (short) 23), new Short((short) 23));
+		assertEquals(Shorts.tryParse(null, (short) 23), new Short((short) 23));
 	}
 
 	@Test

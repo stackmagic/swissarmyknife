@@ -22,6 +22,15 @@ public class BytesTest {
 	}
 
 	@Test
+	public void tryParse() {
+		assertNull(Bytes.tryParse("null"));
+		assertEquals(Bytes.tryParse("1"), new Byte((byte) 1));
+		assertEquals(Bytes.tryParse("1", (byte) 23), new Byte((byte) 1));
+		assertEquals(Bytes.tryParse("1 3 4", (byte) 23), new Byte((byte) 23));
+		assertEquals(Bytes.tryParse(null, (byte) 23), new Byte((byte) 23));
+	}
+
+	@Test
 	public void isZero() {
 		assertFalse(Bytes.isZero((byte) 1));
 		assertFalse(Bytes.isZero((byte) -1));

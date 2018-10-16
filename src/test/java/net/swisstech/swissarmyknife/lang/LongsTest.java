@@ -22,6 +22,15 @@ public class LongsTest {
 	}
 
 	@Test
+	public void tryParse() {
+		assertNull(Longs.tryParse("null"));
+		assertEquals(Longs.tryParse("1"), new Long(1));
+		assertEquals(Longs.tryParse("1", 23L), new Long(1));
+		assertEquals(Longs.tryParse("1 3 4", 23L), new Long(23));
+		assertEquals(Longs.tryParse(null, 23L), new Long(23));
+	}
+
+	@Test
 	public void isZero() {
 		assertFalse(Longs.isZero(1));
 		assertFalse(Longs.isZero(-1));
