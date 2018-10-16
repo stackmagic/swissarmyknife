@@ -45,6 +45,7 @@ dependencies {
 
 * added `AbstractCharSequence.compareTo`
 * added `Stack.size` & `Stack.clear`
+* added `Writers` since we already have `Readers`
 * cleanup `Preconditions`
 ** remove String check, use `Strings` instead
 ** return the `URL` from `ensureUrl`
