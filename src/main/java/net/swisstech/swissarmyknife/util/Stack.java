@@ -19,4 +19,8 @@ public class Stack<T> {
 	public void push(T element) {
 		elements.offerFirst(element);
 	}
+
+	public int size() {
+		return elements.size();
+	}
 }
