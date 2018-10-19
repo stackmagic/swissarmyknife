@@ -1,5 +1,8 @@
 package net.swisstech.swissarmyknife.math;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * encode/decode numbers into a set of symbols to shorten urls. think youtube and imgur url ids for example
  *
@@ -10,26 +13,27 @@ public class BaseAny {
 	private final char[] chars;
 
 	public BaseAny(String chars) {
-		this.chars = chars.toCharArray();
+		this(chars.toCharArray());
 	}
 
 	public BaseAny(char[] chars) {
-		this.chars = chars.clone();
+		this.chars = verifyChars(chars.clone());
 	}
 
-	public String encode(double base, double value) {
+	public String encode(double value) {
 		StringBuilder sb = new StringBuilder();
-		encode(base, value, sb);
+		encode(value, sb);
 		return sb.toString();
 	}
 
-	private void encode(double base, double value, StringBuilder sb) {
+	private void encode(double value, StringBuilder sb) {
+		double base = chars.length;
 		double div = value / base;
 		double mod = value % base;
 
 		if (div > 0) {
 			if (div > base) {
-				encode(base, div, sb);
+				encode(div, sb);
 			} else {
 				int idx = (int) div;
 				sb.append(chars[idx]);
@@ -42,15 +46,15 @@ public class BaseAny {
 			return;
 		}
 
-		encode(base, mod, sb);
+		encode(mod, sb);
 	}
 
-	public double decode(double base, String enc) {
-		return (decode(base, enc, 0d));
+	public double decode(String enc) {
+		return decode(enc, 0d);
 	}
 
-	private double decode(double base, String enc, double d) {
-
+	private double decode(String enc, double d) {
+		double base = chars.length;
 		char c = enc.charAt(0);
 
 		double val = 0;
@@ -65,9 +69,24 @@ public class BaseAny {
 
 		if (enc.length() > 1) {
 			enc = enc.substring(1);
-			return decode(base, enc, d);
+			return decode(enc, d);
 		} else {
 			return d;
 		}
+	}
+
+	private char[] verifyChars(char[] chars) {
+		Set<Character> s = new HashSet<>();
+		for (char c : chars) {
+			s.add(c);
+		}
+
+		int unique = s.size();
+		int symbols = chars.length;
+		if (unique != symbols) {
+			throw new IllegalArgumentException("Supplied characters must be unique! Got " + symbols + " chars but there are only " + unique + " unique characters");
+		}
+
+		return chars;
 	}
 }

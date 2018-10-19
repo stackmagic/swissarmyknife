@@ -7,15 +7,17 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.testng.Assert.assertEquals;
 
-/**
- * test the BaseAny
- */
 public class BaseAnyTest {
 
-	private final static String CHARS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-_~äöü!$;:^'?=)(/&%ç*\"+";
+	private final static String CHARS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-_~äöü!$;:^'?=)(/&%ç*\"+°§";
+
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = ".*must be unique.*")
+	public void validate() {
+		new BaseAny("01234567899".toCharArray());
+	}
 
 	@Test
-	public void testEncodeDecode() {
+	public void encodeDecode() {
 
 		BaseAny be = new BaseAny(CHARS);
 
@@ -51,8 +53,8 @@ public class BaseAnyTest {
 		);
 
 		for (Double value : values) {
-			String enc = be.encode(dbase, value);
-			double dec = be.decode(dbase, enc);
+			String enc = be.encode(value);
+			double dec = be.decode(enc);
 			System.out.println(String.format("%40.0f => %20s => %40.0f => OK = %b", value, enc, dec, value.equals(dec)));
 			assertEquals(value, dec);
 		}
