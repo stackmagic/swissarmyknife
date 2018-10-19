@@ -3,6 +3,8 @@ package net.swisstech.swissarmyknife.lang;
 /**
  * base class for custom doubles (too bad java has no typedef construct)
  *
+ * @see AbstractCharSequence for more explanation of why this class exists
+ *
  * @since 1.1.4
  */
 public class AbstractDouble extends Number implements Comparable<AbstractDouble> {

@@ -3,7 +3,6 @@ package net.swisstech.swissarmyknife.io;
 import net.swisstech.log.Logger;
 import net.swisstech.log.LoggerFactory;
 
-import java.io.Closeable;
 import java.net.HttpURLConnection;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -14,6 +13,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Utility Class to close several kinds of classes.
+ * <p>
+ * With Java 7 try-with-resources, this class is now basically obsolete
  *
  * @since 1.1.4
  */
@@ -27,7 +28,7 @@ public final class Closeables {
 	private Closeables() {
 	}
 
-	public static void close(Closeable obj) {
+	public static void close(AutoCloseable obj) {
 		if (obj != null) {
 			try {
 				obj.close();

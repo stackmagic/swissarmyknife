@@ -3,7 +3,22 @@ package net.swisstech.swissarmyknife.lang;
 import static net.swisstech.swissarmyknife.lang.Strings.asString;
 
 /**
- * can be used for your own string implementations, just extend this class
+ * Can be used for your own string implementations, just extend this class.
+ *
+ * The primary purpose I Imagine for this class is, to make custom Strings in order to give your code more semantics
+ * when reading it. One thing I particularly dislike is when you have to deal with multiple Maps, Sets etc that then
+ * looks something like this:
+ * <code>
+ *     Map&lt;String, String&gt; myMap...
+ *     Set&lt;String&gt; mySet...
+ * </code>
+ *
+ * There's no semantics in the types and this is remedied by using your custom String implementations:
+ *
+ * <code>
+ *     Map&lt;CountryCode, CapitalCityName&gt; myMap...
+ *     Set&lt;CountryCode&gt; mySet...
+ * </code>
  *
  * @since 1.1.4
  */
