@@ -21,17 +21,26 @@ repositories {
 	jcenter()
 }
 
-dependencies {
-	compile 'net.swisstech:logger:1.1.0'
+// project dependencies
+ext.versions = [
+		  slf4j   : '1.8.0-beta2'
+		, testng  : '6.14.3'
+		, mockito : '1.10.19'
+		, logger  : '1.1.0'
+]
 
-	testCompile 'org.testng:testng:6.8.8'
-	testCompile 'org.mockito:mockito-all:1.10.8'
-	testCompile "org.slf4j:slf4j-simple:1.8.0-beta2"
+dependencies {
+	compile     "net.swisstech:logger:${versions.logger}"
+
+	testCompile "org.slf4j:slf4j-simple:${versions.slf4j}"
+	testCompile "org.testng:testng:${versions.testng}"
+	testCompile "org.mockito:mockito-all:${versions.mockito}"
 }
 
 // testing
 test {
 	useTestNG()
+	testLogging.showStandardStreams = true
 }
 
 // task to generate wrapper
