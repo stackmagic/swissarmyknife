@@ -4,6 +4,7 @@ plugins {
 	id 'jacoco'
 	id 'groovy'
 	id 'maven-publish'
+	id 'project-report'
 	id 'com.jfrog.bintray' version '1.8.4'
 }
 
@@ -14,14 +15,18 @@ version     = '2.1.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-// normal repositories and dependencies
+/*
+ * REPSOITORIES
+ */
 repositories {
 	mavenLocal()
 	mavenCentral()
 	jcenter()
 }
 
-// project dependencies
+/*
+ * DEPENDENCIES
+ */
 ext.versions = [
 		  slf4j   : '1.8.0-beta2'
 		, testng  : '6.14.3'
@@ -37,23 +42,39 @@ dependencies {
 	testCompile "org.mockito:mockito-all:${versions.mockito}"
 }
 
-// testing
+/*
+ * UNIT TESTING
+ */
+jacocoTestReport {
+	reports.html.destination = file("${reportsDir}/jacoco/${name}")
+}
+
 test {
 	useTestNG()
 	testLogging.showStandardStreams = true
+
+	jacoco {
+		destinationFile = file("${buildDir}/jacoco.ut.exec")
+	}
 }
 
-// task to generate wrapper
+/*
+ * WRAPPER
+ */
 wrapper {
 	gradleVersion = '4.10'
 }
 
-// source-code jar
+/*
+ * PACKAGING
+ */
 task sourceJar(type: Jar) {
 	from sourceSets.main.allSource
 }
 
-// bintray uses the publication, also includes source jar
+/*
+ * PUBLISHING
+ */
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
