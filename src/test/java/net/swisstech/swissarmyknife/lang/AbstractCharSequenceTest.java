@@ -2,7 +2,7 @@ package net.swisstech.swissarmyknife.lang;
 
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 /**
  * test the AbstractCharSequence
@@ -10,8 +10,13 @@ import static org.testng.Assert.assertEquals;
 public class AbstractCharSequenceTest {
 
 	public static final class Str extends AbstractCharSequence {
-
 		public Str(CharSequence value) {
+			super(value);
+		}
+	}
+
+	public static final class Str2 extends AbstractCharSequence {
+		public Str2(CharSequence value) {
 			super(value);
 		}
 	}
@@ -44,10 +49,16 @@ public class AbstractCharSequenceTest {
 	}
 
 	@Test
+	@SuppressWarnings({"SimplifiedTestNGAssertion", "EqualsWithItself", "ConstantConditions", "EqualsBetweenInconvertibleTypes"})
 	public void testEquals() {
 		Str src = new Str("abc");
-		assertEquals(src, src);
-		assertEquals(new Str("abc"), new Str("abc"));
+		assertTrue(src.equals(src));
+		assertTrue(new Str("abc").equals(new Str("abc")));
+		assertFalse(src.equals(null));
+		assertFalse(src.equals(new Str2("x")));
+		assertFalse(src.equals(new Str(null)));
+		assertFalse(new Str(null).equals(src));
+		assertTrue(new Str(null).equals(new Str(null)));
 	}
 
 	@Test
