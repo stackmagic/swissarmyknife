@@ -1,10 +1,13 @@
 package net.swisstech.swissarmyknife.util;
 
+import com.sun.crypto.provider.SunJCE;
 import net.swisstech.swissarmyknife.lang.Doubles;
 import net.swisstech.swissarmyknife.lang.Floats;
 import net.swisstech.swissarmyknife.lang.Integers;
 import net.swisstech.swissarmyknife.lang.Longs;
 import org.testng.annotations.Test;
+
+import java.security.SecureRandomSpi;
 
 /**
  * some utils for random numbers
@@ -14,6 +17,26 @@ import org.testng.annotations.Test;
 public class RandomsTest {
 
 	private static Randoms RANDOMS = new Randoms();
+
+	@Test
+	public void create() {
+		new Randoms();
+		new Randoms("hello".getBytes());
+		new Randoms(new SecureRandomSpi() {
+			@Override
+			protected void engineSetSeed(byte[] bytes) {
+			}
+
+			@Override
+			protected void engineNextBytes(byte[] bytes) {
+			}
+
+			@Override
+			protected byte[] engineGenerateSeed(int i) {
+				return new byte[0];
+			}
+		}, new SunJCE());
+	}
 
 	@Test(invocationCount = 100)
 	public void nextIntInclusiveHighRange() {
