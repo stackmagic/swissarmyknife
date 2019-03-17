@@ -9,8 +9,15 @@ public final class Objects {
 	}
 
 	public static <T> T notNull(T o) {
+		return notNull(o, "");
+	}
+
+	/**
+	 * @since 2.1.0
+	 */
+	public static <T> T notNull(T o, String name) {
 		if (o == null) {
-			throw new IllegalArgumentException("Object must not be null");
+			throw new IllegalArgumentException("Object " + name + " must not be null");
 		}
 		return o;
 	}
