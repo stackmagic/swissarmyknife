@@ -18,16 +18,19 @@ public class Lists {
 	private Lists() {
 	}
 
+	@SafeVarargs
 	public static <T> List<T> newArrayList(T... items) {
 		List<T> list = new ArrayList<>();
 		return addAll(list, items);
 	}
 
+	@SafeVarargs
 	public static <T> List<T> newLinkedList(T... items) {
 		List<T> list = new LinkedList<>();
 		return addAll(list, items);
 	}
 
+	@SafeVarargs
 	public static <T> List<T> addAll(List<T> list, T... items) {
 		List<T> itemlist = Arrays.asList(items);
 		list.addAll(itemlist);
