@@ -1,8 +1,10 @@
 package net.swisstech.swissarmyknife.lang;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
 /**
  * some String utils
@@ -15,6 +17,30 @@ public class Strings {
 	 * private constructor for utility class
 	 */
 	private Strings() {
+	}
+
+	/**
+	 * @since 2.1.0
+	 */
+	public static String valueOrDefault(String str, String dflt) {
+		if (isBlank(str)) {
+			return dflt;
+		}
+		return str;
+	}
+
+	/**
+	 * @since 2.1.0
+	 */
+	public static String joinNonBlank(String delimiter, String... parts) {
+		if (delimiter == null) {
+			throw new IllegalArgumentException("Delimiter must not be null");
+		}
+		if (parts == null) {
+			throw new IllegalArgumentException("Parts to join must not be null");
+		}
+		List<String> nonNull = Arrays.stream(parts).filter(Strings::isNotBlank).collect(Collectors.toList());
+		return String.join(delimiter, nonNull);
 	}
 
 	public static boolean isBlank(String s) {

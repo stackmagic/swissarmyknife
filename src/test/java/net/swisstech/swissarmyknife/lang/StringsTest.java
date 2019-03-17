@@ -18,6 +18,32 @@ import static org.testng.Assert.*;
 public class StringsTest {
 
 	@Test
+	public void valueOrDefaultOk() {
+		assertEquals(valueOrDefault(null, null), null);
+		assertEquals(valueOrDefault(null, "hello"), "hello");
+		assertEquals(valueOrDefault("world", "hello"), "world");
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Delimiter must not be null")
+	public void joinNonBlankNullDelimiter() {
+		joinNonBlank(null);
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Parts to join must not be null")
+	public void joinNonBlankNullParts() {
+		joinNonBlank("", (String[]) null);
+	}
+
+	@Test
+	public void joinNonBlankOk() {
+		assertEquals(joinNonBlank("", ""), "");
+		assertEquals(joinNonBlank("x", ""), "");
+		assertEquals(joinNonBlank("", "x"), "x");
+		assertEquals(joinNonBlank("", "x", "y"), "xy");
+		assertEquals(joinNonBlank("-", "x", "y"), "x-y");
+	}
+
+	@Test
 	public void privateConstructor() throws IOException {
 		PrivateConstructor.invoke(Strings.class);
 	}
