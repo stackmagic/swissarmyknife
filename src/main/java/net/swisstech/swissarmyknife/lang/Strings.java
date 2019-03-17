@@ -22,6 +22,15 @@ public class Strings {
 	/**
 	 * @since 2.1.0
 	 */
+	public static int countOccurrences(String needle, String haystack) {
+		Objects.notNull(needle, "needle");
+		Objects.notNull(haystack, "haystack");
+		return haystack.split(needle, -1).length - 1;
+	}
+
+	/**
+	 * @since 2.1.0
+	 */
 	public static String valueOrDefault(String str, String dflt) {
 		if (isBlank(str)) {
 			return dflt;

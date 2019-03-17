@@ -17,6 +17,30 @@ import static org.testng.Assert.*;
  */
 public class StringsTest {
 
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object needle must not be null")
+	public void countOccurrencesFailNeedleNull() {
+		countOccurrences(null, null);
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object haystack must not be null")
+	public void countOccurrencesFailHaystackNull() {
+		countOccurrences("", null);
+	}
+
+	@Test
+	public void countOccurrencesOk() {
+		assertEquals(countOccurrences("", ""), 0);
+		assertEquals(countOccurrences("x", ""), 0);
+		assertEquals(countOccurrences("x", "x"), 1);
+		assertEquals(countOccurrences("x", "xx"), 2);
+		assertEquals(countOccurrences("x", "axx"), 2);
+		assertEquals(countOccurrences("x", "xax"), 2);
+		assertEquals(countOccurrences("x", "xxa"), 2);
+		assertEquals(countOccurrences("x", "axax"), 2);
+		assertEquals(countOccurrences("x", "xaxa"), 2);
+		assertEquals(countOccurrences("x", "axaxa"), 2);
+	}
+
 	@Test
 	public void valueOrDefaultOk() {
 		assertEquals(valueOrDefault(null, null), null);
