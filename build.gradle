@@ -62,7 +62,7 @@ test {
  * WRAPPER
  */
 wrapper {
-	gradleVersion = '4.10'
+	gradleVersion = '6.6'
 }
 
 /*
