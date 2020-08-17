@@ -5,9 +5,6 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-/**
- * test the AbstractLong
- */
 public class AbstractLongTest {
 
 	private static final class Yolo extends AbstractLong {

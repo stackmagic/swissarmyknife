@@ -12,9 +12,6 @@ import static net.swisstech.swissarmyknife.test.Assert.*;
 import static net.swisstech.swissarmyknife.util.Sets.*;
 import static org.testng.Assert.assertNotNull;
 
-/**
- * Test the Sets
- */
 public class SetsTest {
 
 	@Test

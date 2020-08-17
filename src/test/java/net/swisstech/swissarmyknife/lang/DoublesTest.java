@@ -10,8 +10,6 @@ import static org.testng.Assert.*;
 //TODO structurally exactly the same as Longs, Integers, Integers, Shorts etc... have 1 master and generate the rest!!
 
 /**
- * some long number utils
- *
  * @since 1.2.0
  */
 public class DoublesTest {
@@ -24,10 +22,10 @@ public class DoublesTest {
 	@Test
 	public void tryParseDouble() {
 		assertNull(Doubles.tryParse("null"));
-		assertEquals(Doubles.tryParse("1.2"), 1.2);
-		assertEquals(Doubles.tryParse("1.2", 23.4), 1.2);
-		assertEquals(Doubles.tryParse("1 3 4", 23.4), 23.4);
-		assertEquals(Doubles.tryParse(null, 23.4), 23.4);
+		assertEquals((double) Doubles.tryParse("1.2"), 1.2);
+		assertEquals((double) Doubles.tryParse("1.2", 23.4), 1.2);
+		assertEquals((double) Doubles.tryParse("1 3 4", 23.4), 23.4);
+		assertEquals((double) Doubles.tryParse(null, 23.4), 23.4);
 	}
 
 	@Test
@@ -91,18 +89,18 @@ public class DoublesTest {
 	}
 
 	@Test(expectedExceptions = IllegalArgumentException.class)
-	public void zeroOrpositiveLo() {
+	public void zeroOrPositiveLo() {
 		Doubles.zeroOrPositive(-1.0);
 	}
 
 	@Test
-	public void zeroOrpositive() {
+	public void zeroOrPositive() {
 		assertEquals(Doubles.zeroOrPositive(0.0), 0.0);
 		assertEquals(Doubles.zeroOrPositive(1.0), 1.0);
 	}
 
 	@Test
-	public void iszeroOrNegative() {
+	public void isZeroOrNegative() {
 		assertFalse(Doubles.isZeroOrNegative(1.0));
 		assertTrue(Doubles.isZeroOrNegative(0.0));
 	}

@@ -14,7 +14,7 @@ public class ObjectsTest {
 		PrivateConstructor.invoke(Objects.class);
 	}
 
-	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object  must not be null")
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object '' must not be null")
 	public void notNullNull() {
 		Objects.notNull((Object) null);
 	}
@@ -25,7 +25,7 @@ public class ObjectsTest {
 		assertSame(Objects.notNull(o), o);
 	}
 
-	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object test must not be null")
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object 'test' must not be null")
 	public void notNullNameNull() {
 		Objects.notNull((Object) null, "test");
 	}
@@ -34,5 +34,10 @@ public class ObjectsTest {
 	public void notNullName() {
 		Object o = new Object();
 		assertSame(Objects.notNull(o, "hello"), o);
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object 'hello' must not be null")
+	public void notNullNullName() {
+		Objects.notNull((Object) null, "hello");
 	}
 }

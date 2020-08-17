@@ -8,9 +8,6 @@ import java.util.Set;
 import static net.swisstech.swissarmyknife.test.Assert.assertSize;
 import static org.testng.Assert.fail;
 
-/**
- * test the FeatureToggleSet
- */
 public class FeatureToggleSetTest {
 
 	// TODO test it all, or generate the code or test with reflection

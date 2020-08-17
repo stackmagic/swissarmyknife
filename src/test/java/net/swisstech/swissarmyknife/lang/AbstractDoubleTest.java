@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class AbstractDoubleTest {
 
@@ -36,25 +36,25 @@ public class AbstractDoubleTest {
 	@Test
 	public void comparable() {
 		D zero = new D(0);
-		D one = new D(1);
-		D mone = new D(-1);
+		D onePos = new D(1);
+		D oneNeg = new D(-1);
 
 		assertEquals(zero.compareTo(null), 1);
 
-		assertEquals(mone.compareTo(mone), 0);
-		assertEquals(mone.compareTo(new D(-1)), 0);
-		assertEquals(mone.compareTo(zero), -1);
-		assertEquals(mone.compareTo(one), -1);
+		assertEquals(oneNeg.compareTo(oneNeg), 0);
+		assertEquals(oneNeg.compareTo(new D(-1)), 0);
+		assertEquals(oneNeg.compareTo(zero), -1);
+		assertEquals(oneNeg.compareTo(onePos), -1);
 
-		assertEquals(zero.compareTo(mone), 1);
+		assertEquals(zero.compareTo(oneNeg), 1);
 		assertEquals(zero.compareTo(zero), 0);
 		assertEquals(zero.compareTo(new D(0)), 0);
-		assertEquals(zero.compareTo(one), -1);
+		assertEquals(zero.compareTo(onePos), -1);
 
-		assertEquals(one.compareTo(mone), 1);
-		assertEquals(one.compareTo(zero), 1);
-		assertEquals(one.compareTo(one), 0);
-		assertEquals(one.compareTo(new D(1)), 0);
+		assertEquals(onePos.compareTo(oneNeg), 1);
+		assertEquals(onePos.compareTo(zero), 1);
+		assertEquals(onePos.compareTo(onePos), 0);
+		assertEquals(onePos.compareTo(new D(1)), 0);
 	}
 
 	@Test
@@ -63,22 +63,22 @@ public class AbstractDoubleTest {
 		D one = new D(1);
 		D mone = new D(-1);
 
-		assertEquals(zero.equals(null), false);
+		assertFalse(zero.equals(null));
 
-		assertEquals(mone.equals(mone), true);
-		assertEquals(mone.equals(new D(-1)), true);
-		assertEquals(mone.equals(zero), false);
-		assertEquals(mone.equals(one), false);
+		assertTrue(mone.equals(mone));
+		assertTrue(mone.equals(new D(-1)));
+		assertFalse(mone.equals(zero));
+		assertFalse(mone.equals(one));
 
-		assertEquals(zero.equals(mone), false);
-		assertEquals(zero.equals(zero), true);
-		assertEquals(zero.equals(new D(0)), true);
-		assertEquals(zero.equals(one), false);
+		assertFalse(zero.equals(mone));
+		assertTrue(zero.equals(zero));
+		assertTrue(zero.equals(new D(0)));
+		assertFalse(zero.equals(one));
 
-		assertEquals(one.equals(mone), false);
-		assertEquals(one.equals(zero), false);
-		assertEquals(one.equals(one), true);
-		assertEquals(one.equals(new D(1)), true);
+		assertFalse(one.equals(mone));
+		assertFalse(one.equals(zero));
+		assertTrue(one.equals(one));
+		assertTrue(one.equals(new D(1)));
 	}
 
 	private static final class D extends AbstractDouble {

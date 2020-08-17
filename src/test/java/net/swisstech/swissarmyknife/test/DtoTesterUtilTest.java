@@ -4,9 +4,6 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-/**
- * test the DtoTesterUtil
- */
 public class DtoTesterUtilTest {
 
 	// I think testng messes with us when we use mockito to throw all the exceptions

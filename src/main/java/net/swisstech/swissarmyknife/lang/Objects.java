@@ -17,7 +17,7 @@ public final class Objects {
 	 */
 	public static <T> T notNull(T o, String name) {
 		if (o == null) {
-			throw new IllegalArgumentException("Object " + name + " must not be null");
+			throw new IllegalArgumentException("Object '" + name + "' must not be null");
 		}
 		return o;
 	}

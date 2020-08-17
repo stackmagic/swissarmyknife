@@ -9,9 +9,6 @@ import static net.swisstech.swissarmyknife.test.Assert.assertCollectionContainsA
 import static net.swisstech.swissarmyknife.test.Assert.assertEmpty;
 import static net.swisstech.swissarmyknife.util.Sets.newHashSet;
 
-/**
- * test the PortSnoop
- */
 public class PortSnoopTest {
 
 	@Test

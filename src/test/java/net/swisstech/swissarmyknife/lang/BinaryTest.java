@@ -8,9 +8,6 @@ import java.io.IOException;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-/**
- * test the Binary
- */
 public class BinaryTest {
 
 	@Test

@@ -9,9 +9,6 @@ import java.util.LinkedList;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNull;
 
-/**
- * test the Preconditions
- */
 public class PreconditionsTest {
 
 	@Test

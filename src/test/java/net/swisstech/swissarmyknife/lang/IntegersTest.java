@@ -10,8 +10,6 @@ import static org.testng.Assert.*;
 //TODO structurally exactly the same as Longs, Integers, Integers, Shorts etc... have 1 master and generate the rest!!
 
 /**
- * some int number utils
- *
  * @since 1.2.0
  */
 public class IntegersTest {

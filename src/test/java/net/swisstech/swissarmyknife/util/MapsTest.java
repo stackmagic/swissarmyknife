@@ -10,9 +10,6 @@ import java.util.Map;
 import static net.swisstech.swissarmyknife.util.Maps.*;
 import static org.testng.Assert.*;
 
-/**
- * test the Maps
- */
 public class MapsTest {
 
 	private static final Map<String, String> EMPTY = new HashMap<>();

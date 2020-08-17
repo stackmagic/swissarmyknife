@@ -4,9 +4,6 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-/**
- * test the AbstractCharSequence
- */
 public class AbstractCharSequenceTest {
 
 	public static final class Str extends AbstractCharSequence {

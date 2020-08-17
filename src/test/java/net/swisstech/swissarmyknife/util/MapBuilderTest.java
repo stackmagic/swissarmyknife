@@ -7,9 +7,6 @@ import java.util.Map;
 import static net.swisstech.swissarmyknife.test.Assert.assertEmpty;
 import static net.swisstech.swissarmyknife.test.Assert.assertSize;
 
-/**
- * test the MapBuilder
- */
 public class MapBuilderTest {
 
 	@Test

@@ -10,8 +10,6 @@ import static org.testng.Assert.*;
 //TODO structurally exactly the same as Longs, Integers, Integers, Shorts etc... have 1 master and generate the rest!!
 
 /**
- * some long number utils
- *
  * @since 1.2.0
  */
 public class FloatsTest {
@@ -24,10 +22,10 @@ public class FloatsTest {
 	@Test
 	public void tryParse() {
 		assertNull(Floats.tryParse("null"));
-		assertEquals(Floats.tryParse("1"), 1f);
-		assertEquals(Floats.tryParse("1", 23.0f), 1f);
-		assertEquals(Floats.tryParse("1 3 4", 23.0f), 23f);
-		assertEquals(Floats.tryParse(null, 23.0f), 23f);
+		assertEquals((float) Floats.tryParse("1"), 1f);
+		assertEquals((float) Floats.tryParse("1", 23.0f), 1f);
+		assertEquals((float) Floats.tryParse("1 3 4", 23.0f), 23f);
+		assertEquals((float) Floats.tryParse(null, 23.0f), 23f);
 	}
 
 	@Test
@@ -91,18 +89,18 @@ public class FloatsTest {
 	}
 
 	@Test(expectedExceptions = IllegalArgumentException.class)
-	public void zeroOrpositiveLo() {
+	public void zeroOrPositiveLo() {
 		Floats.zeroOrPositive(-1.0f);
 	}
 
 	@Test
-	public void zeroOrpositive() {
+	public void zeroOrPositive() {
 		assertEquals(Floats.zeroOrPositive(0.0f), 0.0f);
 		assertEquals(Floats.zeroOrPositive(1.0f), 1.0f);
 	}
 
 	@Test
-	public void iszeroOrNegative() {
+	public void isZeroOrNegative() {
 		assertFalse(Floats.isZeroOrNegative(1.0f));
 		assertTrue(Floats.isZeroOrNegative(0.0f));
 	}

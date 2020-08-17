@@ -10,8 +10,6 @@ import static org.testng.Assert.*;
 //TODO structurally exactly the same as Longs, Bytes, Integers, Shorts etc... have 1 master and generate the rest!!
 
 /**
- * some byte number utils
- *
  * @since 1.2.0
  */
 public class BytesTest {
@@ -91,18 +89,18 @@ public class BytesTest {
 	}
 
 	@Test(expectedExceptions = IllegalArgumentException.class)
-	public void zeroOrpositiveLo() {
+	public void zeroOrPositiveLo() {
 		Bytes.zeroOrPositive((byte) -1);
 	}
 
 	@Test
-	public void zeroOrpositive() {
+	public void zeroOrPositive() {
 		assertEquals(Bytes.zeroOrPositive((byte) 0), (byte) 0);
 		assertEquals(Bytes.zeroOrPositive((byte) 1), (byte) 1);
 	}
 
 	@Test
-	public void iszeroOrNegative() {
+	public void isZeroOrNegative() {
 		assertFalse(Bytes.isZeroOrNegative((byte) 1));
 		assertTrue(Bytes.isZeroOrNegative((byte) 0));
 	}

@@ -28,8 +28,8 @@ repositories {
  * DEPENDENCIES
  */
 ext.versions = [
-		  slf4j   : '1.8.0-beta2'
-		, testng  : '6.14.3'
+		  slf4j   : '1.8.0-beta4'
+		, testng  : '7.3.0'
 		, mockito : '1.10.19'
 		, logger  : '1.1.0'
 ]
@@ -55,6 +55,7 @@ test {
 
 	jacoco {
 		destinationFile = file("${buildDir}/jacoco.ut.exec")
+		classDumpDir = file("${buildDir}/jacoco/classpathdumps")
 	}
 }
 

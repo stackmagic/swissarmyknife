@@ -12,17 +12,14 @@ import static net.swisstech.swissarmyknife.lang.Strings.*;
 import static net.swisstech.swissarmyknife.test.Assert.*;
 import static org.testng.Assert.*;
 
-/**
- * test the Strings
- */
 public class StringsTest {
 
-	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object needle must not be null")
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object 'needle' must not be null")
 	public void countOccurrencesFailNeedleNull() {
 		countOccurrences(null, null);
 	}
 
-	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object haystack must not be null")
+	@Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object 'haystack' must not be null")
 	public void countOccurrencesFailHaystackNull() {
 		countOccurrences("", null);
 	}
@@ -43,7 +40,7 @@ public class StringsTest {
 
 	@Test
 	public void valueOrDefaultOk() {
-		assertEquals(valueOrDefault(null, null), null);
+		assertNull(valueOrDefault(null, null));
 		assertEquals(valueOrDefault(null, "hello"), "hello");
 		assertEquals(valueOrDefault("world", "hello"), "world");
 	}

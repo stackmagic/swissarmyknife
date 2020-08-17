@@ -12,9 +12,6 @@ import static net.swisstech.swissarmyknife.test.Assert.assertInstanceOf;
 import static net.swisstech.swissarmyknife.test.Assert.assertSize;
 import static net.swisstech.swissarmyknife.util.Lists.*;
 
-/**
- * test the Lists
- */
 public class ListsTest {
 
 	@Test

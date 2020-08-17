@@ -10,8 +10,6 @@ import org.testng.annotations.Test;
 import java.security.SecureRandomSpi;
 
 /**
- * some utils for random numbers
- *
  * @since 1.2.0
  */
 public class RandomsTest {
