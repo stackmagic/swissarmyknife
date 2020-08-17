@@ -1,5 +1,6 @@
 package net.swisstech.swissarmyknife.math;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,6 +12,8 @@ import java.util.Set;
 public class BaseAny {
 
 	private final char[] chars;
+	private final double base;
+	private final BigDecimal baseDecimal;
 
 	public BaseAny(String chars) {
 		this(chars.toCharArray());
@@ -18,54 +21,62 @@ public class BaseAny {
 
 	public BaseAny(char[] chars) {
 		this.chars = verifyChars(chars.clone());
+		this.base = chars.length;
+		this.baseDecimal = new BigDecimal(base);
 	}
 
-	public String encode(double value) {
+	public String encode(BigDecimal value) {
 		StringBuilder sb = new StringBuilder();
 		encode(value, sb);
 		return sb.toString();
 	}
 
-	private void encode(double value, StringBuilder sb) {
-		double base = chars.length;
-		double div = value / base;
-		double mod = value % base;
+	private void encode(BigDecimal value, StringBuilder sb) {
+		BigDecimal[] divMod = value.divideAndRemainder(baseDecimal);
+		BigDecimal div = divMod[0];
+		BigDecimal mod = divMod[1];
 
-		if (div > 0) {
-			if (div > base) {
+		if (div.compareTo(BigDecimal.ONE) >= 0) {
+			if (baseDecimal.compareTo(div) < 0) {
 				encode(div, sb);
 			} else {
-				int idx = (int) div;
+				int idx = div.intValue();
 				sb.append(chars[idx]);
 			}
 		}
 
-		if (mod < base) {
-			int idx = (int) mod;
-			sb.append(chars[idx]);
-			return;
-		}
+//		if (baseDecimal.compareTo(mod) > 0) {
+		int idx = mod.intValue();
+		sb.append(chars[idx]);
+//			return;
+//		}
 
-		encode(mod, sb);
+//		encode(mod, sb);
 	}
 
-	public double decode(String enc) {
-		return decode(enc, 0d);
+	public BigDecimal decode(String enc) {
+		return decode(enc, BigDecimal.ZERO);
 	}
 
-	private double decode(String enc, double d) {
-		double base = chars.length;
+	private BigDecimal decode(String enc, BigDecimal d) {
 		char c = enc.charAt(0);
 
-		double val = 0;
+		int val = 0;
 		for (int i = 0; i < base; i++) {
 			char cc = chars[i];
 			if (c == cc) {
 				val = i;
+				break;
+			} else if (i + 1 == base) {
+				throw new IllegalArgumentException("Invalid character '" + c + "', not found in symbol list");
 			}
 		}
 
-		d = d * base + val;
+		// shift by 1 position
+		d = d.multiply(baseDecimal);
+
+		// add value for this decoded character
+		d = d.add(new BigDecimal(val));
 
 		if (enc.length() > 1) {
 			enc = enc.substring(1);
