@@ -50,7 +50,7 @@ public class BaseAnyTest {
 
 		for (Double value : values) {
 			String enc = be.encode(dbase, value);
-			double dec = be.decode(dbase, enc);
+			Double dec = be.decode(dbase, enc);
 			System.out.println(String.format("%40.0f => %20s => %40.0f => OK = %b", value, enc, dec, value.equals(dec)));
 			assertEquals(value, dec);
 		}
