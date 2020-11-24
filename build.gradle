@@ -11,9 +11,6 @@ description = 'Miscellaneous java utilities'
 group       = 'net.swisstech'
 version     = '2.0.0'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
 // normal repositories and dependencies
 repositories {
 	mavenLocal()
@@ -22,12 +19,12 @@ repositories {
 }
 
 dependencies {
-	compile 'ch.bind:philib:0.13.0'
-	compile 'net.swisstech:logger:1.1.0'
+	implementation 'ch.bind:philib:0.13.0'
+	implementation 'net.swisstech:logger:1.1.0'
 
-	testCompile 'org.testng:testng:6.8.8'
-	testCompile 'org.mockito:mockito-all:1.10.8'
-	testCompile "org.slf4j:slf4j-simple:1.8.0-beta2"
+	testImplementation 'org.testng:testng:7.3.0'
+	testImplementation 'org.mockito:mockito-all:1.10.19'
+	testImplementation 'org.slf4j:slf4j-simple:1.8.0-beta4'
 }
 
 // testing
@@ -35,9 +32,15 @@ test {
 	useTestNG()
 }
 
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(14)
+	}
+}
+
 // task to generate wrapper
 wrapper {
-	gradleVersion = '4.10'
+	gradleVersion = '6.7.1'
 }
 
 // source-code jar
