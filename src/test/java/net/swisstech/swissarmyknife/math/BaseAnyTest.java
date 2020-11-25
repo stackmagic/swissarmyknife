@@ -88,6 +88,5 @@ public class BaseAnyTest {
 //			System.out.println();
 			assertEquals(dec, value);
 		}
-
 	}
 }

@@ -10,14 +10,9 @@ plugins {
 
 description = 'Miscellaneous java utilities'
 group       = 'net.swisstech'
-version     = '2.1.0'
+version     = '2.0.0'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-/*
- * REPOSITORIES
- */
+// normal repositories and dependencies
 repositories {
 	mavenLocal()
 	mavenCentral()
@@ -35,11 +30,11 @@ ext.versions = [
 ]
 
 dependencies {
-	compile     "net.swisstech:logger:${versions.logger}"
+	implementation     "net.swisstech:logger:${versions.logger}"
 
-	testCompile "org.slf4j:slf4j-simple:${versions.slf4j}"
-	testCompile "org.testng:testng:${versions.testng}"
-	testCompile "org.mockito:mockito-all:${versions.mockito}"
+	testImplementation "org.slf4j:slf4j-simple:${versions.slf4j}"
+	testImplementation "org.testng:testng:${versions.testng}"
+	testImplementation "org.mockito:mockito-all:${versions.mockito}"
 }
 
 /*
@@ -59,11 +54,17 @@ test {
 	}
 }
 
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(14)
+	}
+}
+
 /*
  * WRAPPER
  */
 wrapper {
-	gradleVersion = '6.6'
+	gradleVersion = '6.7.1'
 }
 
 /*
