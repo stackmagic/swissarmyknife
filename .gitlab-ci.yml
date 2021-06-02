@@ -1,4 +1,4 @@
-image: openjdk:15-alpine
+image: openjdk:11
 
 before_script:
   - export GRADLE_OPTS="-Dorg.gradle.daemon=false"
