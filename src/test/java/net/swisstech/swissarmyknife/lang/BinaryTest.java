@@ -1,9 +1,13 @@
 package net.swisstech.swissarmyknife.lang;
 
 import net.swisstech.swissarmyknife.test.PrivateConstructor;
+import net.swisstech.swissarmyknife.util.Triple;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
@@ -67,5 +71,30 @@ public class BinaryTest {
 		assertFalse(Binary.isPowerOfTwo(8191));
 		assertTrue(Binary.isPowerOfTwo(8192));
 		assertFalse(Binary.isPowerOfTwo(8193));
+	}
+
+	@Test
+	public void testCountLeadingZeroes() {
+
+		List<Triple<Integer, Integer, Integer>> tests = new ArrayList();
+		tests.add(new Triple(0, 0, 8));
+		tests.add(new Triple(1, 1, 7));
+		tests.add(new Triple(2, 3, 6));
+		tests.add(new Triple(4, 7, 5));
+		tests.add(new Triple(8, 15, 4));
+		tests.add(new Triple(16, 31, 3));
+		tests.add(new Triple(32, 63, 2));
+		tests.add(new Triple(64, 127, 1));
+		tests.add(new Triple(128, 255, 0));
+
+		for (Triple<Integer, Integer, Integer> t : tests) {
+			for (int i = t.a; i <= t.b; i++) {
+				Assert.assertEquals(
+						Binary.countLeadingZeroes(new byte[]{(byte) (i & 0xFF)}),
+						t.c.intValue(),
+						"Triple: " + t.a + " " + t.b + " " + t.c
+				);
+			}
+		}
 	}
 }
