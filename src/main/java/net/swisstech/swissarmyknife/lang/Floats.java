@@ -1,8 +1,9 @@
 package net.swisstech.swissarmyknife.lang;
 
 //TODO structurally exactly the same as Longs, Bytes, Integers, Shorts etc...
-//have 1 master and generate the rest!! Characters are the only signed type
-// only Characters doesn't have a "parseCharacter" method
+//  have 1 master and generate the rest!! Characters are the only unsigned type
+//  only Characters doesn't have a "parseCharacter" method
+//  https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
 
 /**
  * some float number utils
