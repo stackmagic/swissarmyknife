@@ -8,27 +8,27 @@ import java.util.LinkedList;
  */
 public class Stack<T> {
 
-	private final Deque<T> elements = new LinkedList<>();
+    private final Deque<T> elements = new LinkedList<>();
 
-	public T peek() {
-		return elements.peekFirst();
-	}
+    public T peek() {
+        return elements.peekFirst();
+    }
 
-	public T pop() {
-		return elements.removeFirst();
-	}
+    public T pop() {
+        return elements.removeFirst();
+    }
 
-	public void push(T element) {
-		elements.offerFirst(element);
-	}
+    public void push(T element) {
+        elements.offerFirst(element);
+    }
 
-	public int size() {
-		return elements.size();
-	}
+    public int size() {
+        return elements.size();
+    }
 
-	public int clear() {
-		int size = size();
-		elements.clear();
-		return size;
-	}
+    public int clear() {
+        int size = size();
+        elements.clear();
+        return size;
+    }
 }

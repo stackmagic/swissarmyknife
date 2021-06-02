@@ -9,9 +9,7 @@ public final class Objects {
         return notNull(o, "");
     }
 
-    /**
-     * @since 2.1.0
-     */
+    /** @since 2.1.0 */
     public static <T> T notNull(T o, String name) {
         if (o == null) {
             throw new IllegalArgumentException("Object '" + name + "' must not be null");

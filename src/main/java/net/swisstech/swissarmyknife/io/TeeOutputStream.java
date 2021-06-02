@@ -10,41 +10,41 @@ import java.io.OutputStream;
  */
 class TeeOutputStream extends OutputStream {
 
-	private final OutputStream streamA;
-	private final OutputStream streamB;
+    private final OutputStream streamA;
+    private final OutputStream streamB;
 
-	public TeeOutputStream(OutputStream streamA, OutputStream streamB) {
-		this.streamA = streamA;
-		this.streamB = streamB;
-	}
+    public TeeOutputStream(OutputStream streamA, OutputStream streamB) {
+        this.streamA = streamA;
+        this.streamB = streamB;
+    }
 
-	@Override
-	public void write(int b) throws IOException {
-		streamA.write(b);
-		streamB.write(b);
-	}
+    @Override
+    public void write(int b) throws IOException {
+        streamA.write(b);
+        streamB.write(b);
+    }
 
-	@Override
-	public void write(byte[] b) throws IOException {
-		streamA.write(b);
-		streamB.write(b);
-	}
+    @Override
+    public void write(byte[] b) throws IOException {
+        streamA.write(b);
+        streamB.write(b);
+    }
 
-	@Override
-	public void write(byte[] b, int off, int len) throws IOException {
-		streamA.write(b, off, len);
-		streamB.write(b, off, len);
-	}
+    @Override
+    public void write(byte[] b, int off, int len) throws IOException {
+        streamA.write(b, off, len);
+        streamB.write(b, off, len);
+    }
 
-	@Override
-	public void flush() throws IOException {
-		streamA.flush();
-		streamB.flush();
-	}
+    @Override
+    public void flush() throws IOException {
+        streamA.flush();
+        streamB.flush();
+    }
 
-	@Override
-	public void close() throws IOException {
-		streamA.close();
-		streamB.close();
-	}
+    @Override
+    public void close() throws IOException {
+        streamA.close();
+        streamB.close();
+    }
 }

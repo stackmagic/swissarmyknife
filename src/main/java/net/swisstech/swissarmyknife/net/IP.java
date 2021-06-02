@@ -7,22 +7,16 @@ package net.swisstech.swissarmyknife.net;
  */
 public final class IP {
 
-	/**
-	 * lowest possible octet in an ip
-	 */
-	public static final int MIN_OCTET = 0;
+    /** lowest possible octet in an ip */
+    public static final int MIN_OCTET = 0;
 
-	/**
-	 * highest possible octet in an ip
-	 */
-	public static final int MAX_OCTET = (int) Math.pow(2, 8) - 1;
+    /** highest possible octet in an ip */
+    public static final int MAX_OCTET = (int) Math.pow(2, 8) - 1;
 
-	/**
-	 * private constructor for utility class
-	 */
-	private IP() {
-	}
+    /** private constructor for utility class */
+    private IP() {
+    }
 
-	// TODO create random local ips as byte[] or string for use in tests
-	// TODO validator/check methods
+    // TODO create random local ips as byte[] or string for use in tests
+    // TODO validator/check methods
 }

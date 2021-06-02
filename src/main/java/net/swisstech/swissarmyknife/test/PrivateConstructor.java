@@ -11,22 +11,20 @@ import java.lang.reflect.Modifier;
  */
 public final class PrivateConstructor {
 
-	/**
-	 * private constructor for utility class
-	 */
-	private PrivateConstructor() {
-	}
+    /** private constructor for utility class */
+    private PrivateConstructor() {
+    }
 
-	public static void invoke(Class<?> clazz) throws IOException {
-		try {
-			Constructor<?> ctor = clazz.getDeclaredConstructor();
-			if (!Modifier.isPrivate(ctor.getModifiers())) {
-				throw new AssertionError("Expected Constructor to be private");
-			}
-			ctor.setAccessible(true);
-			ctor.newInstance();
-		} catch (Exception e) {
-			throw new IOException("Unexpected Exception", e);
-		}
-	}
+    public static void invoke(Class<?> clazz) throws IOException {
+        try {
+            Constructor<?> ctor = clazz.getDeclaredConstructor();
+            if (!Modifier.isPrivate(ctor.getModifiers())) {
+                throw new AssertionError("Expected Constructor to be private");
+            }
+            ctor.setAccessible(true);
+            ctor.newInstance();
+        } catch (Exception e) {
+            throw new IOException("Unexpected Exception", e);
+        }
+    }
 }

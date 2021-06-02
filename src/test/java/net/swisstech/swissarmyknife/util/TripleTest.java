@@ -4,8 +4,8 @@ import org.testng.annotations.Test;
 
 public class TripleTest {
 
-	@Test
-	public void test() {
-		new Triple<>("Coverage", 100, this);
-	}
+    @Test
+    public void test() {
+        new Triple<>("Coverage", 100, this);
+    }
 }

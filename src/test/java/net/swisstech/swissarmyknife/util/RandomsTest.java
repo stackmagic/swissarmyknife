@@ -33,7 +33,7 @@ public class RandomsTest {
             protected byte[] engineGenerateSeed(int i) {
                 return new byte[0];
             }
-        }, new Provider("test", "ver", "info") {
+        }, new Provider("test", 420.69, "info") {
         });
     }
 

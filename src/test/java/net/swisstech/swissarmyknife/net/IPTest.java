@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class IPTest {
 
-	@Test
-	public void privateConstructor() throws IOException {
-		PrivateConstructor.invoke(IP.class);
-	}
+    @Test
+    public void privateConstructor() throws IOException {
+        PrivateConstructor.invoke(IP.class);
+    }
 }

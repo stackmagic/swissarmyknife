@@ -9,42 +9,34 @@ import java.util.Map;
  */
 public final class Maps {
 
-	/**
-	 * private constructor for utility class
-	 */
-	private Maps() {
-	}
+    /** private constructor for utility class */
+    private Maps() {
+    }
 
-	/**
-	 * @since 2.1.0
-	 */
-	public static <K, V> Map<K, V> empty(Map<K, V> map) {
-		if (isNotEmpty(map)) {
-			throw new IllegalArgumentException("Expected map to be empty but it isn't");
-		}
+    /** @since 2.1.0 */
+    public static <K, V> Map<K, V> empty(Map<K, V> map) {
+        if (isNotEmpty(map)) {
+            throw new IllegalArgumentException("Expected map to be empty but it isn't");
+        }
 
-		return map;
-	}
+        return map;
+    }
 
-	/**
-	 * @since 2.1.0
-	 */
-	public static <K, V> Map<K, V> notEmpty(Map<K, V> map) {
-		if (isEmpty(map)) {
-			throw new IllegalArgumentException("Expected map to not be empty but it is");
-		}
+    /** @since 2.1.0 */
+    public static <K, V> Map<K, V> notEmpty(Map<K, V> map) {
+        if (isEmpty(map)) {
+            throw new IllegalArgumentException("Expected map to not be empty but it is");
+        }
 
-		return map;
-	}
+        return map;
+    }
 
-	/**
-	 * @since 2.1.0
-	 */
-	public static <K, V> boolean isNotEmpty(Map<K, V> map) {
-		return !isEmpty(map);
-	}
+    /** @since 2.1.0 */
+    public static <K, V> boolean isNotEmpty(Map<K, V> map) {
+        return !isEmpty(map);
+    }
 
-	public static <K, V> boolean isEmpty(Map<K, V> map) {
-		return map == null || map.isEmpty();
-	}
+    public static <K, V> boolean isEmpty(Map<K, V> map) {
+        return map == null || map.isEmpty();
+    }
 }

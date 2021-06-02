@@ -14,33 +14,33 @@ import java.util.List;
  */
 public final class BackgroundProcess {
 
-	private final ProcessWrapper process;
+    private final ProcessWrapper process;
 
-	private BackgroundProcess(ProcessWrapper process) {
-		this.process = process;
-	}
+    private BackgroundProcess(ProcessWrapper process) {
+        this.process = process;
+    }
 
-	public static BackgroundProcess launch(List<CharSequence> cmd, File workingDir) {
-		ProcessWrapper process = ProcessWrapper.launch(cmd, workingDir);
-		return new BackgroundProcess(process);
-	}
+    public static BackgroundProcess launch(List<CharSequence> cmd, File workingDir) {
+        ProcessWrapper process = ProcessWrapper.launch(cmd, workingDir);
+        return new BackgroundProcess(process);
+    }
 
-	public BackgroundProcess waitForOpenPorts(Collection<Integer> ports, long timeout) {
-		PortSnoop.waitForOpenPorts(process, ports, timeout);
-		return this;
-	}
+    public BackgroundProcess waitForOpenPorts(Collection<Integer> ports, long timeout) {
+        PortSnoop.waitForOpenPorts(process, ports, timeout);
+        return this;
+    }
 
-	public BackgroundProcess waitForStringInStdout(String needle, long timeout) throws IOException {
-		InputStreams.waitForOutput(needle, process.getInputStream(), timeout);
-		return this;
-	}
+    public BackgroundProcess waitForStringInStdout(String needle, long timeout) throws IOException {
+        InputStreams.waitForOutput(needle, process.getInputStream(), timeout);
+        return this;
+    }
 
-	public BackgroundProcess waitForStringInStderr(String needle, long timeout) throws IOException {
-		InputStreams.waitForOutput(needle, process.getErrorStream(), timeout);
-		return this;
-	}
+    public BackgroundProcess waitForStringInStderr(String needle, long timeout) throws IOException {
+        InputStreams.waitForOutput(needle, process.getErrorStream(), timeout);
+        return this;
+    }
 
-	public int shutdown() {
-		return process.killWait(Signal.TERM);
-	}
+    public int shutdown() {
+        return process.killWait(Signal.TERM);
+    }
 }

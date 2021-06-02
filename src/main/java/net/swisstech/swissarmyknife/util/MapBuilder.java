@@ -10,22 +10,22 @@ import java.util.Map;
  */
 public class MapBuilder<K, V> {
 
-	private final Map<K, V> map = new HashMap<>();
+    private final Map<K, V> map = new HashMap<>();
 
-	public MapBuilder() {
-	}
+    public MapBuilder() {
+    }
 
-	public MapBuilder(K key, V value) {
-		super();
-		add(key, value);
-	}
+    public MapBuilder(K key, V value) {
+        super();
+        add(key, value);
+    }
 
-	public MapBuilder<K, V> add(K key, V value) {
-		map.put(key, value);
-		return this;
-	}
+    public MapBuilder<K, V> add(K key, V value) {
+        map.put(key, value);
+        return this;
+    }
 
-	public Map<K, V> build() {
-		return map;
-	}
+    public Map<K, V> build() {
+        return map;
+    }
 }

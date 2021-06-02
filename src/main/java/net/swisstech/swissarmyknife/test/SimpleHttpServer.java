@@ -13,16 +13,16 @@ import java.net.InetSocketAddress;
  */
 public class SimpleHttpServer implements Closeable {
 
-	private final HttpServer server;
+    private final HttpServer server;
 
-	public SimpleHttpServer(int port, ClassLoader classLoader) throws IOException {
-		server = HttpServer.create(new InetSocketAddress(port), 0);
-		server.createContext("/", new SimpleHttpServerClassloaderFileServer(classLoader));
-		server.start();
-	}
+    public SimpleHttpServer(int port, ClassLoader classLoader) throws IOException {
+        server = HttpServer.create(new InetSocketAddress(port), 0);
+        server.createContext("/", new SimpleHttpServerClassloaderFileServer(classLoader));
+        server.start();
+    }
 
-	@Override
-	public void close() throws IOException {
-		server.stop(0);
-	}
+    @Override
+    public void close() throws IOException {
+        server.stop(0);
+    }
 }

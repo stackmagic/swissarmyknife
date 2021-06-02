@@ -15,46 +15,44 @@ import java.lang.reflect.Method;
  */
 public final class DtoTesterUtil {
 
-	private static final Object[] EMPTY_ARGS = new Object[0];
+    private static final Object[] EMPTY_ARGS = new Object[0];
 
-	/**
-	 * private constructor for utility class
-	 */
-	private DtoTesterUtil() {
-	}
+    /** private constructor for utility class */
+    private DtoTesterUtil() {
+    }
 
-	public static void testAllProperties(Object object) throws IOException {
-		if (object == null) {
-			return;
-		}
-		try {
-			BeanInfo bi = Introspector.getBeanInfo(object.getClass());
-			PropertyDescriptor[] pds = bi.getPropertyDescriptors();
+    public static void testAllProperties(Object object) throws IOException {
+        if (object == null) {
+            return;
+        }
+        try {
+            BeanInfo bi = Introspector.getBeanInfo(object.getClass());
+            PropertyDescriptor[] pds = bi.getPropertyDescriptors();
 
-			for (PropertyDescriptor pd : pds) {
+            for (PropertyDescriptor pd : pds) {
 
-				Method getter = pd.getReadMethod();
-				if (getter == null) {
-					continue;
-				}
+                Method getter = pd.getReadMethod();
+                if (getter == null) {
+                    continue;
+                }
 
-				Object value = getter.invoke(object, EMPTY_ARGS);
+                Object value = getter.invoke(object, EMPTY_ARGS);
 
-				Method setter = pd.getWriteMethod();
-				if (setter == null) {
-					continue;
-				}
+                Method setter = pd.getWriteMethod();
+                if (setter == null) {
+                    continue;
+                }
 
-				setter.invoke(object, value);
-			}
+                setter.invoke(object, value);
+            }
 
-			// and some other stuff
-			//noinspection ResultOfMethodCallIgnored
-			object.hashCode();
-			//noinspection ResultOfMethodCallIgnored
-			object.toString();
-		} catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | IntrospectionException e) {
-			throw new IOException(e);
-		}
-	}
+            // and some other stuff
+            //noinspection ResultOfMethodCallIgnored
+            object.hashCode();
+            //noinspection ResultOfMethodCallIgnored
+            object.toString();
+        } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | IntrospectionException e) {
+            throw new IOException(e);
+        }
+    }
 }

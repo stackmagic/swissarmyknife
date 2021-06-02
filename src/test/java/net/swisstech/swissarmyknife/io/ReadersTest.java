@@ -14,24 +14,24 @@ import static org.testng.Assert.assertSame;
 
 public class ReadersTest {
 
-	@Test
-	public void privateConstructor() throws IOException {
-		PrivateConstructor.invoke(Readers.class);
-	}
+    @Test
+    public void privateConstructor() throws IOException {
+        PrivateConstructor.invoke(Readers.class);
+    }
 
-	@Test
-	public void bufferedReturnsSame() {
-		BufferedReader br = mock(BufferedReader.class);
-		assertInstanceOf(BufferedReader.class, br);
-		BufferedReader b2 = Readers.buffered(br);
-		assertSame(b2, br);
-	}
+    @Test
+    public void bufferedReturnsSame() {
+        BufferedReader br = mock(BufferedReader.class);
+        assertInstanceOf(BufferedReader.class, br);
+        BufferedReader b2 = Readers.buffered(br);
+        assertSame(b2, br);
+    }
 
-	@Test
-	public void bufferedWraps() {
-		Reader r = mock(Reader.class);
-		assertInstanceOf(Reader.class, r);
-		BufferedReader b = Readers.buffered(r);
-		assertNotSame(b, r);
-	}
+    @Test
+    public void bufferedWraps() {
+        Reader r = mock(Reader.class);
+        assertInstanceOf(Reader.class, r);
+        BufferedReader b = Readers.buffered(r);
+        assertNotSame(b, r);
+    }
 }

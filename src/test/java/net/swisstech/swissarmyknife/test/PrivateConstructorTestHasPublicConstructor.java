@@ -5,6 +5,6 @@ package net.swisstech.swissarmyknife.test;
  */
 public class PrivateConstructorTestHasPublicConstructor {
 
-	public PrivateConstructorTestHasPublicConstructor() {
-	}
+    public PrivateConstructorTestHasPublicConstructor() {
+    }
 }

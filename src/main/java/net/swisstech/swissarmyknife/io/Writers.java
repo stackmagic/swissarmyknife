@@ -5,16 +5,14 @@ import java.io.Writer;
 
 public final class Writers {
 
-	/**
-	 * private constructor for utility class
-	 */
-	private Writers() {
-	}
+    /** private constructor for utility class */
+    private Writers() {
+    }
 
-	public static BufferedWriter buffered(Writer writer) {
-		if (writer instanceof BufferedWriter) {
-			return (BufferedWriter) writer;
-		}
-		return new BufferedWriter(writer);
-	}
+    public static BufferedWriter buffered(Writer writer) {
+        if (writer instanceof BufferedWriter) {
+            return (BufferedWriter) writer;
+        }
+        return new BufferedWriter(writer);
+    }
 }

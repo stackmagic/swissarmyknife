@@ -10,27 +10,29 @@ import static org.testng.Assert.assertNull;
 
 public class EnumsTest {
 
-	@Test
-	public void privateConstructor() throws IOException {
-		PrivateConstructor.invoke(Enums.class);
-	}
+    @Test
+    public void privateConstructor() throws IOException {
+        PrivateConstructor.invoke(Enums.class);
+    }
 
-	@Test
-	public void testNameOf() {
-		assertNull(Enums.nameOf(null));
-		assertEquals(Enums.nameOf(DummyEnum.WORLD), "WORLD");
-	}
+    @Test
+    public void testNameOf() {
+        //noinspection ConstantConditions
+        assertNull(Enums.nameOf(null));
+        assertEquals(Enums.nameOf(DummyEnum.WORLD), "WORLD");
+    }
 
-	@Test
-	public void testNameOfWithDefault() {
-		assertNull(Enums.nameOf(null, null));
-		assertEquals(Enums.nameOf(null, ""), "");
-		assertEquals(Enums.nameOf(null, "oops"), "oops");
-		assertEquals(Enums.nameOf(DummyEnum.HELLO, "unused default"), "HELLO");
-	}
+    @Test
+    public void testNameOfWithDefault() {
+        //noinspection ConstantConditions
+        assertNull(Enums.nameOf(null, null));
+        assertEquals(Enums.nameOf(null, ""), "");
+        assertEquals(Enums.nameOf(null, "oops"), "oops");
+        assertEquals(Enums.nameOf(DummyEnum.HELLO, "unused default"), "HELLO");
+    }
 
-	public static enum DummyEnum {
-		HELLO,
-		WORLD;
-	}
+    public static enum DummyEnum {
+        HELLO,
+        WORLD;
+    }
 }

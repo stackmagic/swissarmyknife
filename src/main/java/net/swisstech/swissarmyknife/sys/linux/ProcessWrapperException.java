@@ -7,21 +7,21 @@ package net.swisstech.swissarmyknife.sys.linux;
  */
 public class ProcessWrapperException extends RuntimeException {
 
-	private static final long serialVersionUID = 1000214087520738951L;
+    private static final long serialVersionUID = 1000214087520738951L;
 
-	public ProcessWrapperException() {
-		super();
-	}
+    public ProcessWrapperException() {
+        super();
+    }
 
-	public ProcessWrapperException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    public ProcessWrapperException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-	public ProcessWrapperException(String message) {
-		super(message);
-	}
+    public ProcessWrapperException(String message) {
+        super(message);
+    }
 
-	public ProcessWrapperException(Throwable cause) {
-		super(cause);
-	}
+    public ProcessWrapperException(Throwable cause) {
+        super(cause);
+    }
 }

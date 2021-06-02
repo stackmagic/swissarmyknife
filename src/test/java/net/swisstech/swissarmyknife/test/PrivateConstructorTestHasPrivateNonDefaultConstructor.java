@@ -5,6 +5,6 @@ package net.swisstech.swissarmyknife.test;
  */
 public class PrivateConstructorTestHasPrivateNonDefaultConstructor {
 
-	private PrivateConstructorTestHasPrivateNonDefaultConstructor(int dummy) {
-	}
+    private PrivateConstructorTestHasPrivateNonDefaultConstructor(int dummy) {
+    }
 }
