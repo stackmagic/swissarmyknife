@@ -10,7 +10,7 @@ plugins {
 
 description = 'Miscellaneous java utilities'
 group       = 'net.swisstech'
-version     = '2.0.0'
+version     = '2.1.0'
 
 // normal repositories and dependencies
 repositories {
@@ -24,7 +24,7 @@ repositories {
  */
 ext.versions = [
 		  slf4j   : '1.8.0-beta4'
-		, testng  : '7.3.0'
+		, testng  : '7.4.0'
 		, mockito : '1.10.19'
 		, logger  : '1.1.0'
 ]
@@ -56,7 +56,7 @@ test {
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(14)
+		languageVersion = JavaLanguageVersion.of(11)
 	}
 }
 
@@ -64,7 +64,7 @@ java {
  * WRAPPER
  */
 wrapper {
-	gradleVersion = '6.7.1'
+	gradleVersion = '6.8'
 }
 
 /*
