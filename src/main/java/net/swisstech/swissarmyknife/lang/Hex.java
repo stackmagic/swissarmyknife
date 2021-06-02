@@ -21,6 +21,26 @@ public final class Hex {
 	private Hex() {
 	}
 
+	public static String toHexString(byte[] data) {
+		return toHexString(Arrays.toInt(data));
+	}
+
+	public static String toHexString(int[] data) {
+		if (data == null || data.length < 1) {
+			return "";
+		}
+
+		StringBuilder sb = new StringBuilder(2 * data.length);
+		for (int i : data) {
+			sb.append(String.format("%02X", i));
+		}
+		return sb.toString();
+	}
+
+	public static String toHexDumpString(byte[] data) {
+		return toHexDumpString(Arrays.toInt(data));
+	}
+
 	public static String toHexDumpString(int[] data) {
 
 		StringBuilder lines = new StringBuilder();
