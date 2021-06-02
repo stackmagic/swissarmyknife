@@ -1,11 +1,16 @@
 image: openjdk:11
 
-include:
-  - template: Code-Quality.gitlab-ci.yml
+#include:
+#  - template: Code-Quality.gitlab-ci.yml
 
 before_script:
   - export GRADLE_OPTS="-Dorg.gradle.daemon=false"
   - export GRADLE_USER_HOME=`pwd`/.gradle
+
+stages:
+  - build
+  - test
+  - report
 
 build:
   stage: build
@@ -19,7 +24,12 @@ build:
 
 test:
   stage: test
-  script: ./gradlew check
+  script:
+    - ./gradlew check jacocoTestReport
+# publish test reports to gitlab pages
+#    - mkdir -p public/$CI_COMMIT_REF_NAME
+#    - mv build/reports/jacoco/test/html public/$CI_COMMIT_REF_NAME/coverage
+#    - mv build/reports/tests/test       public/$CI_COMMIT_REF_NAME/tests
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
@@ -27,7 +37,22 @@ test:
       - build
       - .gradle
   artifacts:
-    when: always
+    paths:
+      - public
+      - build/reports/jacoco/test/jacocoTestReport.xml
     reports:
       junit: build/test-results/test/**/TEST-*.xml
 
+# see https://docs.gitlab.com/ee/user/project/merge_requests/test_coverage_visualization.html
+# only visible on merge requests?
+coverage:
+  stage: report
+  image: registry.gitlab.com/haynes/jacoco2cobertura:1.0.7
+  script:
+    - python /opt/cover2cover.py build/reports/jacoco/test/jacocoTestReport.xml $CI_PROJECT_DIR/src/main/java/ > build/cobertura.xml
+  needs: [ "test" ]
+  dependencies:
+    - test
+  artifacts:
+    reports:
+      cobertura: build/cobertura.xml
