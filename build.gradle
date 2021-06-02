@@ -1,4 +1,3 @@
-
 plugins {
 	id 'java'
 	id 'jacoco'
@@ -9,8 +8,8 @@ plugins {
 }
 
 description = 'Miscellaneous java utilities'
-group       = 'net.swisstech'
-version     = '2.1.0'
+group = 'net.swisstech'
+version = '2.1.0'
 
 // normal repositories and dependencies
 repositories {
@@ -23,14 +22,14 @@ repositories {
  * DEPENDENCIES
  */
 ext.versions = [
-		  slf4j   : '1.8.0-beta4'
-		, testng  : '7.4.0'
-		, mockito : '1.10.19'
-		, logger  : '1.1.0'
+		slf4j    : '1.8.0-beta4'
+		, testng : '7.4.0'
+		, mockito: '1.10.19'
+		, logger : '1.1.0'
 ]
 
 dependencies {
-	implementation     "net.swisstech:logger:${versions.logger}"
+	implementation "net.swisstech:logger:${versions.logger}"
 
 	testImplementation "org.slf4j:slf4j-simple:${versions.slf4j}"
 	testImplementation "org.testng:testng:${versions.testng}"
@@ -40,18 +39,19 @@ dependencies {
 /*
  * UNIT TESTING
  */
+jacoco {
+	toolVersion = "0.8.6"
+}
+
 jacocoTestReport {
-	reports.html.destination = file("${reportsDir}/jacoco/${name}")
+	reports {
+		xml.enabled true
+	}
 }
 
 test {
 	useTestNG()
 	testLogging.showStandardStreams = true
-
-	jacoco {
-		destinationFile = file("${buildDir}/jacoco.ut.exec")
-		classDumpDir = file("${buildDir}/jacoco/classpathdumps")
-	}
 }
 
 java {
@@ -90,18 +90,18 @@ publishing {
 
 bintray {
 	// key and user must be in your ~/.gradle/gradle.properties
-	user         = project.hasProperty('swisstech_bintray_user')   ? project.swisstech_bintray_user   : System.getenv('SWISSTECH_BINTRAY_USER')
-	key          = project.hasProperty('swisstech_bintray_apikey') ? project.swisstech_bintray_apikey : System.getenv('SWISSTECH_BINTRAY_KEY')
-	dryRun       = false
-	publish      = true
-	publications = [ 'mavenJava' ]
+	user = project.hasProperty('swisstech_bintray_user') ? project.swisstech_bintray_user : System.getenv('SWISSTECH_BINTRAY_USER')
+	key = project.hasProperty('swisstech_bintray_apikey') ? project.swisstech_bintray_apikey : System.getenv('SWISSTECH_BINTRAY_KEY')
+	dryRun = false
+	publish = true
+	publications = ['mavenJava']
 	pkg {
-		repo            = 'maven'
-		name            = project.name
-		desc            = project.description
-		licenses        = [ 'Apache-2.0' ]
-		websiteUrl      = "https://github.com/stackmagic/${project.name}"
-		vcsUrl          = "https://github.com/stackmagic/${project.name}.git"
+		repo = 'maven'
+		name = project.name
+		desc = project.description
+		licenses = ['Apache-2.0']
+		websiteUrl = "https://github.com/stackmagic/${project.name}"
+		vcsUrl = "https://github.com/stackmagic/${project.name}.git"
 		issueTrackerUrl = "https://github.com/stackmagic/${project.name}/issues"
 		publicDownloadNumbers = true
 		version {
