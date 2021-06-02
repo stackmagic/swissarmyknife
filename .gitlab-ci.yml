@@ -1,5 +1,8 @@
 image: openjdk:11
 
+include:
+  - template: Code-Quality.gitlab-ci.yml
+
 before_script:
   - export GRADLE_OPTS="-Dorg.gradle.daemon=false"
   - export GRADLE_USER_HOME=`pwd`/.gradle
@@ -27,3 +30,4 @@ test:
     when: always
     reports:
       junit: build/test-results/test/**/TEST-*.xml
+
