@@ -96,6 +96,8 @@ java {
 	}
 }
 
+tasks.check.dependsOn jacocoTestReport
+
 /*
  * WRAPPER
  */
