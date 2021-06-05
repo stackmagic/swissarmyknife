@@ -9,11 +9,42 @@ import java.util.LinkedList;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNull;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class PreconditionsTest {
 
     @Test
     public void privateConstructor() throws IOException {
         PrivateConstructor.invoke(Preconditions.class);
+    }
+
+    @Test
+    public void interfaceeOk() {
+        Preconditions.interfacee(CharSequence.class);
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "must be an interface")
+    public void interfaceeException() {
+        Preconditions.interfacee(PreconditionsTest.class);
+    }
+
+    @Test
+    public void ensureInterfaceOk() {
+        Preconditions.ensureInterface(CharSequence.class, "won't be used");
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "must be an interface")
+    public void ensureInterfaceException() {
+        Preconditions.ensureInterface(PreconditionsTest.class, "must be an interface");
+    }
+
+    @Test
+    public void nulllOk() {
+        Preconditions.nulll(null);
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "must be null")
+    public void nulllException() {
+        Preconditions.nulll("test");
     }
 
     @Test
@@ -32,7 +63,7 @@ public class PreconditionsTest {
         assertNotNull(Preconditions.notNull(new Object()));
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Object must not be null")
+    @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "must not be null")
     public void notNullException() {
         Preconditions.notNull(null);
     }
@@ -49,6 +80,16 @@ public class PreconditionsTest {
     }
 
     @Test
+    public void trueeOk() {
+        Preconditions.truee(true);
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "must be true")
+    public void trueeException() {
+        Preconditions.truee(false);
+    }
+
+    @Test
     public void ensureTrueOk() {
         Preconditions.ensureTrue(true, "won't be used");
     }
@@ -56,6 +97,16 @@ public class PreconditionsTest {
     @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "must be true")
     public void ensureTrueException() {
         Preconditions.ensureTrue(false, "must be true");
+    }
+
+    @Test
+    public void falseeOk() {
+        Preconditions.falsee(false);
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "must be false")
+    public void falseeException() {
+        Preconditions.falsee(true);
     }
 
     @Test

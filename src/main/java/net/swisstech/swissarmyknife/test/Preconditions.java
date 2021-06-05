@@ -21,6 +21,21 @@ public final class Preconditions {
     private Preconditions() {
     }
 
+    public static <C> Class<C> interfacee(Class<C> c) {
+        return ensureInterface(c, "must be an interface");
+    }
+
+    public static <C> Class<C> ensureInterface(Class<C> c, String msg) {
+        if (!c.isInterface()) {
+            throw new IllegalArgumentException(msg);
+        }
+        return c;
+    }
+
+    public static <O> O nulll(O o) {
+        return ensureNull(o, "must be null");
+    }
+
     public static <O> O ensureNull(O o, String msg) {
         if (o != null) {
             throw new IllegalArgumentException(msg);
@@ -29,7 +44,7 @@ public final class Preconditions {
     }
 
     public static <O> O notNull(O o) {
-        return ensureNotNull(o, "Object must not be null");
+        return ensureNotNull(o, "must not be null");
     }
 
     public static <O> O ensureNotNull(O o, String msg) {
@@ -39,16 +54,26 @@ public final class Preconditions {
         return o;
     }
 
-    public static void ensureTrue(boolean b, String msg) {
+    public static boolean truee(boolean b) {
+        return ensureTrue(b, "must be true");
+    }
+
+    public static boolean ensureTrue(boolean b, String msg) {
         if (!b) {
             throw new IllegalArgumentException(msg);
         }
+        return b;
     }
 
-    public static void ensureFalse(boolean b, String msg) {
+    public static boolean falsee(boolean b) {
+        return ensureFalse(b, "must be false");
+    }
+
+    public static boolean ensureFalse(boolean b, String msg) {
         if (b) {
             throw new IllegalArgumentException(msg);
         }
+        return b;
     }
 
     public static void ensureEquals(byte actual, byte expected, String msg) {
