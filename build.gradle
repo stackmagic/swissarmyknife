@@ -22,7 +22,7 @@ repositories {
  * DEPENDENCIES
  */
 ext.versions = [
-		slf4j    : '1.8.0-beta4'
+		  slf4j  : '1.8.0-beta4'
 		, testng : '7.4.0'
 		, mockito: '1.10.19'
 		, logger : '1.1.0'
@@ -35,6 +35,42 @@ dependencies {
 	testImplementation "org.testng:testng:${versions.testng}"
 	testImplementation "org.mockito:mockito-all:${versions.mockito}"
 }
+
+/*
+ * generate the number utils classes & tests by calling the python generator script
+ */
+task generateNumberUtilsTest(type: Exec) {
+
+	tasks.compileTestJava.dependsOn name
+
+	// where to put the generated sources
+	ext.destinationDir = "${buildDir}/generated-sources/number-utils-test"
+
+	// configure task to generate the logger code
+	commandLine = [ 'python', 'src/main/python/generate_number_utils_test.py', ext.destinationDir ]
+
+	// only regenerate when the source file has changed
+	inputs.dir( new File("${buildDir}/../src/main/python"))
+	outputs.dir(new File("${ext.destinationDir}"))
+}
+sourceSets.test.java.srcDirs += generateNumberUtilsTest.destinationDir
+
+task generateNumberUtils(type: Exec) {
+
+	tasks.generateNumberUtilsTest.dependsOn name
+	tasks.compileJava.dependsOn name
+
+	// where to put the generated sources
+	ext.destinationDir = "${buildDir}/generated-sources/number-utils"
+
+	// configure task to generate the logger code
+	commandLine = [ 'python', 'src/main/python/generate_number_utils.py', ext.destinationDir ]
+
+	// only regenerate when the source file has changed
+	inputs.dir( new File("${buildDir}/../src/main/python"))
+	outputs.dir(new File("${ext.destinationDir}"))
+}
+sourceSets.main.java.srcDirs += generateNumberUtils.destinationDir
 
 /*
  * UNIT TESTING
