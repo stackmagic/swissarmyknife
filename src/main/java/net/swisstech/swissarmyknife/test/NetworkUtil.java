@@ -1,5 +1,6 @@
 package net.swisstech.swissarmyknife.test;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -18,7 +19,7 @@ public final class NetworkUtil {
     /** we only use the upper half of the port range */
     private static final int HALFMAXPORT = MAXPORT / 2 - 1;
 
-    private static final Random RANDOM = new Random();
+    private static final Random RANDOM = new SecureRandom();
 
     /** private constructor for utility class */
     private NetworkUtil() {

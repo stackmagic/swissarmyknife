@@ -3,33 +3,20 @@
 
 just a bunch of small java utils to make my life easier
 
-[ ![TravicCI](https://travis-ci.org/stackmagic/swissarmyknife.svg?branch=master) ](https://travis-ci.org/stackmagic/swissarmyknife)
-[ ![Download](https://api.bintray.com/packages/stackmagic/maven/swissarmyknife/images/download.svg) ](https://bintray.com/stackmagic/maven/swissarmyknife/_latestVersion)
+[find it on search.maven.org](https://search.maven.org/search?q=g:net.swisstech%20a:swissarmyknife)
+[ ![TravicCI](https://travis-ci.com/stackmagic/swissarmyknife.svg?branch=master) ](https://travis-ci.com/stackmagic/swissarmyknife)
 
 # downloading
 
 ## gradle
 
-the [jcenter() shortcut requires at least gradle 1.7](http://www.gradle.org/docs/1.7/release-notes#jcenter-repository-support)
-
 ```groovy
-repositories {
-    jcenter()
-}
-
 dependencies {
     compile 'net.swisstech:swissarmyknife:+'
 }
 ```
 
 ## maven
-
-```xml
-<repository>
-    <id>jcenter</id>
-    <url>https://jcenter.bintray.com/</url>
-</repository>
-```
 
 ```xml
 <dependency>
@@ -40,6 +27,11 @@ dependencies {
 ```
 
 # changelog
+
+## 2.2.0
+
+* various fixes, refactorings, new features
+* switch to sonatype oss to pulish to maven central
 
 ## 2.1.0
 

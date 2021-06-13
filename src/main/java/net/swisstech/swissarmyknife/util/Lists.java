@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * list utils we've been missing from guava and jdk standart apis
@@ -20,14 +21,17 @@ public class Lists {
 
     @SafeVarargs
     public static <T> List<T> newArrayList(T... items) {
-        List<T> list = new ArrayList<>();
-        return addAll(list, items);
+        return addAll(new ArrayList<>(), items);
     }
 
     @SafeVarargs
     public static <T> List<T> newLinkedList(T... items) {
-        List<T> list = new LinkedList<>();
-        return addAll(list, items);
+        return addAll(new LinkedList<>(), items);
+    }
+
+    @SafeVarargs
+    public static <T> List<T> newList(Supplier<List<T>> ctor, T... items) {
+        return addAll(ctor.get(), items);
     }
 
     @SafeVarargs

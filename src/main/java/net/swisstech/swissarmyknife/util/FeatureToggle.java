@@ -12,10 +12,6 @@ import java.util.stream.Collectors;
  * Disable the ability to call certain methods. By default, all methods are
  * permitted and need to be disabled by calling disable(methodName).
  *
- * todo verify the passed class objects are actually interfaces and enumerate all
- * methods in a Map<MethodName, EnabledDisabledStatus> so we can do things like
- * enableAll/disableAll
- *
  * @param <T> Type of the wrapped object
  */
 public class FeatureToggle<T> {
@@ -32,23 +28,25 @@ public class FeatureToggle<T> {
     /**
      * @param instance       The object to wrap/protect - retrieve the proxy for it by calling getProxy()
      * @param interfaceClass The interface Class for which we will create the proxy
+     * @param defaultStatus  defaultStatus for methods (enabled/disabled)
      */
+    @SuppressWarnings("unchecked")
     public FeatureToggle(T instance, MethodStatus defaultStatus, Class<? super T> interfaceClass) {
-        //noinspection unchecked
         this(instance, defaultStatus, new Class[]{interfaceClass});
     }
 
     /**
-     * @param instance   The object to wrap/protect - retrieve the proxy for it by calling getProxy()
-     * @param interfaces The interface Classes for which we will create the proxy
+     * @param instance      The object to wrap/protect - retrieve the proxy for it by calling getProxy()
+     * @param interfaces    The interface Classes for which we will create the proxy
+     * @param defaultStatus defaultStatus for methods (enabled/disabled)
      */
+    @SuppressWarnings("unchecked")
     public FeatureToggle(T instance, MethodStatus defaultStatus, Class<? super T>[] interfaces) {
         interfacesString = Arrays.stream(interfaces)
                 .peek(Preconditions::interfacee)
                 .peek(it -> Arrays.stream(it.getMethods()).forEach(m -> methods.put(m.getName(), defaultStatus)))
                 .map(Class::getSimpleName).collect(Collectors.joining(" "));
 
-        //noinspection unchecked
         this.proxy = (T) Proxy.newProxyInstance(
                 FeatureToggle.class.getClassLoader(),
                 interfaces,

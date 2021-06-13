@@ -1,31 +1,33 @@
 plugins {
 	id 'java'
-	id 'jacoco'
 	id 'groovy'
+	id 'jacoco'
+	id 'signing'
 	id 'maven-publish'
 	id 'project-report'
-	id 'com.jfrog.bintray' version '1.8.4'
+	id('io.github.gradle-nexus.publish-plugin') version '1.1.0'
 }
 
 description = 'Miscellaneous java utilities'
 group = 'net.swisstech'
-version = '2.1.0'
+version = '2.2.0'
 
-// normal repositories and dependencies
+/*
+ * REPOSITORIES
+ */
 repositories {
 	mavenLocal()
 	mavenCentral()
-	jcenter()
 }
 
 /*
  * DEPENDENCIES
  */
 ext.versions = [
-		  slf4j  : '1.8.0-beta4'
+		slf4j    : '1.8.0-beta4'
 		, testng : '7.4.0'
 		, mockito: '1.10.19'
-		, logger : '1.1.0'
+		, logger : '2.0.1'
 ]
 
 dependencies {
@@ -47,10 +49,10 @@ task generateNumberUtilsTest(type: Exec) {
 	ext.destinationDir = "${buildDir}/generated-sources/number-utils-test"
 
 	// configure task to generate the logger code
-	commandLine = [ 'python', 'src/main/python/generate_number_utils_test.py', ext.destinationDir ]
+	commandLine = ['python', 'src/main/python/generate_number_utils_test.py', ext.destinationDir]
 
 	// only regenerate when the source file has changed
-	inputs.dir( new File("${buildDir}/../src/main/python"))
+	inputs.dir(new File("${buildDir}/../src/main/python"))
 	outputs.dir(new File("${ext.destinationDir}"))
 }
 sourceSets.test.java.srcDirs += generateNumberUtilsTest.destinationDir
@@ -64,10 +66,10 @@ task generateNumberUtils(type: Exec) {
 	ext.destinationDir = "${buildDir}/generated-sources/number-utils"
 
 	// configure task to generate the logger code
-	commandLine = [ 'python', 'src/main/python/generate_number_utils.py', ext.destinationDir ]
+	commandLine = ['python', 'src/main/python/generate_number_utils.py', ext.destinationDir]
 
 	// only regenerate when the source file has changed
-	inputs.dir( new File("${buildDir}/../src/main/python"))
+	inputs.dir(new File("${buildDir}/../src/main/python"))
 	outputs.dir(new File("${ext.destinationDir}"))
 }
 sourceSets.main.java.srcDirs += generateNumberUtils.destinationDir
@@ -106,45 +108,56 @@ wrapper {
 }
 
 /*
- * PACKAGING
+ * PACKAGING & PUBLISHING
  */
-task sourceJar(type: Jar) {
-	from sourceSets.main.allSource
+java {
+	withJavadocJar()
+	withSourcesJar()
 }
 
-/*
- * PUBLISHING
- */
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
-			from components.java
-			artifact sourceJar {
-				classifier 'sources'
+			from(components.java)
+			pom {
+				name = project.name
+				description = project.description
+				url = 'https://github.com/stackmagic/swissarmyknife'
+				licenses {
+					license {
+						name = 'The Apache License, Version 2.0'
+						url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+					}
+				}
+				developers {
+					developer {
+						id = 'stackmagic'
+						name = 'Patrick Huber'
+						email = 'stackmagic@gmail.com'
+					}
+				}
+				scm {
+					connection = "scm:git:ssh://git@github.com:stackmagic/${project.name}.git"
+					developerConnection = "scm:git:ssh://git@github.com:stackmagic/${project.name}.git"
+					url = "https://github.com/stackmagic/${project.name}.git"
+				}
 			}
 		}
 	}
 }
 
-bintray {
-	// key and user must be in your ~/.gradle/gradle.properties
-	user = project.hasProperty('swisstech_bintray_user') ? project.swisstech_bintray_user : System.getenv('SWISSTECH_BINTRAY_USER')
-	key = project.hasProperty('swisstech_bintray_apikey') ? project.swisstech_bintray_apikey : System.getenv('SWISSTECH_BINTRAY_KEY')
-	dryRun = false
-	publish = true
-	publications = ['mavenJava']
-	pkg {
-		repo = 'maven'
-		name = project.name
-		desc = project.description
-		licenses = ['Apache-2.0']
-		websiteUrl = "https://github.com/stackmagic/${project.name}"
-		vcsUrl = "https://github.com/stackmagic/${project.name}.git"
-		issueTrackerUrl = "https://github.com/stackmagic/${project.name}/issues"
-		publicDownloadNumbers = true
-		version {
-			name = project.version
-			desc = project.description
+nexusPublishing {
+	repositories {
+		sonatype {
+			nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+			snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+			stagingProfileId = project.findProperty('stagingProfileId')
+			username = project.findProperty('sonatypeUsername')
+			password = project.findProperty('sonatypePassword')
 		}
 	}
+}
+
+signing {
+	sign publishing.publications.mavenJava
 }

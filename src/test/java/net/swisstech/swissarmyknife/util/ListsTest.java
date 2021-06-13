@@ -33,6 +33,13 @@ public class ListsTest {
     }
 
     @Test
+    public void testNewListWithCtorArg() {
+        List<String> list = Lists.newList(ArrayList::new, "x", "y", "z");
+        assertSize(list, 3);
+        assertInstanceOf(ArrayList.class, list);
+    }
+
+    @Test
     public void testAddAll() {
         List<String> list = new ArrayList<>();
         Lists.addAll(list, "a", "b", "c", "d", "e", "f");
