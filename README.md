@@ -28,10 +28,15 @@ dependencies {
 
 # changelog
 
+## 2.2.1
+
+* use gradle java-library instead of java
+* fix dependency type to logger, use api instead of implementation
+
 ## 2.2.0
 
 * various fixes, refactorings, new features
-* switch to sonatype oss to pulish to maven central
+* switch to sonatype ossrh to pulish to maven central
 
 ## 2.1.0
 

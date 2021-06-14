@@ -1,8 +1,8 @@
 plugins {
-	id 'java'
 	id 'groovy'
 	id 'jacoco'
 	id 'signing'
+	id 'java-library'
 	id 'maven-publish'
 	id 'project-report'
 	id('io.github.gradle-nexus.publish-plugin') version '1.1.0'
@@ -10,7 +10,7 @@ plugins {
 
 description = 'Miscellaneous java utilities'
 group = 'net.swisstech'
-version = '2.2.0'
+version = '2.2.1'
 
 /*
  * REPOSITORIES
@@ -24,14 +24,14 @@ repositories {
  * DEPENDENCIES
  */
 ext.versions = [
-		slf4j    : '1.8.0-beta4'
+		  slf4j  : '1.8.0-beta4'
 		, testng : '7.4.0'
 		, mockito: '1.10.19'
 		, logger : '2.0.1'
 ]
 
 dependencies {
-	implementation "net.swisstech:logger:${versions.logger}"
+	api "net.swisstech:logger:${versions.logger}"
 
 	testImplementation "org.slf4j:slf4j-simple:${versions.slf4j}"
 	testImplementation "org.testng:testng:${versions.testng}"
